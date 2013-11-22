@@ -1,0 +1,85 @@
+set(
+	SGEC_FILES
+	include/sgec/detail/footer.h
+	include/sgec/detail/header.h
+	include/sgec/renderer/context/ffp.h
+	include/sgec/renderer/context/ffp_fwd.h
+	include/sgec/renderer/device/ffp.h
+	include/sgec/renderer/device/ffp_fwd.h
+	include/sgec/systems/instance.h
+	include/sgec/systems/instance_fwd.h
+	src/CMakeLists.txt
+	src/impl/renderer/context/ffp.cpp
+	src/impl/renderer/device/ffp.cpp
+	src/impl/systems/instance.cpp
+	src/include/sgec/impl/renderer/context/ffp.hpp
+	src/include/sgec/impl/renderer/device/ffp.hpp
+	src/include/sgec/impl/systems/instance.hpp
+	src/renderer/context/ffp.cpp
+	src/renderer/device/ffp.cpp
+	src/systems/instance.cpp
+)
+
+include_directories(
+	${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+fcppt_utils_append_source_dir_and_make_groups(
+	"${SGEC_FILES}"
+	SGEC_FILES_ABS
+)
+
+function(
+	add_sgec_library
+	VARIANT
+)
+	if(
+		"${VARIANT}"
+		STREQUAL
+		"STATIC"
+	)
+		set(
+			TARGET_NAME
+			sgec_static
+		)
+	else()
+		set(
+			TARGET_NAME
+			sgec
+		)
+	endif()
+
+	add_library(
+		${TARGET_NAME}
+		${VARIANT}
+		${SGEC_FILES_ABS}
+	)
+
+	target_link_libraries(
+		${TARGET_NAME}
+		PRIVATE
+		${fcppt_core_TARGET}
+		${sgecore_TARGET}
+		${sgeimage_TARGET}
+		${sgerenderer_TARGET}
+		${sgesystems_TARGET}
+		${sgeviewport_TARGET}
+		${sgewindow_TARGET}
+	)
+endfunction()
+
+if(
+	ENABLE_SHARED
+)
+	add_sgec_library(
+		SHARED
+	)
+endif()
+
+if(
+	ENABLE_STATIC
+)
+	add_sgec_library(
+		STATIC
+	)
+endif()

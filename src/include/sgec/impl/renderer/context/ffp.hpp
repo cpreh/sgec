@@ -21,6 +21,9 @@ public:
 
 	~sgec_renderer_context_ffp();
 
+	void
+	clear();
+
 	sge::renderer::context::ffp &
 	get();
 private:

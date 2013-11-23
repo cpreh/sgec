@@ -1,6 +1,8 @@
 #include <sgec/impl/systems/instance.hpp>
+#include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/instance.h>
+#include <sgec/window/system_fwd.h>
 
 
 extern "C"
@@ -56,4 +58,23 @@ sgec_systems_instance_renderer(
 {
 	return
 		_instance->renderer();
+}
+
+extern "C"
+struct sgec_input_keyboard_device *
+sgec_systems_instance_keyboard(
+	struct sgec_systems_instance *const _instance
+)
+{
+	return
+		_instance->keyboard();
+}
+
+struct sgec_window_system *
+sgec_systems_instance_window_system(
+	struct sgec_systems_instance *const _instance
+)
+{
+	return
+		_instance->window_system();
 }

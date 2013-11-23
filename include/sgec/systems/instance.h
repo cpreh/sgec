@@ -4,8 +4,10 @@
 #include <sgec/symbol.hpp>
 #include <sgec/detail/footer.h>
 #include <sgec/detail/header.h>
+#include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/instance_fwd.h>
+#include <sgec/window/system_fwd.h>
 #include <fcppt/config/external_begin.hpp>
 #include <stdbool.h>
 #include <fcppt/config/external_end.hpp>
@@ -30,6 +32,18 @@ sgec_systems_instance_destroy(
 SGEC_SYMBOL
 struct sgec_renderer_device_ffp *
 sgec_systems_instance_renderer(
+	struct sgec_systems_instance *
+);
+
+SGEC_SYMBOL
+struct sgec_input_keyboard_device *
+sgec_systems_instance_keyboard(
+	struct sgec_systems_instance *
+);
+
+SGEC_SYMBOL
+struct sgec_window_system *
+sgec_systems_instance_window_system(
 	struct sgec_systems_instance *
 );
 

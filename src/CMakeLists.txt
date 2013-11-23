@@ -2,22 +2,43 @@ set(
 	SGEC_FILES
 	include/sgec/detail/footer.h
 	include/sgec/detail/header.h
+	include/sgec/input/keyboard/device.h
+	include/sgec/input/keyboard/device_fwd.h
+	include/sgec/input/keyboard/key_callback.h
+	include/sgec/input/keyboard/key_code.h
+	include/sgec/input/keyboard/key_event.h
+	include/sgec/input/keyboard/key_event_fwd.h
 	include/sgec/renderer/context/ffp.h
 	include/sgec/renderer/context/ffp_fwd.h
 	include/sgec/renderer/device/ffp.h
 	include/sgec/renderer/device/ffp_fwd.h
+	include/sgec/signal/connection.h
+	include/sgec/signal/connection_fwd.h
 	include/sgec/systems/instance.h
 	include/sgec/systems/instance_fwd.h
+	include/sgec/window/system.h
+	include/sgec/window/system_fwd.h
 	src/CMakeLists.txt
+	src/impl/input/keyboard/device.cpp
+	src/impl/input/keyboard/translate_key_code.cpp
 	src/impl/renderer/context/ffp.cpp
 	src/impl/renderer/device/ffp.cpp
+	src/impl/signal/connection.cpp
 	src/impl/systems/instance.cpp
+	src/impl/window/system.cpp
+	src/include/sgec/impl/input/keyboard/device.hpp
+	src/include/sgec/impl/input/keyboard/translate_key_code.hpp
 	src/include/sgec/impl/renderer/context/ffp.hpp
 	src/include/sgec/impl/renderer/device/ffp.hpp
+	src/include/sgec/impl/signal/connection.hpp
 	src/include/sgec/impl/systems/instance.hpp
+	src/include/sgec/impl/window/system.hpp
+	src/input/keyboard/device.cpp
 	src/renderer/context/ffp.cpp
 	src/renderer/device/ffp.cpp
+	src/signal/connection.cpp
 	src/systems/instance.cpp
+	src/window/system.cpp
 )
 
 include_directories(
@@ -61,6 +82,8 @@ function(
 		${fcppt_core_TARGET}
 		${sgecore_TARGET}
 		${sgeimage_TARGET}
+		${sgeimagecolor_TARGET}
+		${sgeinput_TARGET}
 		${sgerenderer_TARGET}
 		${sgesystems_TARGET}
 		${sgeviewport_TARGET}

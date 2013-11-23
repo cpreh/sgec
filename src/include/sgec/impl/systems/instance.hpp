@@ -1,6 +1,10 @@
 #ifndef SGEC_IMPL_SYSTEMS_INSTANCE_HPP_INCLUDED
 #define SGEC_IMPL_SYSTEMS_INSTANCE_HPP_INCLUDED
 
+#include <sgec/input/keyboard/device_fwd.h>
+#include <sgec/renderer/device/ffp_fwd.h>
+#include <sgec/systems/instance_fwd.h>
+#include <sgec/window/system_fwd.h>
 #include <sge/systems/instance_decl.hpp>
 #include <sge/systems/keyboard_collector.hpp>
 #include <sge/systems/renderer_caps.hpp>
@@ -8,8 +12,6 @@
 #include <sge/systems/with_input.hpp>
 #include <sge/systems/with_renderer.hpp>
 #include <sge/systems/with_window.hpp>
-#include <sgec/renderer/device/ffp_fwd.h>
-#include <sgec/systems/instance_fwd.h>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/scoped_ptr_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -33,6 +35,12 @@ public:
 
 	sgec_renderer_device_ffp *
 	renderer();
+
+	sgec_input_keyboard_device *
+	keyboard();
+
+	sgec_window_system *
+	window_system();
 private:
 	typedef
 	sge::systems::instance<
@@ -60,6 +68,22 @@ private:
 	scoped_renderer_ptr;
 
 	scoped_renderer_ptr const renderer_;
+
+	typedef
+	fcppt::scoped_ptr<
+		sgec_input_keyboard_device
+	>
+	scoped_keyboard_ptr;
+
+	scoped_keyboard_ptr const keyboard_;
+
+	typedef
+	fcppt::scoped_ptr<
+		sgec_window_system
+	>
+	scoped_window_system_ptr;
+
+	scoped_window_system_ptr const window_system_;
 };
 
 #endif

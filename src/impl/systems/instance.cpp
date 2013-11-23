@@ -1,5 +1,7 @@
+#include <sgec/impl/input/keyboard/device.hpp>
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/impl/systems/instance.hpp>
+#include <sgec/impl/window/system.hpp>
 #include <sge/image/capabilities_field.hpp>
 #include <sge/media/optional_extension_set.hpp>
 #include <sge/renderer/display_mode/optional_object.hpp>
@@ -83,6 +85,20 @@ sgec_systems_instance::sgec_systems_instance(
 		>(
 			impl_.renderer_ffp()
 		)
+	),
+	keyboard_(
+		fcppt::make_unique_ptr<
+			sgec_input_keyboard_device
+		>(
+			impl_.keyboard_collector()
+		)
+	),
+	window_system_(
+		fcppt::make_unique_ptr<
+			sgec_window_system
+		>(
+			impl_.window_system()
+		)
 	)
 {
 }
@@ -96,4 +112,18 @@ sgec_systems_instance::renderer()
 {
 	return
 		renderer_.get();
+}
+
+sgec_input_keyboard_device *
+sgec_systems_instance::keyboard()
+{
+	return
+		keyboard_.get();
+}
+
+sgec_window_system *
+sgec_systems_instance::window_system()
+{
+	return
+		window_system_.get();
 }

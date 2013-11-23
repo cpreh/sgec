@@ -14,6 +14,12 @@ SGEC_DETAIL_HEADER
 
 SGEC_SYMBOL
 bool
+sgec_renderer_context_ffp_clear(
+	struct sgec_renderer_context_ffp *
+);
+
+SGEC_SYMBOL
+bool
 sgec_renderer_context_ffp_destroy(
 	struct sgec_renderer_context_ffp *
 );

@@ -75,6 +75,8 @@ set(
 	NEEDED_SGE_COMPONENTS
 	core
 	image
+	imagecolor
+	input
 	renderer
 	systems
 	viewport

@@ -8,16 +8,19 @@ set(
 	include/sgec/input/keyboard/key_code.h
 	include/sgec/input/keyboard/key_event.h
 	include/sgec/input/keyboard/key_event_fwd.h
+	include/sgec/input/keyboard/key_state.h
 	include/sgec/renderer/context/ffp.h
 	include/sgec/renderer/context/ffp_fwd.h
 	include/sgec/renderer/device/ffp.h
 	include/sgec/renderer/device/ffp_fwd.h
+	include/sgec/result.h
 	include/sgec/signal/connection.h
 	include/sgec/signal/connection_fwd.h
 	include/sgec/systems/instance.h
 	include/sgec/systems/instance_fwd.h
 	include/sgec/window/system.h
 	include/sgec/window/system_fwd.h
+	include/sgec/window/system_poll_result.h
 	src/CMakeLists.txt
 	src/impl/input/keyboard/device.cpp
 	src/impl/input/keyboard/translate_key_code.cpp

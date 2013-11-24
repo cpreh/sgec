@@ -1,3 +1,4 @@
+#include <sgec/result.h>
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/renderer/context/ffp_fwd.h>
 #include <sgec/renderer/device/ffp.h>
@@ -22,7 +23,7 @@ catch(
 }
 
 extern "C"
-bool
+sgec_result
 sgec_renderer_device_ffp_end_rendering(
 	struct sgec_renderer_device_ffp *const _device,
 	struct sgec_renderer_context_ffp *const _context
@@ -34,12 +35,12 @@ try
 	);
 
 	return
-		true;
+		sgec_result_ok;
 }
 catch(
 	...
 )
 {
 	return
-		false;
+		sgec_result_error;
 }

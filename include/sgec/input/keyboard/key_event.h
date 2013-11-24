@@ -5,9 +5,7 @@
 #include <sgec/detail/header.h>
 #include <sgec/input/keyboard/key_code.h>
 #include <sgec/input/keyboard/key_event_fwd.h>
-#include <fcppt/config/external_begin.hpp>
-#include <stdbool.h>
-#include <fcppt/config/external_end.hpp>
+#include <sgec/input/keyboard/key_state.h>
 
 
 SGEC_DETAIL_HEADER
@@ -16,7 +14,7 @@ struct sgec_input_keyboard_key_event
 {
 	enum sgec_input_keyboard_key_code code;
 
-	bool pressed;
+	enum sgec_input_keyboard_key_state state;
 };
 
 SGEC_DETAIL_FOOTER

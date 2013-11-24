@@ -13,18 +13,18 @@
 static
 void
 key_callback(
-	struct sgec_input_keyboard_key_event _event,
+	struct sgec_input_keyboard_key_event const *const _event,
 	void *_userdata
 )
 {
 	printf(
 		"key: %d, pressed: %d\n",
-		(int)_event.code,
-		(int)_event.pressed
+		(int)_event->code,
+		(int)_event->state
 	);
 
 	if(
-		_event.code
+		_event->code
 		==
 		sgec_input_keyboard_key_code_escape
 	)

@@ -11,7 +11,7 @@ SGEC_DETAIL_HEADER
 typedef
 void
 (*sgec_input_keyboard_key_callback)(
-	struct sgec_input_keyboard_key_event,
+	struct sgec_input_keyboard_key_event const *,
 	void *userdata
 );
 

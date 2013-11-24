@@ -1,9 +1,10 @@
+#include <sgec/result.h>
 #include <sgec/impl/signal/connection.hpp>
 #include <sgec/signal/connection.h>
 
 
 extern "C"
-bool
+sgec_result
 sgec_signal_connection_destroy(
 	struct sgec_signal_connection *const _connection
 )
@@ -13,12 +14,12 @@ try
 		_connection;
 
 	return
-		true;
+		sgec_result_ok;
 }
 catch(
 	...
 )
 {
 	return
-		false;
+		sgec_result_error;
 }

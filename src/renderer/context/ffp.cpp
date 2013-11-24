@@ -1,9 +1,10 @@
+#include <sgec/result.h>
 #include <sgec/impl/renderer/context/ffp.hpp>
 #include <sgec/renderer/context/ffp.h>
 
 
 extern "C"
-bool
+sgec_result
 sgec_renderer_context_ffp_clear(
 	struct sgec_renderer_context_ffp *const _context
 )
@@ -12,18 +13,18 @@ try
 	_context->clear();
 
 	return
-		true;
+		sgec_result_ok;
 }
 catch(
 	...
 )
 {
 	return
-		false;
+		sgec_result_error;
 }
 
 extern "C"
-bool
+sgec_result
 sgec_renderer_context_ffp_destroy(
 	struct sgec_renderer_context_ffp *const _context
 )
@@ -33,12 +34,12 @@ try
 		_context;
 
 	return
-		true;
+		sgec_result_ok;
 }
 catch(
 	...
 )
 {
 	return
-		false;
+		sgec_result_error;
 }

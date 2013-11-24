@@ -1,3 +1,4 @@
+#include <sgec/result.h>
 #include <sgec/impl/systems/instance.hpp>
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
@@ -30,7 +31,7 @@ catch(
 }
 
 extern "C"
-bool
+sgec_result
 sgec_systems_instance_destroy(
 	struct sgec_systems_instance *const _instance
 )
@@ -40,14 +41,14 @@ try
 		_instance;
 
 	return
-		true;
+		sgec_result_ok;
 }
 catch(
 	...
 )
 {
 	return
-		false;
+		sgec_result_error;
 }
 
 extern "C"

@@ -1,6 +1,6 @@
 #include <sgec/input/keyboard/device.h>
 #include <sgec/input/keyboard/key_code.h>
-#include <sgec/input/keyboard/key_event.h>
+#include <sgec/input/keyboard/key_state.h>
 #include <sgec/renderer/context/ffp.h>
 #include <sgec/renderer/device/ffp.h>
 #include <sgec/signal/connection.h>
@@ -13,18 +13,19 @@
 static
 void
 key_callback(
-	struct sgec_input_keyboard_key_event const *const _event,
+	enum sgec_input_keyboard_key_code const _code,
+	enum sgec_input_keyboard_key_state const _state,
 	void *_userdata
 )
 {
 	printf(
 		"key: %d, pressed: %d\n",
-		(int)_event->code,
-		(int)_event->state
+		(int)_code,
+		(int)_state
 	);
 
 	if(
-		_event->code
+		_code
 		==
 		sgec_input_keyboard_key_code_escape
 	)

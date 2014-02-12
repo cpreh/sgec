@@ -6,8 +6,6 @@ set(
 	include/sgec/input/keyboard/device_fwd.h
 	include/sgec/input/keyboard/key_callback.h
 	include/sgec/input/keyboard/key_code.h
-	include/sgec/input/keyboard/key_event.h
-	include/sgec/input/keyboard/key_event_fwd.h
 	include/sgec/input/keyboard/key_state.h
 	include/sgec/renderer/context/ffp.h
 	include/sgec/renderer/context/ffp_fwd.h

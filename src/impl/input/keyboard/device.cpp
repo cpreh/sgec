@@ -1,7 +1,6 @@
 #include <sgec/impl/input/keyboard/device.hpp>
 #include <sgec/impl/input/keyboard/translate_key_code.hpp>
 #include <sgec/input/keyboard/key_callback.h>
-#include <sgec/input/keyboard/key_event.h>
 #include <sgec/input/keyboard/key_state.h>
 #include <sgec/impl/signal/connection.hpp>
 #include <sge/input/keyboard/device.hpp>
@@ -40,7 +39,7 @@ sgec_input_keyboard_device::key_callback(
 					sge::input::keyboard::key_event const &_event
 				)
 				{
-					sgec_input_keyboard_key_event const new_event{
+					_callback(
 						sgec::impl::input::keyboard::translate_key_code(
 							_event.key_code()
 						),
@@ -49,10 +48,7 @@ sgec_input_keyboard_device::key_callback(
 							sgec_input_keyboard_key_state_pressed
 						:
 							sgec_input_keyboard_key_state_released
-					};
-
-					_callback(
-						&new_event,
+						,
 						_userdata
 					);
 				}

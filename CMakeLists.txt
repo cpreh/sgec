@@ -78,7 +78,9 @@ set(
 	imagecolor
 	input
 	renderer
+	sprite
 	systems
+	texture
 	viewport
 	window
 )

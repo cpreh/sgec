@@ -27,6 +27,9 @@ public:
 	end_rendering(
 		sgec_renderer_context_ffp *
 	);
+
+	sge::renderer::device::ffp &
+	get();
 private:
 	sge::renderer::device::ffp &device_;
 };

@@ -1,6 +1,8 @@
+#include <sgec/impl/image2d/system.hpp>
 #include <sgec/impl/input/keyboard/device.hpp>
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/impl/systems/instance.hpp>
+#include <sgec/window/size_unit.h>
 #include <sgec/impl/window/system.hpp>
 #include <sge/image/capabilities_field.hpp>
 #include <sge/media/optional_extension_set.hpp>
@@ -31,8 +33,8 @@
 
 sgec_systems_instance::sgec_systems_instance(
 	char const *const _window_name,
-	unsigned const _initial_window_w,
-	unsigned const _initial_window_h
+	sgec_window_size_unit const _initial_window_w,
+	sgec_window_size_unit const _initial_window_h
 )
 :
 	impl_(
@@ -99,6 +101,13 @@ sgec_systems_instance::sgec_systems_instance(
 		>(
 			impl_.window_system()
 		)
+	),
+	image2d_system_(
+		fcppt::make_unique_ptr<
+			sgec_image2d_system
+		>(
+			impl_.image_system()
+		)
 	)
 {
 }
@@ -126,4 +135,11 @@ sgec_systems_instance::window_system()
 {
 	return
 		window_system_.get();
+}
+
+sgec_image2d_system *
+sgec_systems_instance::image2d_system()
+{
+	return
+		image2d_system_.get();
 }

@@ -23,5 +23,4 @@ private:
 	fcppt::signal::scoped_connection const connection_;
 };
 
-
 #endif

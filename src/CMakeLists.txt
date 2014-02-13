@@ -2,6 +2,7 @@ set(
 	SGEC_FILES
 	include/sgec/detail/footer.h
 	include/sgec/detail/header.h
+	include/sgec/image2d/system_fwd.h
 	include/sgec/input/keyboard/device.h
 	include/sgec/input/keyboard/device_fwd.h
 	include/sgec/input/keyboard/key_callback.h
@@ -11,34 +12,56 @@ set(
 	include/sgec/renderer/context/ffp_fwd.h
 	include/sgec/renderer/device/ffp.h
 	include/sgec/renderer/device/ffp_fwd.h
+	include/sgec/renderer/texture/create_planar_from_path.h
+	include/sgec/renderer/texture/planar.h
+	include/sgec/renderer/texture/planar_fwd.h
 	include/sgec/result.h
 	include/sgec/signal/connection.h
 	include/sgec/signal/connection_fwd.h
+	include/sgec/sprite/draw.h
+	include/sgec/sprite/object.h
+	include/sgec/sprite/object_fwd.h
+	include/sgec/sprite/unit.h
 	include/sgec/systems/instance.h
 	include/sgec/systems/instance_fwd.h
+	include/sgec/texture/part.h
+	include/sgec/texture/part_fwd.h
+	include/sgec/texture/part_raw.h
+	include/sgec/window/size_unit.h
 	include/sgec/window/system.h
 	include/sgec/window/system_fwd.h
 	include/sgec/window/system_poll_result.h
 	src/CMakeLists.txt
+	src/impl/image2d/system.cpp
 	src/impl/input/keyboard/device.cpp
 	src/impl/input/keyboard/translate_key_code.cpp
 	src/impl/renderer/context/ffp.cpp
 	src/impl/renderer/device/ffp.cpp
+	src/impl/renderer/texture/planar.cpp
 	src/impl/signal/connection.cpp
 	src/impl/systems/instance.cpp
+	src/impl/texture/part.cpp
 	src/impl/window/system.cpp
+	src/include/sgec/impl/image2d/system.hpp
 	src/include/sgec/impl/input/keyboard/device.hpp
 	src/include/sgec/impl/input/keyboard/translate_key_code.hpp
 	src/include/sgec/impl/renderer/context/ffp.hpp
 	src/include/sgec/impl/renderer/device/ffp.hpp
+	src/include/sgec/impl/renderer/texture/planar.hpp
 	src/include/sgec/impl/signal/connection.hpp
 	src/include/sgec/impl/systems/instance.hpp
+	src/include/sgec/impl/texture/part.hpp
 	src/include/sgec/impl/window/system.hpp
 	src/input/keyboard/device.cpp
 	src/renderer/context/ffp.cpp
 	src/renderer/device/ffp.cpp
+	src/renderer/texture/create_planar_from_path.cpp
+	src/renderer/texture/planar.cpp
 	src/signal/connection.cpp
+	src/sprite/draw.cpp
 	src/systems/instance.cpp
+	src/texture/part.cpp
+	src/texture/part_raw.cpp
 	src/window/system.cpp
 )
 
@@ -86,7 +109,9 @@ function(
 		${sgeimagecolor_TARGET}
 		${sgeinput_TARGET}
 		${sgerenderer_TARGET}
+		${sgesprite_TARGET}
 		${sgesystems_TARGET}
+		${sgetexture_TARGET}
 		${sgeviewport_TARGET}
 		${sgewindow_TARGET}
 	)

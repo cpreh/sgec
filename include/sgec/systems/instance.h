@@ -5,9 +5,11 @@
 #include <sgec/symbol.hpp>
 #include <sgec/detail/footer.h>
 #include <sgec/detail/header.h>
+#include <sgec/image2d/system_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/instance_fwd.h>
+#include <sgec/window/size_unit.h>
 #include <sgec/window/system_fwd.h>
 
 
@@ -17,8 +19,8 @@ SGEC_SYMBOL
 struct sgec_systems_instance *
 sgec_systems_instance_create(
 	char const *window_name,
-	unsigned initial_window_w,
-	unsigned initial_window_h
+	sgec_window_size_unit initial_window_w,
+	sgec_window_size_unit initial_window_h
 );
 
 SGEC_SYMBOL
@@ -42,6 +44,12 @@ sgec_systems_instance_keyboard(
 SGEC_SYMBOL
 struct sgec_window_system *
 sgec_systems_instance_window_system(
+	struct sgec_systems_instance *
+);
+
+SGEC_SYMBOL
+struct sgec_image2d_system *
+sgec_systems_instance_image2d_system(
 	struct sgec_systems_instance *
 );
 

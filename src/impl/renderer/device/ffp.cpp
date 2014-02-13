@@ -41,3 +41,10 @@ sgec_renderer_device_ffp::end_rendering(
 		_context->get()
 	);
 }
+
+sge::renderer::device::ffp &
+sgec_renderer_device_ffp::get()
+{
+	return
+		device_;
+}

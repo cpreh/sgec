@@ -1,9 +1,11 @@
 #ifndef SGEC_IMPL_SYSTEMS_INSTANCE_HPP_INCLUDED
 #define SGEC_IMPL_SYSTEMS_INSTANCE_HPP_INCLUDED
 
+#include <sgec/image2d/system_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/instance_fwd.h>
+#include <sgec/window/size_unit.h>
 #include <sgec/window/system_fwd.h>
 #include <sge/systems/instance_decl.hpp>
 #include <sge/systems/keyboard_collector.hpp>
@@ -26,9 +28,9 @@ struct sgec_systems_instance
 	);
 public:
 	sgec_systems_instance(
-		char const *const _window_name,
-		unsigned const _initial_window_w,
-		unsigned const _initial_window_h
+		char const *,
+		sgec_window_size_unit,
+		sgec_window_size_unit
 	);
 
 	~sgec_systems_instance();
@@ -41,6 +43,9 @@ public:
 
 	sgec_window_system *
 	window_system();
+
+	sgec_image2d_system *
+	image2d_system();
 private:
 	typedef
 	sge::systems::instance<
@@ -84,6 +89,14 @@ private:
 	scoped_window_system_ptr;
 
 	scoped_window_system_ptr const window_system_;
+
+	typedef
+	fcppt::scoped_ptr<
+		sgec_image2d_system
+	>
+	scoped_image2d_system_ptr;
+
+	scoped_image2d_system_ptr const image2d_system_;
 };
 
 #endif

@@ -1,8 +1,10 @@
 #include <sgec/result.h>
+#include <sgec/image2d/system_fwd.h>
 #include <sgec/impl/systems/instance.hpp>
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/instance.h>
+#include <sgec/window/size_unit.h>
 #include <sgec/window/system_fwd.h>
 
 
@@ -10,8 +12,8 @@ extern "C"
 struct sgec_systems_instance *
 sgec_systems_instance_create(
 	char const *const _window_name,
-	unsigned const _initial_window_w,
-	unsigned const _initial_window_h
+	sgec_window_size_unit const _initial_window_w,
+	sgec_window_size_unit const _initial_window_h
 )
 try
 {
@@ -78,4 +80,13 @@ sgec_systems_instance_window_system(
 {
 	return
 		_instance->window_system();
+}
+
+struct sgec_image2d_system *
+sgec_systems_instance_image2d_system(
+	struct sgec_systems_instance *const _instance
+)
+{
+	return
+		_instance->image2d_system();
 }

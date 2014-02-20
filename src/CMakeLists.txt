@@ -100,6 +100,16 @@ function(
 		${SGEC_FILES_ABS}
 	)
 
+	fcppt_utils_set_target_compiler_flags(
+		${TARGET_NAME}
+	)
+
+	target_include_directories(
+		${TARGET_NAME}
+		INTERFACE
+		${fcppt_INCLUDE_DIRS}
+	)
+
 	target_link_libraries(
 		${TARGET_NAME}
 		PRIVATE

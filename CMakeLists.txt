@@ -34,40 +34,10 @@ find_package(
 	REQUIRED
 )
 
-add_definitions(
-	${fcppt_DEFINITIONS}
-)
-
-include_directories(
-	${fcppt_INCLUDE_DIRS}
-)
-
-# Find Mizuiro
-
-find_package(
-	mizuiro REQUIRED
-)
-
-add_definitions(
-	${mizuiro_definitions}
-)
-
-include_directories(
-	${mizuiro_INCLUDE_DIRS}
-)
-
 # Find AWL
 
 find_package(
 	awl REQUIRED
-)
-
-add_definitions(
-	${awl_DEFINITIONS}
-)
-
-include_directories(
-	${awl_INCLUDE_DIRS}
 )
 
 # Find SGE
@@ -89,14 +59,6 @@ find_package(
 	sge REQUIRED
 	COMPONENTS
 	"${NEEDED_SGE_COMPONENTS}"
-)
-
-add_definitions(
-	${sge_DEFINITIONS}
-)
-
-include_directories(
-	${sge_INCLUDE_DIRS}
 )
 
 # Find END

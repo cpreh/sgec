@@ -7,8 +7,8 @@
 #include <sge/image/capabilities_field.hpp>
 #include <sge/media/optional_extension_set.hpp>
 #include <sge/renderer/display_mode/optional_object.hpp>
-#include <sge/renderer/parameters/object.hpp>
-#include <sge/renderer/parameters/vsync.hpp>
+#include <sge/renderer/display_mode/parameters.hpp>
+#include <sge/renderer/display_mode/vsync.hpp>
 #include <sge/renderer/pixel_format/color.hpp>
 #include <sge/renderer/pixel_format/depth_stencil.hpp>
 #include <sge/renderer/pixel_format/object.hpp>
@@ -56,14 +56,14 @@ sgec_systems_instance::sgec_systems_instance(
 		)
 		(
 			sge::systems::renderer(
-				sge::renderer::parameters::object(
-					sge::renderer::pixel_format::object(
-						sge::renderer::pixel_format::color::depth32,
-						sge::renderer::pixel_format::depth_stencil::off,
-						sge::renderer::pixel_format::optional_multi_samples(),
-						sge::renderer::pixel_format::srgb::no
-					),
-					sge::renderer::parameters::vsync::on,
+				sge::renderer::pixel_format::object(
+					sge::renderer::pixel_format::color::depth32,
+					sge::renderer::pixel_format::depth_stencil::off,
+					sge::renderer::pixel_format::optional_multi_samples(),
+					sge::renderer::pixel_format::srgb::no
+				),
+				sge::renderer::display_mode::parameters(
+					sge::renderer::display_mode::vsync::on,
 					sge::renderer::display_mode::optional_object()
 				),
 				sge::viewport::fill_on_resize()
@@ -85,7 +85,7 @@ sgec_systems_instance::sgec_systems_instance(
 		fcppt::make_unique_ptr<
 			sgec_renderer_device_ffp
 		>(
-			impl_.renderer_ffp()
+			impl_.renderer_device_ffp()
 		)
 	),
 	keyboard_(

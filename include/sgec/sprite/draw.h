@@ -8,13 +8,15 @@
 #include <sgec/renderer/context/ffp_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/sprite/object_fwd.h>
+#include <fcppt/config/external_begin.hpp>
 #include <stddef.h>
+#include <fcppt/config/external_end.hpp>
 
 
 SGEC_DETAIL_HEADER
 
 SGEC_SYMBOL
-sgec_result
+enum sgec_result
 sgec_sprite_draw(
 	struct sgec_renderer_device_ffp *,
 	struct sgec_renderer_context_ffp *,

@@ -1,11 +1,3 @@
-remove_definitions(
-	-std=c++11
-)
-
-add_definitions(
-	-std=c99
-)
-
 if(
 	ENABLE_STATIC
 )
@@ -24,12 +16,39 @@ if(
 	)
 endif()
 
-add_executable(
-	example_system
-	system.c
+function(
+	add_sgec_example
+	EXAMPLE_NAME
+)
+	set(
+		FULL_NAME
+		example_${EXAMPLE_NAME}
+	)
+
+	add_executable(
+		${FULL_NAME}
+		${EXAMPLE_NAME}.c
+	)
+
+	# TODO: Add more warnings
+	target_compile_options(
+		${FULL_NAME}
+		PRIVATE
+		"-std=c99"
+		"-Wall"
+		"-Wextra"
+	)
+
+	target_link_libraries(
+		${FULL_NAME}
+		${SGEC_TARGET}
+	)
+endfunction()
+
+add_sgec_example(
+	sprite
 )
 
-target_link_libraries(
-	example_system
-	${SGEC_TARGET}
+add_sgec_example(
+	system
 )

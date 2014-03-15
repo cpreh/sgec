@@ -154,9 +154,13 @@ try
 						)
 					)
 					.texture(
-						sge::texture::const_optional_part_ref(
-							_sprites->texture->get()
-						)
+						_sprites->texture
+						?
+							sge::texture::const_optional_part_ref(
+								_sprites->texture->get()
+							)
+						:
+							sge::texture::const_optional_part_ref()
 					)
 				)
 			);

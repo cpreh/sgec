@@ -4,10 +4,11 @@
 #include <sgec/renderer/context/ffp.h>
 #include <sgec/renderer/device/ffp.h>
 #include <sgec/signal/connection.h>
+#include <sgec/sprite/draw.h>
+#include <sgec/sprite/object.h>
 #include <sgec/systems/instance.h>
 #include <sgec/window/system.h>
 #include <sgec/window/system_poll_result.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 
@@ -19,12 +20,6 @@ key_callback(
 	void *_userdata
 )
 {
-	printf(
-		"key: %d, pressed: %d\n",
-		(int)_code,
-		(int)_state
-	);
-
 	if(
 		_code
 		==
@@ -89,6 +84,14 @@ main()
 		goto cleanup_instance;
 	}
 
+	struct sgec_sprite_object my_sprite = {
+		NULL,
+		0,
+		0,
+		100,
+		100
+	};
+
 	while(
 		sgec_window_system_poll(
 			window_system
@@ -112,6 +115,13 @@ main()
 		// May fail, ignore
 		sgec_renderer_context_ffp_clear(
 			context
+		);
+
+		sgec_sprite_draw(
+			device,
+			context,
+			&my_sprite,
+			1u
 		);
 
 		sgec_renderer_device_ffp_end_rendering(

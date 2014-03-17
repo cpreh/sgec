@@ -13,7 +13,7 @@ SGEC_DETAIL_HEADER
 SGEC_SYMBOL
 enum sgec_result
 sgec_texture_part_destroy(
-	sgec_texture_part *
+	struct sgec_texture_part *
 );
 
 SGEC_DETAIL_FOOTER

@@ -8,7 +8,7 @@
 extern "C"
 struct sgec_texture_part *
 sgec_texture_part_raw(
-	sgec_renderer_texture_planar *const _texture
+	struct sgec_renderer_texture_planar *const _texture
 )
 try
 {

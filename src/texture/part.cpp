@@ -6,7 +6,7 @@
 extern "C"
 enum sgec_result
 sgec_texture_part_destroy(
-	sgec_texture_part *const _texture
+	struct sgec_texture_part *const _texture
 )
 try
 {

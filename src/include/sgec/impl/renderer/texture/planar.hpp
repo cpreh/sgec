@@ -4,7 +4,6 @@
 #include <sgec/renderer/texture/planar_fwd.h>
 #include <sge/renderer/texture/planar_fwd.hpp>
 #include <sge/renderer/texture/planar_unique_ptr.hpp>
-#include <sge/renderer/texture/planar_scoped_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 
 
@@ -24,7 +23,7 @@ public:
 	sge::renderer::texture::planar &
 	get();
 private:
-	sge::renderer::texture::planar_scoped_ptr const texture_;
+	sge::renderer::texture::planar_unique_ptr const texture_;
 };
 
 #endif

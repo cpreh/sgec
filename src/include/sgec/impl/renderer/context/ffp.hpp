@@ -4,7 +4,6 @@
 #include <sgec/renderer/context/ffp_fwd.h>
 #include <sge/renderer/context/ffp_fwd.hpp>
 #include <sge/renderer/context/ffp_unique_ptr.hpp>
-#include <sge/renderer/context/ffp_scoped_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 
 
@@ -27,7 +26,7 @@ public:
 	sge::renderer::context::ffp &
 	get();
 private:
-	sge::renderer::context::ffp_scoped_ptr const context_;
+	sge::renderer::context::ffp_unique_ptr const context_;
 };
 
 #endif

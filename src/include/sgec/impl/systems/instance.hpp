@@ -15,9 +15,9 @@
 #include <sge/systems/with_renderer.hpp>
 #include <sge/systems/with_window.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/scoped_ptr_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
+#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -67,7 +67,7 @@ private:
 	instance impl_;
 
 	typedef
-	fcppt::scoped_ptr<
+	std::unique_ptr<
 		sgec_renderer_device_ffp
 	>
 	scoped_renderer_ptr;
@@ -75,7 +75,7 @@ private:
 	scoped_renderer_ptr const renderer_;
 
 	typedef
-	fcppt::scoped_ptr<
+	std::unique_ptr<
 		sgec_input_keyboard_device
 	>
 	scoped_keyboard_ptr;
@@ -83,7 +83,7 @@ private:
 	scoped_keyboard_ptr const keyboard_;
 
 	typedef
-	fcppt::scoped_ptr<
+	std::unique_ptr<
 		sgec_window_system
 	>
 	scoped_window_system_ptr;
@@ -91,7 +91,7 @@ private:
 	scoped_window_system_ptr const window_system_;
 
 	typedef
-	fcppt::scoped_ptr<
+	std::unique_ptr<
 		sgec_image2d_system
 	>
 	scoped_image2d_system_ptr;

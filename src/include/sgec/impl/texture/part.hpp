@@ -4,7 +4,6 @@
 #include <sgec/texture/part_fwd.h>
 #include <sge/texture/part_fwd.hpp>
 #include <sge/texture/part_unique_ptr.hpp>
-#include <sge/texture/part_scoped_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 
 
@@ -24,7 +23,7 @@ public:
 	sge::texture::part const &
 	get() const;
 private:
-	sge::texture::part_scoped_ptr const texture_;
+	sge::texture::part_unique_ptr const texture_;
 };
 
 #endif

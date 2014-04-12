@@ -28,7 +28,6 @@
 #include <sge/window/title.hpp>
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/scoped_ptr_impl.hpp>
 
 
 sgec_systems_instance::sgec_systems_instance(

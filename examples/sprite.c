@@ -3,10 +3,14 @@
 #include <sgec/input/keyboard/key_state.h>
 #include <sgec/renderer/context/ffp.h>
 #include <sgec/renderer/device/ffp.h>
+#include <sgec/renderer/texture/create_planar_from_path.h>
+#include <sgec/renderer/texture/planar.h>
 #include <sgec/signal/connection.h>
 #include <sgec/sprite/draw.h>
 #include <sgec/sprite/object.h>
 #include <sgec/systems/instance.h>
+#include <sgec/texture/part.h>
+#include <sgec/texture/part_raw.h>
 #include <sgec/window/system.h>
 #include <sgec/window/system_poll_result.h>
 #include <stdlib.h>
@@ -84,8 +88,46 @@ main()
 		goto cleanup_instance;
 	}
 
+	struct sgec_renderer_texture_planar *texture =
+		sgec_renderer_texture_create_planar_from_path(
+			device,
+			sgec_systems_instance_image2d_system(
+				instance
+			),
+			// TODO: Add a proper path here
+			"media/car.png"
+		);
+	if(
+		texture
+		==
+		NULL
+	)
+	{
+		exit_code =
+			EXIT_FAILURE;
+
+		goto cleanup_signal;
+	}
+
+	struct sgec_texture_part *texture_part =
+		sgec_texture_part_raw(
+			texture
+		);
+
+	if(
+		texture_part
+		==
+		NULL
+	)
+	{
+		exit_code =
+			EXIT_FAILURE;
+
+		goto cleanup_texture;
+	}
+
 	struct sgec_sprite_object my_sprite = {
-		NULL,
+		texture_part,
 		0,
 		0,
 		100,
@@ -134,6 +176,16 @@ main()
 		);
 	}
 
+	sgec_texture_part_destroy(
+		texture_part
+	);
+
+cleanup_texture:
+	sgec_renderer_texture_planar_destroy(
+		texture
+	);
+
+cleanup_signal:
 	sgec_signal_connection_destroy(
 		keyboard_connection
 	);

@@ -4,7 +4,6 @@
 #include <sgec/impl/systems/instance.hpp>
 #include <sgec/window/size_unit.h>
 #include <sgec/impl/window/system.hpp>
-#include <sge/image/capabilities_field.hpp>
 #include <sge/media/optional_extension_set.hpp>
 #include <sge/renderer/display_mode/optional_object.hpp>
 #include <sge/renderer/display_mode/parameters.hpp>
@@ -75,7 +74,6 @@ sgec_systems_instance::sgec_systems_instance(
 		)
 		(
 			sge::systems::image2d(
-				sge::image::capabilities_field::null(),
 				sge::media::optional_extension_set()
 			)
 		)

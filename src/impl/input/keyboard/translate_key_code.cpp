@@ -9,12 +9,31 @@ sgec::impl::input::keyboard::translate_key_code(
 	sge::input::keyboard::key_code const _code
 )
 {
+	#define TRANSLATE_CASE_BASE(\
+		cpp_name,\
+		c_name\
+	)\
+	case sge::input::keyboard::key_code::cpp_name: \
+		return \
+			sgec_input_keyboard_key_code_ ## c_name
+
+
 	#define TRANSLATE_CASE(\
 		name\
 	)\
-	case sge::input::keyboard::key_code::name: \
-		return \
-			sgec_input_keyboard_key_code_ ## name
+	TRANSLATE_CASE_BASE(\
+		name,\
+		name\
+	)
+
+	#define TRANSLATE_CASE_NUM(\
+		name\
+	)\
+	TRANSLATE_CASE_BASE(\
+		_ ## name,\
+		name\
+	)
+
 
 	switch(
 		_code
@@ -68,16 +87,16 @@ sgec::impl::input::keyboard::translate_key_code(
 		TRANSLATE_CASE(x);
 		TRANSLATE_CASE(y);
 		TRANSLATE_CASE(z);
-		TRANSLATE_CASE(_0);
-		TRANSLATE_CASE(_1);
-		TRANSLATE_CASE(_2);
-		TRANSLATE_CASE(_3);
-		TRANSLATE_CASE(_4);
-		TRANSLATE_CASE(_5);
-		TRANSLATE_CASE(_6);
-		TRANSLATE_CASE(_7);
-		TRANSLATE_CASE(_8);
-		TRANSLATE_CASE(_9);
+		TRANSLATE_CASE_NUM(0);
+		TRANSLATE_CASE_NUM(1);
+		TRANSLATE_CASE_NUM(2);
+		TRANSLATE_CASE_NUM(3);
+		TRANSLATE_CASE_NUM(4);
+		TRANSLATE_CASE_NUM(5);
+		TRANSLATE_CASE_NUM(6);
+		TRANSLATE_CASE_NUM(7);
+		TRANSLATE_CASE_NUM(8);
+		TRANSLATE_CASE_NUM(9);
 		TRANSLATE_CASE(f1);
 		TRANSLATE_CASE(f2);
 		TRANSLATE_CASE(f3);

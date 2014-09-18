@@ -40,7 +40,7 @@ sgec::impl::input::keyboard::translate_key_code(
 	)
 	{
 		TRANSLATE_CASE(escape);
-		TRANSLATE_CASE(return_);
+		TRANSLATE_CASE_BASE(return_, return);
 		TRANSLATE_CASE(left_shift);
 		TRANSLATE_CASE(right_shift);
 		TRANSLATE_CASE(tab);
@@ -54,7 +54,7 @@ sgec::impl::input::keyboard::translate_key_code(
 		TRANSLATE_CASE(insert);
 		TRANSLATE_CASE(home);
 		TRANSLATE_CASE(pageup);
-		TRANSLATE_CASE(delete_);
+		TRANSLATE_CASE_BASE(delete_, delete);
 		TRANSLATE_CASE(end);
 		TRANSLATE_CASE(pagedown);
 		TRANSLATE_CASE(left);

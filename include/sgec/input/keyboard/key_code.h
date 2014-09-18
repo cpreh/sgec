@@ -10,7 +10,7 @@ SGEC_DETAIL_HEADER
 enum sgec_input_keyboard_key_code
 {
 	sgec_input_keyboard_key_code_escape,
-	sgec_input_keyboard_key_code_return_,
+	sgec_input_keyboard_key_code_return,
 	sgec_input_keyboard_key_code_left_shift,
 	sgec_input_keyboard_key_code_right_shift,
 	sgec_input_keyboard_key_code_tab,
@@ -24,7 +24,7 @@ enum sgec_input_keyboard_key_code
 	sgec_input_keyboard_key_code_insert,
 	sgec_input_keyboard_key_code_home,
 	sgec_input_keyboard_key_code_pageup,
-	sgec_input_keyboard_key_code_delete_,
+	sgec_input_keyboard_key_code_delete,
 	sgec_input_keyboard_key_code_end,
 	sgec_input_keyboard_key_code_pagedown,
 	sgec_input_keyboard_key_code_left,

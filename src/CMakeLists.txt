@@ -125,6 +125,13 @@ function(
 		${sgeviewport_TARGET}
 		${sgewindow_TARGET}
 	)
+
+	install(
+		TARGETS
+		${TARGET_NAME}
+		DESTINATION
+		"${INSTALL_LIBRARY_DIR}"
+	)
 endfunction()
 
 if(
@@ -142,3 +149,16 @@ if(
 		STATIC
 	)
 endif()
+
+set(
+	INCLUDE_DIRS
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
+)
+
+install(
+	DIRECTORY
+	${INCLUDE_DIRS}
+	DESTINATION
+	"${INSTALL_INCLUDE_DIR}"
+)

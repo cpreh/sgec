@@ -2,7 +2,7 @@
 #define SGEC_RENDERER_DEVICE_FFP_H_INCLUDED
 
 #include <sgec/result.h>
-#include <sgec/symbol.hpp>
+#include <sgec/detail/symbol.h>
 #include <sgec/detail/footer.h>
 #include <sgec/detail/header.h>
 #include <sgec/renderer/context/ffp_fwd.h>
@@ -11,13 +11,13 @@
 
 SGEC_DETAIL_HEADER
 
-SGEC_SYMBOL
+SGEC_DETAIL_SYMBOL
 struct sgec_renderer_context_ffp *
 sgec_renderer_device_ffp_begin_rendering(
 	struct sgec_renderer_device_ffp *
 );
 
-SGEC_SYMBOL
+SGEC_DETAIL_SYMBOL
 enum sgec_result
 sgec_renderer_device_ffp_end_rendering(
 	struct sgec_renderer_device_ffp *,

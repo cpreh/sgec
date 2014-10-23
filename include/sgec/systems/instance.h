@@ -2,7 +2,7 @@
 #define SGEC_SYSTEMS_INSTANCE_H_INCLUDED
 
 #include <sgec/result.h>
-#include <sgec/symbol.hpp>
+#include <sgec/detail/symbol.h>
 #include <sgec/detail/footer.h>
 #include <sgec/detail/header.h>
 #include <sgec/image2d/system_fwd.h>
@@ -15,7 +15,7 @@
 
 SGEC_DETAIL_HEADER
 
-SGEC_SYMBOL
+SGEC_DETAIL_SYMBOL
 struct sgec_systems_instance *
 sgec_systems_instance_create(
 	char const *window_name,
@@ -23,31 +23,31 @@ sgec_systems_instance_create(
 	sgec_window_size_unit initial_window_h
 );
 
-SGEC_SYMBOL
+SGEC_DETAIL_SYMBOL
 enum sgec_result
 sgec_systems_instance_destroy(
 	struct sgec_systems_instance *
 );
 
-SGEC_SYMBOL
+SGEC_DETAIL_SYMBOL
 struct sgec_renderer_device_ffp *
 sgec_systems_instance_renderer(
 	struct sgec_systems_instance *
 );
 
-SGEC_SYMBOL
+SGEC_DETAIL_SYMBOL
 struct sgec_input_keyboard_device *
 sgec_systems_instance_keyboard(
 	struct sgec_systems_instance *
 );
 
-SGEC_SYMBOL
+SGEC_DETAIL_SYMBOL
 struct sgec_window_system *
 sgec_systems_instance_window_system(
 	struct sgec_systems_instance *
 );
 
-SGEC_SYMBOL
+SGEC_DETAIL_SYMBOL
 struct sgec_image2d_system *
 sgec_systems_instance_image2d_system(
 	struct sgec_systems_instance *

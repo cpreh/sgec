@@ -64,10 +64,14 @@ find_package(
 # Find END
 
 fcppt_generate_symbol_header(
-	"SGEC_STATIC_LINK"
-	"sgec"
-	"SGEC"
-	"sgec"
+	STATIC_LINK_FLAG
+		"SGEC_STATIC_LINK"
+	EXPORTS_NAME
+		"sgec"
+	SYMBOL_NAME
+		"SGEC_DETAIL"
+	IS_C
+		TRUE
 )
 
 option(

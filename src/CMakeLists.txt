@@ -27,7 +27,6 @@ set(
 	include/sgec/texture/part.h
 	include/sgec/texture/part_fwd.h
 	include/sgec/texture/part_raw.h
-	include/sgec/window/size_unit.h
 	include/sgec/window/system.h
 	include/sgec/window/system_fwd.h
 	include/sgec/window/system_poll_result.h

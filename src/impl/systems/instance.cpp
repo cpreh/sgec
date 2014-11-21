@@ -2,7 +2,6 @@
 #include <sgec/impl/input/keyboard/device.hpp>
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/impl/systems/instance.hpp>
-#include <sgec/window/size_unit.h>
 #include <sgec/impl/window/system.hpp>
 #include <sge/media/optional_extension_set.hpp>
 #include <sge/renderer/display_mode/optional_object.hpp>
@@ -23,16 +22,13 @@
 #include <sge/systems/renderer_caps.hpp>
 #include <sge/systems/window.hpp>
 #include <sge/viewport/fill_on_resize.hpp>
-#include <sge/window/dim.hpp>
 #include <sge/window/title.hpp>
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 
 
 sgec_systems_instance::sgec_systems_instance(
-	char const *const _window_name,
-	sgec_window_size_unit const _initial_window_w,
-	sgec_window_size_unit const _initial_window_h
+	char const *const _window_name
 )
 :
 	impl_(
@@ -44,10 +40,6 @@ sgec_systems_instance::sgec_systems_instance(
 						fcppt::from_std_string(
 							_window_name
 						)
-					),
-					sge::window::dim(
-						_initial_window_w,
-						_initial_window_h
 					)
 				)
 			)

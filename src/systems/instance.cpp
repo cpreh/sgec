@@ -4,24 +4,19 @@
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/instance.h>
-#include <sgec/window/size_unit.h>
 #include <sgec/window/system_fwd.h>
 
 
 extern "C"
 struct sgec_systems_instance *
 sgec_systems_instance_create(
-	char const *const _window_name,
-	sgec_window_size_unit const _initial_window_w,
-	sgec_window_size_unit const _initial_window_h
+	char const *const _window_name
 )
 try
 {
 	return
 		new sgec_systems_instance(
-			_window_name,
-			_initial_window_w,
-			_initial_window_h
+			_window_name
 		);
 }
 catch(

@@ -5,7 +5,6 @@
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/instance_fwd.h>
-#include <sgec/window/size_unit.h>
 #include <sgec/window/system_fwd.h>
 #include <sge/systems/instance_decl.hpp>
 #include <sge/systems/keyboard_collector.hpp>
@@ -27,10 +26,9 @@ struct sgec_systems_instance
 		sgec_systems_instance
 	);
 public:
+	explicit
 	sgec_systems_instance(
-		char const *,
-		sgec_window_size_unit,
-		sgec_window_size_unit
+		char const *
 	);
 
 	~sgec_systems_instance();

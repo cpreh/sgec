@@ -1,6 +1,6 @@
-#include <sgec/renderer/context/ffp_fwd.h>
 #include <sgec/impl/renderer/context/ffp.hpp>
 #include <sgec/impl/renderer/device/ffp.hpp>
+#include <sgec/renderer/context/ffp_fwd.h>
 #include <sge/renderer/context/ffp.hpp>
 #include <sge/renderer/device/ffp.hpp>
 #include <sge/renderer/target/onscreen.hpp>

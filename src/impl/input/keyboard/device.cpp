@@ -1,8 +1,8 @@
 #include <sgec/impl/input/keyboard/device.hpp>
 #include <sgec/impl/input/keyboard/translate_key_code.hpp>
+#include <sgec/impl/signal/connection.hpp>
 #include <sgec/input/keyboard/key_callback.h>
 #include <sgec/input/keyboard/key_state.h>
-#include <sgec/impl/signal/connection.hpp>
 #include <sge/input/keyboard/device.hpp>
 #include <sge/input/keyboard/key_event.hpp>
 #include <fcppt/signal/auto_connection.hpp>

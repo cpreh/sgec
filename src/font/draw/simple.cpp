@@ -1,7 +1,9 @@
 #include <sgec/result.h>
 #include <sgec/font/unit.h>
 #include <sgec/font/draw/simple.h>
+#include <sgec/image/color/rgba.h>
 #include <sgec/impl/font/object.hpp>
+#include <sgec/impl/image/color/translate_rgba.hpp>
 #include <sgec/impl/renderer/context/ffp.hpp>
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sge/font/string.hpp>
@@ -9,7 +11,7 @@
 #include <sge/font/vector.hpp>
 #include <sge/font/align_h/left.hpp>
 #include <sge/font/draw/simple.hpp>
-#include <sge/image/color/predef.hpp>
+#include <sge/image/color/any/object.hpp>
 #include <sge/renderer/texture/emulate_srgb.hpp>
 
 
@@ -21,7 +23,8 @@ sgec_font_draw_simple(
 	struct sgec_font_object *const _font,
 	wchar_t const *const _text,
 	sgec_font_unit const _x,
-	sgec_font_unit const _y
+	sgec_font_unit const _y,
+	struct sgec_image_color_rgba const _color
 )
 try
 {
@@ -39,7 +42,11 @@ try
 			_x,
 			_y
 		},
-		sge::image::color::predef::white(), // TODO
+		sge::image::color::any::object(
+			sgec::impl::image::color::translate_rgba(
+				_color
+			)
+		),
 		sge::renderer::texture::emulate_srgb::no
 	);
 

@@ -1,3 +1,4 @@
+#include <sgec/image/color/rgba.h>
 #include <sgec/input/keyboard/device.h>
 #include <sgec/input/keyboard/key_code.h>
 #include <sgec/input/keyboard/key_state.h>
@@ -24,6 +25,8 @@ key_callback(
 	void *_userdata
 )
 {
+	(void)_state;
+
 	if(
 		_code
 		==
@@ -152,9 +155,17 @@ main()
 		)
 			break;
 
+		struct sgec_image_color_rgba clear_color = {
+			0,
+			0,
+			0,
+			0
+		};
+
 		// May fail, ignore
 		sgec_renderer_context_ffp_clear(
-			context
+			context,
+			clear_color
 		);
 
 		sgec_sprite_draw(

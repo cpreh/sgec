@@ -8,6 +8,8 @@ set(
 	include/sgec/font/system.h
 	include/sgec/font/system_fwd.h
 	include/sgec/font/unit.h
+	include/sgec/image/color/rgba.h
+	include/sgec/image/color/rgba_fwd.h
 	include/sgec/image2d/system_fwd.h
 	include/sgec/input/keyboard/device.h
 	include/sgec/input/keyboard/device_fwd.h
@@ -42,6 +44,7 @@ set(
 	src/font/system.cpp
 	src/impl/font/object.cpp
 	src/impl/font/system.cpp
+	src/impl/image/color/translate_rgba.cpp
 	src/impl/image2d/system.cpp
 	src/impl/input/keyboard/device.cpp
 	src/impl/input/keyboard/translate_key_code.cpp
@@ -54,6 +57,7 @@ set(
 	src/impl/window/system.cpp
 	src/include/sgec/impl/font/object.hpp
 	src/include/sgec/impl/font/system.hpp
+	src/include/sgec/impl/image/color/translate_rgba.hpp
 	src/include/sgec/impl/image2d/system.hpp
 	src/include/sgec/impl/input/keyboard/device.hpp
 	src/include/sgec/impl/input/keyboard/translate_key_code.hpp

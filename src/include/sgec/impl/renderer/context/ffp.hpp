@@ -1,6 +1,7 @@
 #ifndef SGEC_IMPL_RENDERER_CONTEXT_FFP_HPP_INCLUDED
 #define SGEC_IMPL_RENDERER_CONTEXT_FFP_HPP_INCLUDED
 
+#include <sgec/image/color/rgba_fwd.h>
 #include <sgec/renderer/context/ffp_fwd.h>
 #include <sge/renderer/context/ffp_fwd.hpp>
 #include <sge/renderer/context/ffp_unique_ptr.hpp>
@@ -21,7 +22,9 @@ public:
 	~sgec_renderer_context_ffp();
 
 	void
-	clear();
+	clear(
+		sgec_image_color_rgba
+	);
 
 	sge::renderer::context::ffp &
 	get();

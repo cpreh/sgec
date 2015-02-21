@@ -1,3 +1,6 @@
+#include <sgec/font/object.h>
+#include <sgec/font/system.h>
+#include <sgec/font/draw/simple.h>
 #include <sgec/image/color/rgba.h>
 #include <sgec/input/keyboard/device.h>
 #include <sgec/input/keyboard/key_code.h>
@@ -9,7 +12,6 @@
 #include <sgec/window/system.h>
 #include <sgec/window/system_poll_result.h>
 #include <fcppt/config/external_begin.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <fcppt/config/external_end.h>
 
@@ -22,11 +24,7 @@ key_callback(
 	void *_userdata
 )
 {
-	printf(
-		"key: %d, pressed: %d\n",
-		(int)_code,
-		(int)_state
-	);
+	(void)_state;
 
 	if(
 		_code
@@ -44,7 +42,7 @@ main()
 {
 	struct sgec_systems_instance *instance =
 		sgec_systems_instance_create(
-			"sgec test"
+			"sgec font test"
 		);
 
 	if(
@@ -90,6 +88,25 @@ main()
 		goto cleanup_instance;
 	}
 
+	struct sgec_font_object *font =
+		sgec_font_system_create_font(
+			sgec_systems_instance_font_system(
+				instance
+			)
+		);
+
+	if(
+		font
+		==
+		NULL
+	)
+	{
+		exit_code =
+			EXIT_FAILURE;
+
+		goto cleanup_signal;
+	}
+
 	while(
 		sgec_window_system_poll(
 			window_system
@@ -123,6 +140,24 @@ main()
 			clear_color
 		);
 
+		struct sgec_image_color_rgba font_color = {
+			255,
+			255,
+			255,
+			255
+		};
+
+		// May fail, ignore
+		sgec_font_draw_simple(
+			device,
+			context,
+			font,
+			L"TEST123",
+			100,
+			200,
+			font_color
+		);
+
 		sgec_renderer_device_ffp_end_rendering(
 			device,
 			context
@@ -133,6 +168,11 @@ main()
 		);
 	}
 
+	sgec_font_object_destroy(
+		font
+	);
+
+cleanup_signal:
 	sgec_signal_connection_destroy(
 		keyboard_connection
 	);

@@ -5,7 +5,7 @@
 
 extern "C"
 struct sgec_font_object *
-sgec_font_create(
+sgec_font_system_create_font(
 	struct sgec_font_system *const _system
 )
 try

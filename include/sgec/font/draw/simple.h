@@ -10,6 +10,9 @@
 #include <sgec/image/color/rgba_fwd.h>
 #include <sgec/renderer/context/ffp_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
+#include <fcppt/config/external_begin.h>
+#include <wchar.h>
+#include <fcppt/config/external_end.h>
 
 
 SGEC_DETAIL_HEADER

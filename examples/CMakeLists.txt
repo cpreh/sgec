@@ -46,6 +46,10 @@ function(
 endfunction()
 
 add_sgec_example(
+	font
+)
+
+add_sgec_example(
 	sprite
 )
 

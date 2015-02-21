@@ -14,7 +14,9 @@
 #include <sgec/texture/part_raw.h>
 #include <sgec/window/system.h>
 #include <sgec/window/system_poll_result.h>
+#include <fcppt/config/external_begin.h>
 #include <stdlib.h>
+#include <fcppt/config/external_end.h>
 
 
 static
@@ -43,7 +45,7 @@ main()
 {
 	struct sgec_systems_instance *instance =
 		sgec_systems_instance_create(
-			"sgec test"
+			"sgec sprite test"
 		);
 
 	if(

@@ -44,6 +44,8 @@ find_package(
 set(
 	NEEDED_SGE_COMPONENTS
 	core
+	font
+	fontdraw
 	image
 	imagecolor
 	input

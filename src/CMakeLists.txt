@@ -2,6 +2,12 @@ set(
 	SGEC_FILES
 	include/sgec/detail/footer.h
 	include/sgec/detail/header.h
+	include/sgec/font/draw/simple.h
+	include/sgec/font/object.h
+	include/sgec/font/object_fwd.h
+	include/sgec/font/system.h
+	include/sgec/font/system_fwd.h
+	include/sgec/font/unit.h
 	include/sgec/image2d/system_fwd.h
 	include/sgec/input/keyboard/device.h
 	include/sgec/input/keyboard/device_fwd.h
@@ -31,6 +37,11 @@ set(
 	include/sgec/window/system_fwd.h
 	include/sgec/window/system_poll_result.h
 	src/CMakeLists.txt
+	src/font/draw/simple.cpp
+	src/font/object.cpp
+	src/font/system.cpp
+	src/impl/font/object.cpp
+	src/impl/font/system.cpp
 	src/impl/image2d/system.cpp
 	src/impl/input/keyboard/device.cpp
 	src/impl/input/keyboard/translate_key_code.cpp
@@ -41,6 +52,8 @@ set(
 	src/impl/systems/instance.cpp
 	src/impl/texture/part.cpp
 	src/impl/window/system.cpp
+	src/include/sgec/impl/font/object.hpp
+	src/include/sgec/impl/font/system.hpp
 	src/include/sgec/impl/image2d/system.hpp
 	src/include/sgec/impl/input/keyboard/device.hpp
 	src/include/sgec/impl/input/keyboard/translate_key_code.hpp
@@ -114,6 +127,8 @@ function(
 		PRIVATE
 		${fcppt_core_TARGET}
 		${sgecore_TARGET}
+		${sgefont_TARGET}
+		${sgefontdraw_TARGET}
 		${sgeimage_TARGET}
 		${sgeimagecolor_TARGET}
 		${sgeinput_TARGET}

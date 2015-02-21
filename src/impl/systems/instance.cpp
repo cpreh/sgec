@@ -1,3 +1,4 @@
+#include <sgec/impl/font/system.hpp>
 #include <sgec/impl/image2d/system.hpp>
 #include <sgec/impl/input/keyboard/device.hpp>
 #include <sgec/impl/renderer/device/ffp.hpp>
@@ -13,6 +14,7 @@
 #include <sge/renderer/pixel_format/optional_multi_samples.hpp>
 #include <sge/renderer/pixel_format/srgb.hpp>
 #include <sge/systems/cursor_option_field.hpp>
+#include <sge/systems/font.hpp>
 #include <sge/systems/image2d.hpp>
 #include <sge/systems/input.hpp>
 #include <sge/systems/instance.hpp>
@@ -69,6 +71,9 @@ sgec_systems_instance::sgec_systems_instance(
 				sge::media::optional_extension_set()
 			)
 		)
+		(
+			sge::systems::font()
+		)
 	),
 	renderer_(
 		fcppt::make_unique_ptr<
@@ -96,6 +101,13 @@ sgec_systems_instance::sgec_systems_instance(
 			sgec_image2d_system
 		>(
 			impl_.image_system()
+		)
+	),
+	font_system_(
+		fcppt::make_unique_ptr<
+			sgec_font_system
+		>(
+			impl_.font_system()
 		)
 	)
 {
@@ -131,4 +143,11 @@ sgec_systems_instance::image2d_system()
 {
 	return
 		image2d_system_.get();
+}
+
+sgec_font_system *
+sgec_systems_instance::font_system()
+{
+	return
+		font_system_.get();
 }

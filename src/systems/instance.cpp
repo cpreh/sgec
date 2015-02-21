@@ -1,4 +1,5 @@
 #include <sgec/result.h>
+#include <sgec/font/system_fwd.h>
 #include <sgec/image2d/system_fwd.h>
 #include <sgec/impl/systems/instance.hpp>
 #include <sgec/input/keyboard/device_fwd.h>
@@ -68,6 +69,7 @@ sgec_systems_instance_keyboard(
 		_instance->keyboard();
 }
 
+extern "C"
 struct sgec_window_system *
 sgec_systems_instance_window_system(
 	struct sgec_systems_instance *const _instance
@@ -77,6 +79,7 @@ sgec_systems_instance_window_system(
 		_instance->window_system();
 }
 
+extern "C"
 struct sgec_image2d_system *
 sgec_systems_instance_image2d_system(
 	struct sgec_systems_instance *const _instance
@@ -84,4 +87,14 @@ sgec_systems_instance_image2d_system(
 {
 	return
 		_instance->image2d_system();
+}
+
+extern "C"
+struct sgec_font_system *
+sgec_systems_instance_font_system(
+	struct sgec_systems_instance *const _instance
+)
+{
+	return
+		_instance->font_system();
 }

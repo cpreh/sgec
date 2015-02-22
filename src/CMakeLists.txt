@@ -24,6 +24,7 @@ set(
 	include/sgec/renderer/texture/create_planar_from_path.h
 	include/sgec/renderer/texture/planar.h
 	include/sgec/renderer/texture/planar_fwd.h
+	include/sgec/renderer/texture/size.h
 	include/sgec/result.h
 	include/sgec/signal/connection.h
 	include/sgec/signal/connection_fwd.h

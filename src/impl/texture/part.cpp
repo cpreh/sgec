@@ -1,4 +1,5 @@
 #include <sgec/impl/texture/part.hpp>
+#include <sge/renderer/dim2.hpp>
 #include <sge/texture/part.hpp>
 #include <sge/texture/part_unique_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -20,6 +21,13 @@ sgec_texture_part::sgec_texture_part(
 
 sgec_texture_part::~sgec_texture_part()
 {
+}
+
+sge::renderer::dim2 const
+sgec_texture_part::size() const
+{
+	return
+		texture_->size();
 }
 
 sge::texture::part const &

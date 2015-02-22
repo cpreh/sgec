@@ -2,6 +2,7 @@
 #define SGEC_IMPL_TEXTURE_PART_HPP_INCLUDED
 
 #include <sgec/texture/part_fwd.h>
+#include <sge/renderer/dim2_fwd.hpp>
 #include <sge/texture/part_fwd.hpp>
 #include <sge/texture/part_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
@@ -19,6 +20,9 @@ public:
 	);
 
 	~sgec_texture_part();
+
+	sge::renderer::dim2 const
+	size() const;
 
 	sge::texture::part const &
 	get() const;

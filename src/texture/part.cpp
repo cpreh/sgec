@@ -1,7 +1,29 @@
 #include <sgec/result.h>
 #include <sgec/impl/texture/part.hpp>
+#include <sge/renderer/dim2.hpp>
+#include <sgec/renderer/texture/size.h>
 #include <sgec/texture/part.h>
 
+
+extern "C"
+sgec_renderer_texture_size
+sgec_texture_part_width(
+	struct sgec_texture_part const *const _texture
+)
+{
+	return
+		_texture->size().w();
+}
+
+extern "C"
+sgec_renderer_texture_size
+sgec_texture_part_height(
+	struct sgec_texture_part const *const _texture
+)
+{
+	return
+		_texture->size().h();
+}
 
 extern "C"
 enum sgec_result

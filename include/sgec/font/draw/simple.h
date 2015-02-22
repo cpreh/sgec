@@ -7,7 +7,7 @@
 #include <sgec/detail/symbol.h>
 #include <sgec/font/object_fwd.h>
 #include <sgec/font/unit.h>
-#include <sgec/image/color/rgba_fwd.h>
+#include <sgec/image/color/rgba.h>
 #include <sgec/renderer/context/ffp_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <fcppt/config/external_begin.h>
@@ -26,7 +26,7 @@ sgec_font_draw_simple(
 	wchar_t const *text,
 	sgec_font_unit x,
 	sgec_font_unit y,
-	struct sgec_image_color_rgba
+	sgec_image_color_rgba
 );
 
 SGEC_DETAIL_FOOTER

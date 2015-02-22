@@ -1,7 +1,7 @@
 #include <sgec/font/object.h>
 #include <sgec/font/system.h>
 #include <sgec/font/draw/simple.h>
-#include <sgec/image/color/rgba.h>
+#include <sgec/image/color/make_rgba.h>
 #include <sgec/input/keyboard/device.h>
 #include <sgec/input/keyboard/key_code.h>
 #include <sgec/input/keyboard/key_state.h>
@@ -127,25 +127,16 @@ main()
 		)
 			break;
 
-		struct sgec_image_color_rgba clear_color = {
-			0,
-			0,
-			0,
-			0
-		};
-
 		// May fail, ignore
 		sgec_renderer_context_ffp_clear(
 			context,
-			clear_color
+			sgec_image_color_make_rgba(
+				0,
+				0,
+				0,
+				0
+			)
 		);
-
-		struct sgec_image_color_rgba font_color = {
-			255,
-			255,
-			255,
-			255
-		};
 
 		// May fail, ignore
 		sgec_font_draw_simple(
@@ -155,7 +146,12 @@ main()
 			L"TEST123",
 			100,
 			200,
-			font_color
+			sgec_image_color_make_rgba(
+				255,
+				255,
+				255,
+				255
+			)
 		);
 
 		sgec_renderer_device_ffp_end_rendering(

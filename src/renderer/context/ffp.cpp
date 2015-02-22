@@ -8,7 +8,7 @@ extern "C"
 sgec_result
 sgec_renderer_context_ffp_clear(
 	struct sgec_renderer_context_ffp *const _context,
-	struct sgec_image_color_rgba const _color
+	sgec_image_color_rgba const _color
 )
 try
 {

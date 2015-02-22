@@ -8,8 +8,9 @@ set(
 	include/sgec/font/system.h
 	include/sgec/font/system_fwd.h
 	include/sgec/font/unit.h
+	include/sgec/image/color/make_rgba.h
 	include/sgec/image/color/rgba.h
-	include/sgec/image/color/rgba_fwd.h
+	include/sgec/image/color/rgba_channel.h
 	include/sgec/image2d/system_fwd.h
 	include/sgec/input/keyboard/device.h
 	include/sgec/input/keyboard/device_fwd.h
@@ -42,6 +43,7 @@ set(
 	src/font/draw/simple.cpp
 	src/font/object.cpp
 	src/font/system.cpp
+	src/image/color/make_rgba.cpp
 	src/impl/font/object.cpp
 	src/impl/font/system.cpp
 	src/impl/image/color/translate_rgba.cpp

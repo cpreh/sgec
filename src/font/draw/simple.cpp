@@ -24,7 +24,7 @@ sgec_font_draw_simple(
 	wchar_t const *const _text,
 	sgec_font_unit const _x,
 	sgec_font_unit const _y,
-	struct sgec_image_color_rgba const _color
+	sgec_image_color_rgba const _color
 )
 try
 {

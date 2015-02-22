@@ -2,7 +2,7 @@
 #define SGEC_IMPL_IMAGE_COLOR_TRANSLATE_RGBA_HPP_INCLUDED
 
 #include <sge/image/color/rgba8.hpp>
-#include <sgec/image/color/rgba_fwd.h>
+#include <sgec/image/color/rgba.h>
 
 
 namespace sgec

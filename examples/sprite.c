@@ -1,4 +1,4 @@
-#include <sgec/image/color/rgba.h>
+#include <sgec/image/color/make_rgba.h>
 #include <sgec/input/keyboard/device.h>
 #include <sgec/input/keyboard/key_code.h>
 #include <sgec/input/keyboard/key_state.h>
@@ -157,17 +157,15 @@ main()
 		)
 			break;
 
-		struct sgec_image_color_rgba clear_color = {
-			0,
-			0,
-			0,
-			0
-		};
-
 		// May fail, ignore
 		sgec_renderer_context_ffp_clear(
 			context,
-			clear_color
+			sgec_image_color_make_rgba(
+				0,
+				0,
+				0,
+				0
+			)
 		);
 
 		sgec_sprite_draw(

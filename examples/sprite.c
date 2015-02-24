@@ -131,10 +131,11 @@ main()
 
 	struct sgec_sprite_object my_sprite = {
 		texture_part,
-		0,
-		0,
 		100,
-		100
+		100,
+		200,
+		200,
+		1.f
 	};
 
 	while(

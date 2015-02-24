@@ -4,6 +4,7 @@
 #include <sgec/impl/texture/part.hpp>
 #include <sgec/sprite/draw.h>
 #include <sgec/sprite/object.h>
+#include <sgec/sprite/scalar.h>
 #include <sgec/sprite/unit.h>
 #include <sge/renderer/context/ffp.hpp>
 #include <sge/renderer/device/ffp.hpp>
@@ -14,6 +15,7 @@
 #include <sge/sprite/buffers/with_declaration.hpp>
 #include <sge/sprite/compare/default.hpp>
 #include <sge/sprite/config/choices.hpp>
+#include <sge/sprite/config/custom_center.hpp>
 #include <sge/sprite/config/float_type.hpp>
 #include <sge/sprite/config/normal_size.hpp>
 #include <sge/sprite/config/texture_coordinates.hpp>
@@ -21,6 +23,7 @@
 #include <sge/sprite/config/texture_ownership.hpp>
 #include <sge/sprite/config/type_choices.hpp>
 #include <sge/sprite/config/unit_type.hpp>
+#include <sge/sprite/config/with_rotation.hpp>
 #include <sge/sprite/config/with_texture.hpp>
 #include <sge/sprite/geometry/make_random_access_range.hpp>
 #include <sge/sprite/process/all.hpp>
@@ -52,7 +55,7 @@ try
 			sgec_sprite_unit
 		>,
 		sge::sprite::config::float_type<
-			float
+			sgec_sprite_scalar
 		>
 	>
 	sprite_type_choices;
@@ -61,13 +64,18 @@ try
 	sge::sprite::config::choices<
 		sprite_type_choices,
 		sge::sprite::config::normal_size,
-		boost::mpl::vector1<
+		boost::mpl::vector2<
 			sge::sprite::config::with_texture<
 				sge::sprite::config::texture_level_count<
 					1
 				>,
 				sge::sprite::config::texture_coordinates::automatic,
 				sge::sprite::config::texture_ownership::reference
+			>,
+			sge::sprite::config::with_rotation<
+				sge::sprite::config::custom_center<
+					false
+				>
 			>
 		>
 	>
@@ -125,6 +133,7 @@ try
 	>
 	sprite_vector;
 
+	// TODO: Use an algorithm for this
 	sprite_vector sprite_objects;
 
 	sprite_objects.reserve(
@@ -154,6 +163,7 @@ try
 						)
 					)
 					.texture(
+						// TODO: Pointer to optional?
 						_sprites->texture
 						?
 							sge::texture::const_optional_part_ref(
@@ -161,6 +171,9 @@ try
 							)
 						:
 							sge::texture::const_optional_part_ref()
+					)
+					.rotation(
+						_sprites->rotation
 					)
 				)
 			);

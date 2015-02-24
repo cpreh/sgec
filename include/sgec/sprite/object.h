@@ -4,6 +4,7 @@
 #include <sgec/detail/footer.h>
 #include <sgec/detail/header.h>
 #include <sgec/sprite/object_fwd.h>
+#include <sgec/sprite/scalar.h>
 #include <sgec/sprite/unit.h>
 #include <sgec/texture/part_fwd.h>
 
@@ -19,6 +20,8 @@ struct sgec_sprite_object
 	sgec_sprite_unit width;
 
 	sgec_sprite_unit height;
+
+	sgec_sprite_scalar rotation;
 };
 
 #endif

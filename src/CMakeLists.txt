@@ -21,6 +21,9 @@ set(
 	include/sgec/renderer/context/ffp_fwd.h
 	include/sgec/renderer/device/ffp.h
 	include/sgec/renderer/device/ffp_fwd.h
+	include/sgec/renderer/target/onscreen.h
+	include/sgec/renderer/target/onscreen_fwd.h
+	include/sgec/renderer/target/size.h
 	include/sgec/renderer/texture/create_planar_from_path.h
 	include/sgec/renderer/texture/planar.h
 	include/sgec/renderer/texture/planar_fwd.h
@@ -53,6 +56,7 @@ set(
 	src/impl/input/keyboard/translate_key_code.cpp
 	src/impl/renderer/context/ffp.cpp
 	src/impl/renderer/device/ffp.cpp
+	src/impl/renderer/target/onscreen.cpp
 	src/impl/renderer/texture/planar.cpp
 	src/impl/signal/connection.cpp
 	src/impl/systems/instance.cpp
@@ -66,6 +70,7 @@ set(
 	src/include/sgec/impl/input/keyboard/translate_key_code.hpp
 	src/include/sgec/impl/renderer/context/ffp.hpp
 	src/include/sgec/impl/renderer/device/ffp.hpp
+	src/include/sgec/impl/renderer/target/onscreen.hpp
 	src/include/sgec/impl/renderer/texture/planar.hpp
 	src/include/sgec/impl/signal/connection.hpp
 	src/include/sgec/impl/systems/instance.hpp
@@ -74,6 +79,7 @@ set(
 	src/input/keyboard/device.cpp
 	src/renderer/context/ffp.cpp
 	src/renderer/device/ffp.cpp
+	src/renderer/target/onscreen.cpp
 	src/renderer/texture/create_planar_from_path.cpp
 	src/renderer/texture/planar.cpp
 	src/signal/connection.cpp

@@ -2,6 +2,7 @@
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/renderer/context/ffp_fwd.h>
 #include <sgec/renderer/device/ffp.h>
+#include <sgec/renderer/target/onscreen_fwd.h>
 
 
 extern "C"
@@ -43,4 +44,14 @@ catch(
 {
 	return
 		sgec_result_error;
+}
+
+extern "C"
+struct sgec_renderer_target_onscreen *
+sgec_renderer_device_ffp_onscreen_target(
+	struct sgec_renderer_device_ffp *const _device
+)
+{
+	return
+		&_device->onscreen_target();
 }

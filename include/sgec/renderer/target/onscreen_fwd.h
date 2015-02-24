@@ -1,0 +1,7 @@
+#ifndef SGEC_RENDERER_TARGET_ONSCREEN_FWD_H_INCLUDED
+#define SGEC_RENDERER_TARGET_ONSCREEN_FWD_H_INCLUDED
+
+
+struct sgec_renderer_target_onscreen;
+
+#endif

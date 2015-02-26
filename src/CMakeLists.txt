@@ -16,6 +16,7 @@ set(
 	include/sgec/input/keyboard/device_fwd.h
 	include/sgec/input/keyboard/key_callback.h
 	include/sgec/input/keyboard/key_code.h
+	include/sgec/input/keyboard/key_repeat_callback.h
 	include/sgec/input/keyboard/key_state.h
 	include/sgec/renderer/context/ffp.h
 	include/sgec/renderer/context/ffp_fwd.h
@@ -34,6 +35,7 @@ set(
 	include/sgec/sprite/draw.h
 	include/sgec/sprite/object.h
 	include/sgec/sprite/object_fwd.h
+	include/sgec/sprite/scalar.h
 	include/sgec/sprite/unit.h
 	include/sgec/systems/instance.h
 	include/sgec/systems/instance_fwd.h

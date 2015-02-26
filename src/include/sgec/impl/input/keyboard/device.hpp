@@ -3,6 +3,7 @@
 
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/input/keyboard/key_callback.h>
+#include <sgec/input/keyboard/key_repeat_callback.h>
 #include <sgec/signal/connection_fwd.h>
 #include <sge/input/keyboard/device_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
@@ -24,6 +25,12 @@ public:
 	sgec_signal_connection *
 	key_callback(
 		sgec_input_keyboard_key_callback,
+		void *userdata
+	);
+
+	sgec_signal_connection *
+	key_repeat_callback(
+		sgec_input_keyboard_key_repeat_callback,
 		void *userdata
 	);
 private:

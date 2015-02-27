@@ -2,6 +2,8 @@ set(
 	SGEC_FILES
 	include/sgec/detail/footer.h
 	include/sgec/detail/header.h
+	include/sgec/font/added.h
+	include/sgec/font/added_fwd.h
 	include/sgec/font/draw/simple.h
 	include/sgec/font/object.h
 	include/sgec/font/object_fwd.h
@@ -46,10 +48,12 @@ set(
 	include/sgec/window/system_fwd.h
 	include/sgec/window/system_poll_result.h
 	src/CMakeLists.txt
+	src/font/added.cpp
 	src/font/draw/simple.cpp
 	src/font/object.cpp
 	src/font/system.cpp
 	src/image/color/make_rgba.cpp
+	src/impl/font/added.cpp
 	src/impl/font/object.cpp
 	src/impl/font/system.cpp
 	src/impl/image/color/translate_rgba.cpp
@@ -64,6 +68,7 @@ set(
 	src/impl/systems/instance.cpp
 	src/impl/texture/part.cpp
 	src/impl/window/system.cpp
+	src/include/sgec/impl/font/added.hpp
 	src/include/sgec/impl/font/object.hpp
 	src/include/sgec/impl/font/system.hpp
 	src/include/sgec/impl/image/color/translate_rgba.hpp

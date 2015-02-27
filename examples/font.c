@@ -12,6 +12,7 @@
 #include <sgec/window/system.h>
 #include <sgec/window/system_poll_result.h>
 #include <fcppt/config/external_begin.h>
+#include <stddef.h>
 #include <stdlib.h>
 #include <fcppt/config/external_end.h>
 
@@ -92,7 +93,9 @@ main()
 		sgec_font_system_create_font(
 			sgec_systems_instance_font_system(
 				instance
-			)
+			),
+			NULL,
+			-1
 		);
 
 	if(

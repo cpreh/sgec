@@ -9,7 +9,6 @@
 #include <sge/renderer/context/ffp.hpp>
 #include <sge/renderer/device/ffp.hpp>
 #include <sge/sprite/object.hpp>
-#include <sge/sprite/parameters.hpp>
 #include <sge/sprite/buffers/option.hpp>
 #include <sge/sprite/buffers/single.hpp>
 #include <sge/sprite/buffers/with_declaration.hpp>
@@ -18,15 +17,22 @@
 #include <sge/sprite/config/custom_center.hpp>
 #include <sge/sprite/config/float_type.hpp>
 #include <sge/sprite/config/normal_size.hpp>
+#include <sge/sprite/config/pos.hpp>
+#include <sge/sprite/config/pos_option.hpp>
 #include <sge/sprite/config/texture_coordinates.hpp>
 #include <sge/sprite/config/texture_level_count.hpp>
 #include <sge/sprite/config/texture_ownership.hpp>
+#include <sge/sprite/config/texture_size_option.hpp>
 #include <sge/sprite/config/type_choices.hpp>
 #include <sge/sprite/config/unit_type.hpp>
 #include <sge/sprite/config/with_rotation.hpp>
 #include <sge/sprite/config/with_texture.hpp>
 #include <sge/sprite/geometry/make_random_access_range.hpp>
 #include <sge/sprite/process/all.hpp>
+#include <sge/sprite/roles/pos.hpp>
+#include <sge/sprite/roles/rotation.hpp>
+#include <sge/sprite/roles/texture0.hpp>
+#include <sge/sprite/roles/size.hpp>
 #include <sge/sprite/state/all_choices.hpp>
 #include <sge/sprite/state/object.hpp>
 #include <sge/sprite/state/parameters.hpp>
@@ -63,7 +69,12 @@ try
 	typedef
 	sge::sprite::config::choices<
 		sprite_type_choices,
-		sge::sprite::config::normal_size,
+		sge::sprite::config::pos<
+			sge::sprite::config::pos_option::pos
+		>,
+		sge::sprite::config::normal_size<
+			sge::sprite::config::texture_size_option::never
+		>,
 		boost::mpl::vector2<
 			sge::sprite::config::with_texture<
 				sge::sprite::config::texture_level_count<
@@ -94,12 +105,6 @@ try
 		sprite_choices
 	>
 	sprite_object;
-
-	typedef
-	sge::sprite::parameters<
-		sprite_choices
-	>
-	sprite_parameters;
 
 	typedef
 	sge::sprite::state::all_choices
@@ -149,20 +154,17 @@ try
 		{
 			sprite_objects.push_back(
 				sprite_object(
-					sprite_parameters()
-					.pos(
+					sge::sprite::roles::pos{} =
 						sprite_object::vector(
 							_sprites->pos_x,
 							_sprites->pos_y
-						)
-					)
-					.size(
+						),
+					sge::sprite::roles::size{} =
 						sprite_object::dim(
 							_sprites->width,
 							_sprites->height
-						)
-					)
-					.texture(
+						),
+					sge::sprite::roles::texture0{} =
 						// TODO: Pointer to optional?
 						_sprites->texture
 						?
@@ -171,10 +173,9 @@ try
 							)
 						:
 							sge::texture::const_optional_part_ref()
-					)
-					.rotation(
+						,
+					sge::sprite::roles::rotation{} =
 						_sprites->rotation
-					)
 				)
 			);
 

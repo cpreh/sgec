@@ -22,7 +22,7 @@ function(
 )
 	set(
 		FULL_NAME
-		example_${EXAMPLE_NAME}
+		sgec_example_${EXAMPLE_NAME}
 	)
 
 	add_executable(

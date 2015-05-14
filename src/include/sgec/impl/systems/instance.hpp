@@ -7,6 +7,7 @@
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/instance_fwd.h>
 #include <sgec/window/system_fwd.h>
+#include <sgec/window/unit.h>
 #include <sge/systems/instance_decl.hpp>
 #include <sge/systems/keyboard_collector.hpp>
 #include <sge/systems/renderer_caps.hpp>
@@ -15,6 +16,7 @@
 #include <sge/systems/with_input.hpp>
 #include <sge/systems/with_renderer.hpp>
 #include <sge/systems/with_window.hpp>
+#include <sge/window/dim_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -28,9 +30,15 @@ struct sgec_systems_instance
 		sgec_systems_instance
 	);
 public:
-	explicit
 	sgec_systems_instance(
-		char const *
+		char const *,
+		sgec_window_unit,
+		sgec_window_unit
+	);
+
+	sgec_systems_instance(
+		char const *,
+		sge::window::dim
 	);
 
 	~sgec_systems_instance();

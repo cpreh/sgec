@@ -44,7 +44,9 @@ main()
 {
 	struct sgec_systems_instance *instance =
 		sgec_systems_instance_create(
-			"sgec test"
+			"sgec test",
+			0u,
+			0u
 		);
 
 	if(

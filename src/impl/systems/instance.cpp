@@ -4,6 +4,7 @@
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/impl/systems/instance.hpp>
 #include <sgec/impl/window/system.hpp>
+#include <sgec/window/unit.h>
 #include <sge/media/optional_extension_set.hpp>
 #include <sge/renderer/display_mode/optional_object.hpp>
 #include <sge/renderer/display_mode/parameters.hpp>
@@ -24,13 +25,34 @@
 #include <sge/systems/renderer_caps.hpp>
 #include <sge/systems/window.hpp>
 #include <sge/viewport/fill_on_resize.hpp>
+#include <sge/viewport/fractional_aspect.hpp>
+#include <sge/viewport/maintain_aspect.hpp>
+#include <sge/window/dim.hpp>
+#include <sge/window/size_hints.hpp>
 #include <sge/window/title.hpp>
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 
 
 sgec_systems_instance::sgec_systems_instance(
-	char const *const _window_name
+	char const *const _window_name,
+	sgec_window_unit const _width,
+	sgec_window_unit const _height
+)
+:
+	sgec_systems_instance(
+		_window_name,
+		sge::window::dim(
+			_width,
+			_height
+		)
+	)
+{
+}
+
+sgec_systems_instance::sgec_systems_instance(
+	char const *const _window_name,
+	sge::window::dim const _dim
 )
 :
 	impl_(
@@ -43,6 +65,17 @@ sgec_systems_instance::sgec_systems_instance(
 							_window_name
 						)
 					)
+				).size_hints(
+					_dim.content()
+					==
+					0u
+					?
+						sge::window::size_hints()
+					:
+						sge::window::size_hints()
+						.minimum_size_hint(
+							_dim
+						)
 				)
 			)
 		)
@@ -58,7 +91,18 @@ sgec_systems_instance::sgec_systems_instance(
 					sge::renderer::display_mode::vsync::on,
 					sge::renderer::display_mode::optional_object()
 				),
-				sge::viewport::fill_on_resize()
+				_dim.content()
+				==
+				0u
+				?
+					sge::viewport::fill_on_resize()
+				:
+					sge::viewport::maintain_aspect(
+						sge::viewport::fractional_aspect(
+							_dim.w(),
+							_dim.h()
+						)
+					)
 			)
 		)
 		(

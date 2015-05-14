@@ -6,18 +6,23 @@
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/instance.h>
 #include <sgec/window/system_fwd.h>
+#include <sgec/window/unit.h>
 
 
 extern "C"
 struct sgec_systems_instance *
 sgec_systems_instance_create(
-	char const *const _window_name
+	char const *const _window_name,
+	sgec_window_unit const _width,
+	sgec_window_unit const _height
 )
 try
 {
 	return
 		new sgec_systems_instance(
-			_window_name
+			_window_name,
+			_width,
+			_height
 		);
 }
 catch(

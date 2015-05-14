@@ -10,6 +10,7 @@
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/instance_fwd.h>
+#include <sgec/window/unit.h>
 #include <sgec/window/system_fwd.h>
 
 
@@ -18,7 +19,9 @@ SGEC_DETAIL_HEADER
 SGEC_DETAIL_SYMBOL
 struct sgec_systems_instance *
 sgec_systems_instance_create(
-	char const *window_name
+	char const *window_name,
+	sgec_window_unit width, /* 0 for arbitrary width */
+	sgec_window_unit height /* 0 for arbitrary height */
 );
 
 SGEC_DETAIL_SYMBOL

@@ -43,7 +43,9 @@ main()
 {
 	struct sgec_systems_instance *instance =
 		sgec_systems_instance_create(
-			"sgec font test"
+			"sgec font test",
+			640u,
+			480u
 		);
 
 	if(

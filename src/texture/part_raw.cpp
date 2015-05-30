@@ -3,8 +3,10 @@
 #include <sgec/impl/texture/part.hpp>
 #include <sgec/texture/part_raw.h>
 #include <sge/renderer/lock_rect.hpp>
+#include <sge/texture/part.hpp>
 #include <sge/texture/part_raw_ref.hpp>
-#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/unique_ptr_to_base.hpp>
 
 
 extern "C"
@@ -16,10 +18,14 @@ try
 {
 	return
 		new sgec_texture_part(
-			fcppt::make_unique_ptr<
-				sge::texture::part_raw_ref
+			fcppt::unique_ptr_to_base<
+				sge::texture::part
 			>(
-				_texture->get()
+				fcppt::make_unique_ptr_fcppt<
+					sge::texture::part_raw_ref
+				>(
+					_texture->get()
+				)
 			)
 		);
 }
@@ -44,20 +50,24 @@ try
 {
 	return
 		new sgec_texture_part(
-			fcppt::make_unique_ptr<
-				sge::texture::part_raw_ref
+			fcppt::unique_ptr_to_base<
+				sge::texture::part
 			>(
-				_texture->get(),
-				sge::renderer::lock_rect{
-					sge::renderer::lock_rect::vector{
-						_x,
-						_y
-					},
-					sge::renderer::lock_rect::dim{
-						_w,
-						_h
+				fcppt::make_unique_ptr_fcppt<
+					sge::texture::part_raw_ref
+				>(
+					_texture->get(),
+					sge::renderer::lock_rect{
+						sge::renderer::lock_rect::vector{
+							_x,
+							_y
+						},
+						sge::renderer::lock_rect::dim{
+							_w,
+							_h
+						}
 					}
-				}
+				)
 			)
 		);
 }

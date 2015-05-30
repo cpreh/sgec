@@ -1,6 +1,6 @@
-#include <sgec/renderer/texture/size.h>
 #include <sgec/impl/renderer/texture/planar.hpp>
 #include <sgec/impl/texture/part.hpp>
+#include <sgec/renderer/texture/size.h>
 #include <sgec/texture/part_raw.h>
 #include <sge/renderer/lock_rect.hpp>
 #include <sge/texture/part.hpp>

@@ -1,8 +1,8 @@
 #include <sgec/result.h>
 #include <sgec/impl/texture/part.hpp>
-#include <sge/renderer/dim2.hpp>
 #include <sgec/renderer/texture/size.h>
 #include <sgec/texture/part.h>
+#include <sge/renderer/dim2.hpp>
 
 
 extern "C"

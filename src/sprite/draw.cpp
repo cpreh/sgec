@@ -30,8 +30,8 @@
 #include <sge/sprite/process/all.hpp>
 #include <sge/sprite/roles/pos.hpp>
 #include <sge/sprite/roles/rotation.hpp>
-#include <sge/sprite/roles/texture0.hpp>
 #include <sge/sprite/roles/size.hpp>
+#include <sge/sprite/roles/texture0.hpp>
 #include <sge/sprite/state/all_choices.hpp>
 #include <sge/sprite/state/object.hpp>
 #include <sge/sprite/state/parameters.hpp>

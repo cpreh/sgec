@@ -8,6 +8,7 @@
 #include <sgec/renderer/context/ffp_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/sprite/object_fwd.h>
+#include <sgec/window/unit.h>
 #include <fcppt/config/external_begin.h>
 #include <stddef.h>
 #include <fcppt/config/external_end.h>
@@ -20,6 +21,8 @@ enum sgec_result
 sgec_sprite_draw(
 	struct sgec_renderer_device_ffp *,
 	struct sgec_renderer_context_ffp *,
+	sgec_window_unit width, /* 0 for default */
+	sgec_window_unit height, /* 0 for default */
 	struct sgec_sprite_object const *,
 	size_t count
 );

@@ -6,9 +6,12 @@
 #include <sgec/sprite/object.h>
 #include <sgec/sprite/scalar.h>
 #include <sgec/sprite/unit.h>
+#include <sgec/window/unit.h>
+#include <sge/renderer/screen_size.hpp>
 #include <sge/renderer/context/ffp.hpp>
 #include <sge/renderer/device/ffp.hpp>
 #include <sge/sprite/object.hpp>
+#include <sge/sprite/projection_dim.hpp>
 #include <sge/sprite/buffers/option.hpp>
 #include <sge/sprite/buffers/single.hpp>
 #include <sge/sprite/buffers/with_declaration.hpp>
@@ -27,16 +30,21 @@
 #include <sge/sprite/config/with_rotation.hpp>
 #include <sge/sprite/config/with_texture.hpp>
 #include <sge/sprite/geometry/make_random_access_range.hpp>
-#include <sge/sprite/process/all.hpp>
+#include <sge/sprite/process/default_options.hpp>
+#include <sge/sprite/process/with_options.hpp>
 #include <sge/sprite/roles/pos.hpp>
 #include <sge/sprite/roles/rotation.hpp>
 #include <sge/sprite/roles/size.hpp>
 #include <sge/sprite/roles/texture0.hpp>
 #include <sge/sprite/state/all_choices.hpp>
+#include <sge/sprite/state/default_options.hpp>
 #include <sge/sprite/state/object.hpp>
 #include <sge/sprite/state/parameters.hpp>
 #include <sge/texture/const_optional_part_ref.hpp>
+#include <sge/window/dim.hpp>
 #include <fcppt/algorithm/repeat.hpp>
+#include <fcppt/cast/size_fun.hpp>
+#include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <stddef.h>
@@ -49,6 +57,8 @@ sgec_result
 sgec_sprite_draw(
 	struct sgec_renderer_device_ffp *const _render_device,
 	struct sgec_renderer_context_ffp *const _render_context,
+	sgec_window_unit const _width,
+	sgec_window_unit const _height,
 	struct sgec_sprite_object const *_sprites,
 	size_t const _count
 )
@@ -178,14 +188,48 @@ try
 		}
 	);
 
-	sge::sprite::process::all(
+	sge::window::dim const projection_dim(
+		_width,
+		_height
+	);
+
+	using compare_sprites
+	=
+	sge::sprite::compare::default_;
+
+	sge::sprite::process::with_options<
+		sge::sprite::process::default_options<
+			sprite_choices,
+			compare_sprites
+		>
+	>(
 		_render_context->get(),
 		sge::sprite::geometry::make_random_access_range(
 			sprite_objects
 		),
 		sprite_buffers,
-		sge::sprite::compare::default_(),
-		sprite_state
+		compare_sprites(),
+		sprite_state,
+		projection_dim.content()
+		!=
+		0u
+		?
+			sge::sprite::state::default_options<
+				sprite_state_choices
+			>().fixed_projection(
+				sge::sprite::projection_dim(
+					fcppt::math::dim::structure_cast<
+						sge::renderer::screen_size,
+						fcppt::cast::size_fun
+					>(
+						projection_dim
+					)
+				)
+			)
+		:
+			sge::sprite::state::default_options<
+				sprite_state_choices
+			>()
 	);
 
 	return

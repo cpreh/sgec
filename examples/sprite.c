@@ -174,6 +174,8 @@ main()
 		sgec_sprite_draw(
 			device,
 			context,
+			0u,
+			0u,
 			&my_sprite,
 			1u
 		);

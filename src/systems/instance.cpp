@@ -1,4 +1,5 @@
 #include <sgec/result.h>
+#include <sgec/audio/loader_fwd.h>
 #include <sgec/font/system_fwd.h>
 #include <sgec/image2d/system_fwd.h>
 #include <sgec/impl/systems/instance.hpp>
@@ -102,4 +103,14 @@ sgec_systems_instance_font_system(
 {
 	return
 		_instance->font_system();
+}
+
+extern "C"
+struct sgec_audio_loader *
+sgec_systems_instance_audio_loader(
+	struct sgec_systems_instance *const _instance
+)
+{
+	return
+		_instance->audio_loader();
 }

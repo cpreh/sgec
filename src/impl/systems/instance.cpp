@@ -1,3 +1,4 @@
+#include <sgec/impl/audio/loader.hpp>
 #include <sgec/impl/font/system.hpp>
 #include <sgec/impl/image2d/system.hpp>
 #include <sgec/impl/input/keyboard/device.hpp>
@@ -14,6 +15,7 @@
 #include <sge/renderer/pixel_format/object.hpp>
 #include <sge/renderer/pixel_format/optional_multi_samples.hpp>
 #include <sge/renderer/pixel_format/srgb.hpp>
+#include <sge/systems/audio_loader.hpp>
 #include <sge/systems/cursor_option_field.hpp>
 #include <sge/systems/font.hpp>
 #include <sge/systems/image2d.hpp>
@@ -31,7 +33,8 @@
 #include <sge/window/size_hints.hpp>
 #include <sge/window/title.hpp>
 #include <fcppt/from_std_string.hpp>
-#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 
 
 sgec_systems_instance::sgec_systems_instance(
@@ -116,42 +119,54 @@ sgec_systems_instance::sgec_systems_instance(
 			)
 		)
 		(
+			sge::systems::audio_loader(
+				sge::media::optional_extension_set()
+			)
+		)
+		(
 			sge::systems::font()
 		)
 	),
 	renderer_(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			sgec_renderer_device_ffp
 		>(
 			impl_.renderer_device_ffp()
 		)
 	),
 	keyboard_(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			sgec_input_keyboard_device
 		>(
 			impl_.keyboard_collector()
 		)
 	),
 	window_system_(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			sgec_window_system
 		>(
 			impl_.window_system()
 		)
 	),
 	image2d_system_(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			sgec_image2d_system
 		>(
 			impl_.image_system()
 		)
 	),
 	font_system_(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			sgec_font_system
 		>(
 			impl_.font_system()
+		)
+	),
+	audio_loader_(
+		fcppt::make_unique_ptr_fcppt<
+			sgec_audio_loader
+		>(
+			impl_.audio_loader()
 		)
 	)
 {
@@ -165,33 +180,40 @@ sgec_renderer_device_ffp *
 sgec_systems_instance::renderer()
 {
 	return
-		renderer_.get();
+		renderer_.get_pointer();
 }
 
 sgec_input_keyboard_device *
 sgec_systems_instance::keyboard()
 {
 	return
-		keyboard_.get();
+		keyboard_.get_pointer();
 }
 
 sgec_window_system *
 sgec_systems_instance::window_system()
 {
 	return
-		window_system_.get();
+		window_system_.get_pointer();
 }
 
 sgec_image2d_system *
 sgec_systems_instance::image2d_system()
 {
 	return
-		image2d_system_.get();
+		image2d_system_.get_pointer();
 }
 
 sgec_font_system *
 sgec_systems_instance::font_system()
 {
 	return
-		font_system_.get();
+		font_system_.get_pointer();
+}
+
+sgec_audio_loader *
+sgec_systems_instance::audio_loader()
+{
+	return
+		audio_loader_.get_pointer();
 }

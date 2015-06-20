@@ -1,6 +1,7 @@
 #ifndef SGEC_IMPL_SYSTEMS_INSTANCE_HPP_INCLUDED
 #define SGEC_IMPL_SYSTEMS_INSTANCE_HPP_INCLUDED
 
+#include <sgec/audio/loader_fwd.h>
 #include <sgec/font/system_fwd.h>
 #include <sgec/image2d/system_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
@@ -11,6 +12,7 @@
 #include <sge/systems/instance_decl.hpp>
 #include <sge/systems/keyboard_collector.hpp>
 #include <sge/systems/renderer_caps.hpp>
+#include <sge/systems/with_audio_loader.hpp>
 #include <sge/systems/with_font.hpp>
 #include <sge/systems/with_image2d.hpp>
 #include <sge/systems/with_input.hpp>
@@ -18,9 +20,9 @@
 #include <sge/systems/with_window.hpp>
 #include <sge/window/dim_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/unique_ptr_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
-#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -57,10 +59,13 @@ public:
 
 	sgec_font_system *
 	font_system();
+
+	sgec_audio_loader *
+	audio_loader();
 private:
 	typedef
 	sge::systems::instance<
-		boost::mpl::vector5<
+		boost::mpl::vector6<
 			sge::systems::with_renderer<
 				sge::systems::renderer_caps::ffp
 			>,
@@ -71,7 +76,8 @@ private:
 				>
 			>,
 			sge::systems::with_image2d,
-			sge::systems::with_font
+			sge::systems::with_font,
+			sge::systems::with_audio_loader
 		>
 	>
 	instance;
@@ -79,7 +85,7 @@ private:
 	instance impl_;
 
 	typedef
-	std::unique_ptr<
+	fcppt::unique_ptr<
 		sgec_renderer_device_ffp
 	>
 	scoped_renderer_ptr;
@@ -87,7 +93,7 @@ private:
 	scoped_renderer_ptr const renderer_;
 
 	typedef
-	std::unique_ptr<
+	fcppt::unique_ptr<
 		sgec_input_keyboard_device
 	>
 	scoped_keyboard_ptr;
@@ -95,7 +101,7 @@ private:
 	scoped_keyboard_ptr const keyboard_;
 
 	typedef
-	std::unique_ptr<
+	fcppt::unique_ptr<
 		sgec_window_system
 	>
 	scoped_window_system_ptr;
@@ -103,7 +109,7 @@ private:
 	scoped_window_system_ptr const window_system_;
 
 	typedef
-	std::unique_ptr<
+	fcppt::unique_ptr<
 		sgec_image2d_system
 	>
 	scoped_image2d_system_ptr;
@@ -111,12 +117,20 @@ private:
 	scoped_image2d_system_ptr const image2d_system_;
 
 	typedef
-	std::unique_ptr<
+	fcppt::unique_ptr<
 		sgec_font_system
 	>
 	scoped_font_system_ptr;
 
 	scoped_font_system_ptr const font_system_;
+
+	typedef
+	fcppt::unique_ptr<
+		sgec_audio_loader
+	>
+	scoped_audio_loader_ptr;
+
+	scoped_audio_loader_ptr const audio_loader_;
 };
 
 #endif

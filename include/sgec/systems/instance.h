@@ -5,6 +5,7 @@
 #include <sgec/detail/symbol.h>
 #include <sgec/detail/footer.h>
 #include <sgec/detail/header.h>
+#include <sgec/audio/loader_fwd.h>
 #include <sgec/font/system_fwd.h>
 #include <sgec/image2d/system_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
@@ -57,6 +58,12 @@ sgec_systems_instance_image2d_system(
 SGEC_DETAIL_SYMBOL
 struct sgec_font_system *
 sgec_systems_instance_font_system(
+	struct sgec_systems_instance *
+);
+
+SGEC_DETAIL_SYMBOL
+struct sgec_audio_loader *
+sgec_systems_instance_audio_loader(
 	struct sgec_systems_instance *
 );
 

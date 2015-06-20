@@ -179,6 +179,7 @@ function(
 		${TARGET_NAME}
 		PRIVATE
 		${fcppt_core_TARGET}
+		${sgeaudio_TARGET}
 		${sgecore_TARGET}
 		${sgefont_TARGET}
 		${sgefontdraw_TARGET}

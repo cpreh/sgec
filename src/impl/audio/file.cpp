@@ -21,3 +21,10 @@ sgec_audio_file::sgec_audio_file(
 sgec_audio_file::~sgec_audio_file()
 {
 }
+
+sge::audio::file &
+sgec_audio_file::get()
+{
+	return
+		*file_;
+}

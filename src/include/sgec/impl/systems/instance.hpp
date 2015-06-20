@@ -2,6 +2,7 @@
 #define SGEC_IMPL_SYSTEMS_INSTANCE_HPP_INCLUDED
 
 #include <sgec/audio/loader_fwd.h>
+#include <sgec/audio/player_fwd.h>
 #include <sgec/font/system_fwd.h>
 #include <sgec/image2d/system_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
@@ -13,6 +14,7 @@
 #include <sge/systems/keyboard_collector.hpp>
 #include <sge/systems/renderer_caps.hpp>
 #include <sge/systems/with_audio_loader.hpp>
+#include <sge/systems/with_audio_player.hpp>
 #include <sge/systems/with_font.hpp>
 #include <sge/systems/with_image2d.hpp>
 #include <sge/systems/with_input.hpp>
@@ -62,10 +64,13 @@ public:
 
 	sgec_audio_loader *
 	audio_loader();
+
+	sgec_audio_player *
+	audio_player();
 private:
 	typedef
 	sge::systems::instance<
-		boost::mpl::vector6<
+		boost::mpl::vector7<
 			sge::systems::with_renderer<
 				sge::systems::renderer_caps::ffp
 			>,
@@ -77,7 +82,8 @@ private:
 			>,
 			sge::systems::with_image2d,
 			sge::systems::with_font,
-			sge::systems::with_audio_loader
+			sge::systems::with_audio_loader,
+			sge::systems::with_audio_player
 		>
 	>
 	instance;
@@ -131,6 +137,14 @@ private:
 	scoped_audio_loader_ptr;
 
 	scoped_audio_loader_ptr const audio_loader_;
+
+	typedef
+	fcppt::unique_ptr<
+		sgec_audio_player
+	>
+	scoped_audio_player_ptr;
+
+	scoped_audio_player_ptr const audio_player_;
 };
 
 #endif

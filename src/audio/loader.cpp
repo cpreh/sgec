@@ -9,9 +9,17 @@ sgec_audio_loader_load(
 	struct sgec_audio_loader *const _loader,
 	char const *const _path
 )
+try
 {
 	return
 		_loader->load(
 			_path
 		);
+}
+catch(
+	...
+)
+{
+	return
+		nullptr;
 }

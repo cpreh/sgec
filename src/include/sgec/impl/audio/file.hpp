@@ -2,6 +2,7 @@
 #define SGEC_IMPL_AUDIO_FILE_HPP_INCLUDED
 
 #include <sgec/audio/file_fwd.h>
+#include <sge/audio/file_fwd.hpp>
 #include <sge/audio/file_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 
@@ -18,6 +19,9 @@ public:
 	);
 
 	~sgec_audio_file();
+
+	sge::audio::file &
+	get();
 private:
 	sge::audio::file_unique_ptr const file_;
 };

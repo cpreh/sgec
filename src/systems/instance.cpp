@@ -1,5 +1,6 @@
 #include <sgec/result.h>
 #include <sgec/audio/loader_fwd.h>
+#include <sgec/audio/player_fwd.h>
 #include <sgec/font/system_fwd.h>
 #include <sgec/image2d/system_fwd.h>
 #include <sgec/impl/systems/instance.hpp>
@@ -113,4 +114,14 @@ sgec_systems_instance_audio_loader(
 {
 	return
 		_instance->audio_loader();
+}
+
+extern "C"
+struct sgec_audio_player *
+sgec_systems_instance_audio_player(
+	struct sgec_systems_instance *const _instance
+)
+{
+	return
+		_instance->audio_player();
 }

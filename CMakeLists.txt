@@ -43,6 +43,7 @@ find_package(
 # Find SGE
 set(
 	NEEDED_SGE_COMPONENTS
+	audio
 	core
 	font
 	fontdraw

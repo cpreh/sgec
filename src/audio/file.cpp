@@ -6,12 +6,12 @@
 extern "C"
 enum sgec_result
 sgec_audio_file_destroy(
-	struct sgec_audio_file *const _audio
+	struct sgec_audio_file *const _file
 )
 try
 {
 	delete
-		_audio;
+		_file;
 
 	return
 		sgec_result_ok;

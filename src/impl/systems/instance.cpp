@@ -1,4 +1,5 @@
 #include <sgec/impl/audio/loader.hpp>
+#include <sgec/impl/audio/player.hpp>
 #include <sgec/impl/font/system.hpp>
 #include <sgec/impl/image2d/system.hpp>
 #include <sgec/impl/input/keyboard/device.hpp>
@@ -16,6 +17,7 @@
 #include <sge/renderer/pixel_format/optional_multi_samples.hpp>
 #include <sge/renderer/pixel_format/srgb.hpp>
 #include <sge/systems/audio_loader.hpp>
+#include <sge/systems/audio_player_default.hpp>
 #include <sge/systems/cursor_option_field.hpp>
 #include <sge/systems/font.hpp>
 #include <sge/systems/image2d.hpp>
@@ -126,6 +128,9 @@ sgec_systems_instance::sgec_systems_instance(
 		(
 			sge::systems::font()
 		)
+		(
+			sge::systems::audio_player_default()
+		)
 	),
 	renderer_(
 		fcppt::make_unique_ptr_fcppt<
@@ -167,6 +172,13 @@ sgec_systems_instance::sgec_systems_instance(
 			sgec_audio_loader
 		>(
 			impl_.audio_loader()
+		)
+	),
+	audio_player_(
+		fcppt::make_unique_ptr_fcppt<
+			sgec_audio_player
+		>(
+			impl_.audio_player()
 		)
 	)
 {
@@ -216,4 +228,11 @@ sgec_systems_instance::audio_loader()
 {
 	return
 		audio_loader_.get_pointer();
+}
+
+sgec_audio_player *
+sgec_systems_instance::audio_player()
+{
+	return
+		audio_player_.get_pointer();
 }

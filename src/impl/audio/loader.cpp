@@ -47,7 +47,8 @@ sgec_audio_loader::load(
 			)
 			{
 				return
-					new sgec_audio_file(
+					new
+					sgec_audio_file(
 						std::move(
 							_file
 						)

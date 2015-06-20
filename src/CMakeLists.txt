@@ -1,9 +1,17 @@
 set(
 	SGEC_FILES
+	include/sgec/audio/buffer.h
+	include/sgec/audio/buffer_fwd.h
 	include/sgec/audio/file.h
 	include/sgec/audio/file_fwd.h
 	include/sgec/audio/loader.h
 	include/sgec/audio/loader_fwd.h
+	include/sgec/audio/player.h
+	include/sgec/audio/player_fwd.h
+	include/sgec/audio/sound/base.h
+	include/sgec/audio/sound/base_fwd.h
+	include/sgec/audio/sound/play_status.h
+	include/sgec/audio/sound/repeat.h
 	include/sgec/detail/footer.h
 	include/sgec/detail/header.h
 	include/sgec/font/added.h
@@ -54,15 +62,23 @@ set(
 	include/sgec/window/system_poll_result.h
 	include/sgec/window/unit.h
 	src/CMakeLists.txt
+	src/audio/buffer.cpp
 	src/audio/file.cpp
 	src/audio/loader.cpp
+	src/audio/player.cpp
+	src/audio/sound/base.cpp
 	src/font/added.cpp
 	src/font/draw/simple.cpp
 	src/font/object.cpp
 	src/font/system.cpp
 	src/image/color/make_rgba.cpp
+	src/impl/audio/buffer.cpp
 	src/impl/audio/file.cpp
 	src/impl/audio/loader.cpp
+	src/impl/audio/player.cpp
+	src/impl/audio/sound/base.cpp
+	src/impl/audio/sound/from_repeat.cpp
+	src/impl/audio/sound/to_play_status.cpp
 	src/impl/font/added.cpp
 	src/impl/font/object.cpp
 	src/impl/font/system.cpp
@@ -78,8 +94,13 @@ set(
 	src/impl/systems/instance.cpp
 	src/impl/texture/part.cpp
 	src/impl/window/system.cpp
+	src/include/sgec/impl/audio/buffer.hpp
 	src/include/sgec/impl/audio/file.hpp
 	src/include/sgec/impl/audio/loader.hpp
+	src/include/sgec/impl/audio/player.hpp
+	src/include/sgec/impl/audio/sound/base.hpp
+	src/include/sgec/impl/audio/sound/from_repeat.hpp
+	src/include/sgec/impl/audio/sound/to_play_status.hpp
 	src/include/sgec/impl/font/added.hpp
 	src/include/sgec/impl/font/object.hpp
 	src/include/sgec/impl/font/system.hpp

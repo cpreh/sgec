@@ -4,6 +4,7 @@
 #include <sgec/font/system_fwd.h>
 #include <sgec/image2d/system_fwd.h>
 #include <sgec/impl/systems/instance.hpp>
+#include <sgec/input/cursor/object_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/instance.h>
@@ -74,6 +75,16 @@ sgec_systems_instance_keyboard(
 {
 	return
 		_instance->keyboard();
+}
+
+extern "C"
+struct sgec_input_cursor_object *
+sgec_systems_instance_cursor(
+	struct sgec_systems_instance *const _instance
+)
+{
+	return
+		_instance->cursor();
 }
 
 extern "C"

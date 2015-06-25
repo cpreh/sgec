@@ -27,6 +27,12 @@ set(
 	include/sgec/image/color/rgba.h
 	include/sgec/image/color/rgba_channel.h
 	include/sgec/image2d/system_fwd.h
+	include/sgec/input/cursor/button_callback.h
+	include/sgec/input/cursor/button_code.h
+	include/sgec/input/cursor/button_state.h
+	include/sgec/input/cursor/object.h
+	include/sgec/input/cursor/object_fwd.h
+	include/sgec/input/cursor/position_unit.h
 	include/sgec/input/keyboard/device.h
 	include/sgec/input/keyboard/device_fwd.h
 	include/sgec/input/keyboard/key_callback.h
@@ -84,6 +90,8 @@ set(
 	src/impl/font/system.cpp
 	src/impl/image/color/translate_rgba.cpp
 	src/impl/image2d/system.cpp
+	src/impl/input/cursor/object.cpp
+	src/impl/input/cursor/translate_button_code.cpp
 	src/impl/input/keyboard/device.cpp
 	src/impl/input/keyboard/translate_key_code.cpp
 	src/impl/renderer/context/ffp.cpp
@@ -106,6 +114,8 @@ set(
 	src/include/sgec/impl/font/system.hpp
 	src/include/sgec/impl/image/color/translate_rgba.hpp
 	src/include/sgec/impl/image2d/system.hpp
+	src/include/sgec/impl/input/cursor/object.hpp
+	src/include/sgec/impl/input/cursor/translate_button_code.hpp
 	src/include/sgec/impl/input/keyboard/device.hpp
 	src/include/sgec/impl/input/keyboard/translate_key_code.hpp
 	src/include/sgec/impl/renderer/context/ffp.hpp
@@ -116,6 +126,7 @@ set(
 	src/include/sgec/impl/systems/instance.hpp
 	src/include/sgec/impl/texture/part.hpp
 	src/include/sgec/impl/window/system.hpp
+	src/input/cursor/object.cpp
 	src/input/keyboard/device.cpp
 	src/renderer/context/ffp.cpp
 	src/renderer/device/ffp.cpp

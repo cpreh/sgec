@@ -2,6 +2,7 @@
 #include <sgec/impl/audio/player.hpp>
 #include <sgec/impl/font/system.hpp>
 #include <sgec/impl/image2d/system.hpp>
+#include <sgec/impl/input/cursor/object.hpp>
 #include <sgec/impl/input/keyboard/device.hpp>
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/impl/systems/instance.hpp>
@@ -146,6 +147,13 @@ sgec_systems_instance::sgec_systems_instance(
 			impl_.keyboard_collector()
 		)
 	),
+	cursor_(
+		fcppt::make_unique_ptr_fcppt<
+			sgec_input_cursor_object
+		>(
+			impl_.cursor_demuxer()
+		)
+	),
 	window_system_(
 		fcppt::make_unique_ptr_fcppt<
 			sgec_window_system
@@ -200,6 +208,13 @@ sgec_systems_instance::keyboard()
 {
 	return
 		keyboard_.get_pointer();
+}
+
+sgec_input_cursor_object *
+sgec_systems_instance::cursor()
+{
+	return
+		cursor_.get_pointer();
 }
 
 sgec_window_system *

@@ -43,7 +43,7 @@ sgec_input_keyboard_device::key_callback(
 				{
 					_callback(
 						sgec::impl::input::keyboard::translate_key_code(
-							_event.key_code()
+							_event.key().code()
 						),
 						_event.pressed()
 						?
@@ -77,7 +77,7 @@ sgec_input_keyboard_device::key_repeat_callback(
 				{
 					_callback(
 						sgec::impl::input::keyboard::translate_key_code(
-							_event.key_code()
+							_event.key().code()
 						),
 						_userdata
 					);

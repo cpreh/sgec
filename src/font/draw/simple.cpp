@@ -10,6 +10,7 @@
 #include <sge/font/text_parameters.hpp>
 #include <sge/font/vector.hpp>
 #include <sge/font/align_h/left.hpp>
+#include <sge/font/align_h/variant.hpp>
 #include <sge/font/draw/simple.hpp>
 #include <sge/image/color/any/object.hpp>
 #include <sge/renderer/texture/emulate_srgb.hpp>
@@ -36,7 +37,9 @@ try
 			_text
 		),
 		sge::font::text_parameters(
-			sge::font::align_h::left{}
+			sge::font::align_h::variant(
+				sge::font::align_h::left{}
+			)
 		),
 		sge::font::vector{
 			_x,

@@ -29,6 +29,7 @@
 #include <sge/systems/renderer.hpp>
 #include <sge/systems/renderer_caps.hpp>
 #include <sge/systems/window.hpp>
+#include <sge/systems/window_source.hpp>
 #include <sge/viewport/fill_on_resize.hpp>
 #include <sge/viewport/fractional_aspect.hpp>
 #include <sge/viewport/maintain_aspect.hpp>
@@ -65,23 +66,25 @@ sgec_systems_instance::sgec_systems_instance(
 		sge::systems::make_list
 		(
 			sge::systems::window(
-				sge::systems::original_window(
-					sge::window::title(
-						fcppt::from_std_string(
-							_window_name
+				sge::systems::window_source(
+					sge::systems::original_window(
+						sge::window::title(
+							fcppt::from_std_string(
+								_window_name
+							)
 						)
+					).size_hints(
+						_dim.content()
+						==
+						0u
+						?
+							sge::window::size_hints()
+						:
+							sge::window::size_hints()
+							.minimum_size_hint(
+								_dim
+							)
 					)
-				).size_hints(
-					_dim.content()
-					==
-					0u
-					?
-						sge::window::size_hints()
-					:
-						sge::window::size_hints()
-						.minimum_size_hint(
-							_dim
-						)
 				)
 			)
 		)

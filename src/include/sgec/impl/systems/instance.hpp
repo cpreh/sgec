@@ -7,6 +7,7 @@
 #include <sgec/image2d/system_fwd.h>
 #include <sgec/input/cursor/object_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
+#include <sgec/input/mouse/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/cursor_option.h>
 #include <sgec/systems/instance_fwd.h>
@@ -15,6 +16,7 @@
 #include <sge/systems/cursor_demuxer.hpp>
 #include <sge/systems/instance_decl.hpp>
 #include <sge/systems/keyboard_collector.hpp>
+#include <sge/systems/mouse_collector.hpp>
 #include <sge/systems/renderer_caps.hpp>
 #include <sge/systems/with_audio_loader.hpp>
 #include <sge/systems/with_audio_player.hpp>
@@ -58,6 +60,9 @@ public:
 	sgec_input_keyboard_device *
 	keyboard();
 
+	sgec_input_mouse_device *
+	mouse();
+
 	sgec_input_cursor_object *
 	cursor();
 
@@ -84,9 +89,10 @@ private:
 			>,
 			sge::systems::with_window,
 			sge::systems::with_input<
-				boost::mpl::vector2<
+				boost::mpl::vector3<
 					sge::systems::cursor_demuxer,
-					sge::systems::keyboard_collector
+					sge::systems::keyboard_collector,
+					sge::systems::mouse_collector
 				>
 			>,
 			sge::systems::with_image2d,
@@ -114,6 +120,14 @@ private:
 	scoped_keyboard_ptr;
 
 	scoped_keyboard_ptr const keyboard_;
+
+	typedef
+	fcppt::unique_ptr<
+		sgec_input_mouse_device
+	>
+	scoped_mouse_ptr;
+
+	scoped_mouse_ptr const mouse_;
 
 	typedef
 	fcppt::unique_ptr<

@@ -4,6 +4,7 @@
 #include <sgec/impl/image2d/system.hpp>
 #include <sgec/impl/input/cursor/object.hpp>
 #include <sgec/impl/input/keyboard/device.hpp>
+#include <sgec/impl/input/mouse/device.hpp>
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/impl/systems/instance.hpp>
 #include <sgec/impl/window/system.hpp>
@@ -174,6 +175,13 @@ sgec_systems_instance::sgec_systems_instance(
 			impl_.keyboard_collector()
 		)
 	),
+	mouse_(
+		fcppt::make_unique_ptr_fcppt<
+			sgec_input_mouse_device
+		>(
+			impl_.mouse_collector()
+		)
+	),
 	cursor_(
 		fcppt::make_unique_ptr_fcppt<
 			sgec_input_cursor_object
@@ -235,6 +243,13 @@ sgec_systems_instance::keyboard()
 {
 	return
 		keyboard_.get_pointer();
+}
+
+sgec_input_mouse_device *
+sgec_systems_instance::mouse()
+{
+	return
+		mouse_.get_pointer();
 }
 
 sgec_input_cursor_object *

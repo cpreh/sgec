@@ -30,6 +30,7 @@ set(
 	include/sgec/input/cursor/button_callback.h
 	include/sgec/input/cursor/button_code.h
 	include/sgec/input/cursor/button_state.h
+	include/sgec/input/cursor/move_callback.h
 	include/sgec/input/cursor/object.h
 	include/sgec/input/cursor/object_fwd.h
 	include/sgec/input/cursor/position_unit.h
@@ -39,6 +40,14 @@ set(
 	include/sgec/input/keyboard/key_code.h
 	include/sgec/input/keyboard/key_repeat_callback.h
 	include/sgec/input/keyboard/key_state.h
+	include/sgec/input/mouse/axis_callback.h
+	include/sgec/input/mouse/axis_code.h
+	include/sgec/input/mouse/axis_value.h
+	include/sgec/input/mouse/button_callback.h
+	include/sgec/input/mouse/button_code.h
+	include/sgec/input/mouse/button_state.h
+	include/sgec/input/mouse/device.h
+	include/sgec/input/mouse/device_fwd.h
 	include/sgec/renderer/context/ffp.h
 	include/sgec/renderer/context/ffp_fwd.h
 	include/sgec/renderer/device/ffp.h
@@ -58,6 +67,7 @@ set(
 	include/sgec/sprite/object_fwd.h
 	include/sgec/sprite/scalar.h
 	include/sgec/sprite/unit.h
+	include/sgec/systems/cursor_option.h
 	include/sgec/systems/instance.h
 	include/sgec/systems/instance_fwd.h
 	include/sgec/texture/part.h
@@ -91,9 +101,12 @@ set(
 	src/impl/image/color/translate_rgba.cpp
 	src/impl/image2d/system.cpp
 	src/impl/input/cursor/object.cpp
+	src/impl/input/cursor/translate_axis_code.cpp
 	src/impl/input/cursor/translate_button_code.cpp
 	src/impl/input/keyboard/device.cpp
 	src/impl/input/keyboard/translate_key_code.cpp
+	src/impl/input/mouse/device.cpp
+	src/impl/input/mouse/translate_button_code.cpp
 	src/impl/renderer/context/ffp.cpp
 	src/impl/renderer/device/ffp.cpp
 	src/impl/renderer/target/onscreen.cpp
@@ -118,6 +131,9 @@ set(
 	src/include/sgec/impl/input/cursor/translate_button_code.hpp
 	src/include/sgec/impl/input/keyboard/device.hpp
 	src/include/sgec/impl/input/keyboard/translate_key_code.hpp
+	src/include/sgec/impl/input/mouse/device.hpp
+	src/include/sgec/impl/input/mouse/translate_axis_code.hpp
+	src/include/sgec/impl/input/mouse/translate_button_code.hpp
 	src/include/sgec/impl/renderer/context/ffp.hpp
 	src/include/sgec/impl/renderer/device/ffp.hpp
 	src/include/sgec/impl/renderer/target/onscreen.hpp
@@ -128,6 +144,7 @@ set(
 	src/include/sgec/impl/window/system.hpp
 	src/input/cursor/object.cpp
 	src/input/keyboard/device.cpp
+	src/input/mouse/device.cpp
 	src/renderer/context/ffp.cpp
 	src/renderer/device/ffp.cpp
 	src/renderer/target/onscreen.cpp

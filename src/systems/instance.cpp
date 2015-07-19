@@ -6,6 +6,7 @@
 #include <sgec/impl/systems/instance.hpp>
 #include <sgec/input/cursor/object_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
+#include <sgec/input/mouse/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/cursor_option.h>
 #include <sgec/systems/instance.h>
@@ -78,6 +79,16 @@ sgec_systems_instance_keyboard(
 {
 	return
 		_instance->keyboard();
+}
+
+extern "C"
+struct sgec_input_mouse_device *
+sgec_systems_instance_mouse(
+	struct sgec_systems_instance *const _instance
+)
+{
+	return
+		_instance->mouse();
 }
 
 extern "C"

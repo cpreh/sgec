@@ -7,6 +7,7 @@
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/impl/systems/instance.hpp>
 #include <sgec/impl/window/system.hpp>
+#include <sgec/systems/cursor_option.h>
 #include <sgec/window/unit.h>
 #include <sge/media/optional_extension_set.hpp>
 #include <sge/renderer/display_mode/optional_object.hpp>
@@ -19,6 +20,7 @@
 #include <sge/renderer/pixel_format/srgb.hpp>
 #include <sge/systems/audio_loader.hpp>
 #include <sge/systems/audio_player_default.hpp>
+#include <sge/systems/cursor_option.hpp>
 #include <sge/systems/cursor_option_field.hpp>
 #include <sge/systems/font.hpp>
 #include <sge/systems/image2d.hpp>
@@ -39,12 +41,14 @@
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/make_unique_ptr_fcppt.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/assert/unreachable.hpp>
 
 
 sgec_systems_instance::sgec_systems_instance(
 	char const *const _window_name,
 	sgec_window_unit const _width,
-	sgec_window_unit const _height
+	sgec_window_unit const _height,
+	sgec_systems_cursor_option const _cursor_option
 )
 :
 	sgec_systems_instance(
@@ -52,14 +56,16 @@ sgec_systems_instance::sgec_systems_instance(
 		sge::window::dim(
 			_width,
 			_height
-		)
+		),
+		_cursor_option
 	)
 {
 }
 
 sgec_systems_instance::sgec_systems_instance(
 	char const *const _window_name,
-	sge::window::dim const _dim
+	sge::window::dim const _dim,
+	sgec_systems_cursor_option const _cursor_option
 )
 :
 	impl_(
@@ -116,7 +122,25 @@ sgec_systems_instance::sgec_systems_instance(
 		)
 		(
 			sge::systems::input(
-				sge::systems::cursor_option_field::null()
+				[
+					_cursor_option
+				]{
+					switch(
+						_cursor_option
+					)
+					{
+					case sgec_systems_cursor_option_normal:
+						return
+							sge::systems::cursor_option_field::null();
+					case sgec_systems_cursor_option_exclusive:
+						return
+							sge::systems::cursor_option_field{
+								sge::systems::cursor_option::exclusive
+							};
+					}
+
+					FCPPT_ASSERT_UNREACHABLE;
+				}()
 			)
 		)
 		(

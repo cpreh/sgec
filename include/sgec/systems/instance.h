@@ -12,6 +12,7 @@
 #include <sgec/input/cursor/object_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
+#include <sgec/systems/cursor_option.h>
 #include <sgec/systems/instance_fwd.h>
 #include <sgec/window/unit.h>
 #include <sgec/window/system_fwd.h>
@@ -24,7 +25,8 @@ struct sgec_systems_instance *
 sgec_systems_instance_create(
 	char const *window_name,
 	sgec_window_unit width, /* 0 for arbitrary width */
-	sgec_window_unit height /* 0 for arbitrary height */
+	sgec_window_unit height, /* 0 for arbitrary height */
+	enum sgec_systems_cursor_option
 );
 
 SGEC_DETAIL_SYMBOL

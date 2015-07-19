@@ -8,6 +8,7 @@
 #include <sgec/input/cursor/object_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
+#include <sgec/systems/cursor_option.h>
 #include <sgec/systems/instance_fwd.h>
 #include <sgec/window/system_fwd.h>
 #include <sgec/window/unit.h>
@@ -39,12 +40,14 @@ public:
 	sgec_systems_instance(
 		char const *,
 		sgec_window_unit,
-		sgec_window_unit
+		sgec_window_unit,
+		sgec_systems_cursor_option
 	);
 
 	sgec_systems_instance(
 		char const *,
-		sge::window::dim
+		sge::window::dim,
+		sgec_systems_cursor_option
 	);
 
 	~sgec_systems_instance();

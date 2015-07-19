@@ -8,6 +8,7 @@
 #include <sgec/renderer/context/ffp.h>
 #include <sgec/renderer/device/ffp.h>
 #include <sgec/signal/connection.h>
+#include <sgec/systems/cursor_option.h>
 #include <sgec/systems/instance.h>
 #include <sgec/window/system.h>
 #include <sgec/window/system_poll_result.h>
@@ -45,7 +46,8 @@ main()
 		sgec_systems_instance_create(
 			"sgec font test",
 			640u,
-			480u
+			480u,
+			sgec_systems_cursor_option_normal
 		);
 
 	if(

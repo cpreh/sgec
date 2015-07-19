@@ -9,6 +9,7 @@
 #include <sgec/signal/connection.h>
 #include <sgec/sprite/draw.h>
 #include <sgec/sprite/object.h>
+#include <sgec/systems/cursor_option.h>
 #include <sgec/systems/instance.h>
 #include <sgec/texture/part.h>
 #include <sgec/texture/part_raw.h>
@@ -47,7 +48,8 @@ main()
 		sgec_systems_instance_create(
 			"sgec sprite test",
 			0u,
-			0u
+			0u,
+			sgec_systems_cursor_option_normal
 		);
 
 	if(

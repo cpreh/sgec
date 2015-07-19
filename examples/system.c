@@ -5,6 +5,7 @@
 #include <sgec/renderer/context/ffp.h>
 #include <sgec/renderer/device/ffp.h>
 #include <sgec/signal/connection.h>
+#include <sgec/systems/cursor_option.h>
 #include <sgec/systems/instance.h>
 #include <sgec/window/system.h>
 #include <sgec/window/system_poll_result.h>
@@ -46,7 +47,8 @@ main()
 		sgec_systems_instance_create(
 			"sgec test",
 			0u,
-			0u
+			0u,
+			sgec_systems_cursor_option_normal
 		);
 
 	if(

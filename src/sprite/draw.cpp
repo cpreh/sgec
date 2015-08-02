@@ -1,4 +1,5 @@
 #include <sgec/result.h>
+#include <sgec/impl/image/color/translate_rgba.hpp>
 #include <sgec/impl/renderer/context/ffp.hpp>
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/impl/texture/part.hpp>
@@ -7,6 +8,7 @@
 #include <sgec/sprite/scalar.h>
 #include <sgec/sprite/unit.h>
 #include <sgec/window/unit.h>
+#include <sge/image/color/rgba8_format.hpp>
 #include <sge/renderer/screen_size.hpp>
 #include <sge/renderer/context/ffp.hpp>
 #include <sge/renderer/device/ffp.hpp>
@@ -27,11 +29,13 @@
 #include <sge/sprite/config/texture_size_option.hpp>
 #include <sge/sprite/config/type_choices.hpp>
 #include <sge/sprite/config/unit_type.hpp>
+#include <sge/sprite/config/with_color.hpp>
 #include <sge/sprite/config/with_rotation.hpp>
 #include <sge/sprite/config/with_texture.hpp>
 #include <sge/sprite/geometry/make_random_access_range.hpp>
 #include <sge/sprite/process/default_options.hpp>
 #include <sge/sprite/process/with_options.hpp>
+#include <sge/sprite/roles/color.hpp>
 #include <sge/sprite/roles/pos.hpp>
 #include <sge/sprite/roles/rotation.hpp>
 #include <sge/sprite/roles/size.hpp>
@@ -84,7 +88,7 @@ try
 		sge::sprite::config::normal_size<
 			sge::sprite::config::texture_size_option::never
 		>,
-		boost::mpl::vector2<
+		boost::mpl::vector3<
 			sge::sprite::config::with_texture<
 				sge::sprite::config::texture_level_count<
 					1
@@ -92,7 +96,10 @@ try
 				sge::sprite::config::texture_coordinates::automatic,
 				sge::sprite::config::texture_ownership::reference
 			>,
-			sge::sprite::config::with_rotation
+			sge::sprite::config::with_rotation,
+			sge::sprite::config::with_color<
+				sge::image::color::rgba8_format
+			>
 		>
 	>
 	sprite_choices;
@@ -180,7 +187,11 @@ try
 							sge::texture::const_optional_part_ref()
 						,
 					sge::sprite::roles::rotation{} =
-						_sprites->rotation
+						_sprites->rotation,
+					sge::sprite::roles::color{} =
+						sgec::impl::image::color::translate_rgba(
+							_sprites->color
+						)
 				)
 			);
 

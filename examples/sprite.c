@@ -139,7 +139,13 @@ main()
 		100,
 		200,
 		200,
-		1.f
+		1.f,
+		sgec_image_color_make_rgba(
+			255u,
+			255u,
+			255u,
+			255u
+		)
 	};
 
 	while(

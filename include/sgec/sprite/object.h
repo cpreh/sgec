@@ -3,6 +3,7 @@
 
 #include <sgec/detail/footer.h>
 #include <sgec/detail/header.h>
+#include <sgec/image/color/rgba.h>
 #include <sgec/sprite/object_fwd.h>
 #include <sgec/sprite/scalar.h>
 #include <sgec/sprite/unit.h>
@@ -22,6 +23,8 @@ struct sgec_sprite_object
 	sgec_sprite_unit height;
 
 	sgec_sprite_scalar rotation;
+
+	sgec_image_color_rgba color;
 };
 
 #endif

@@ -4,6 +4,7 @@
 #include <sgec/input/cursor/button_callback.h>
 #include <sgec/input/cursor/move_callback.h>
 #include <sgec/input/cursor/object_fwd.h>
+#include <sgec/input/cursor/scroll_callback.h>
 #include <sgec/signal/connection_fwd.h>
 #include <sge/input/cursor/object_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
@@ -31,6 +32,12 @@ public:
 	sgec_signal_connection *
 	move_callback(
 		sgec_input_cursor_move_callback,
+		void *userdata
+	);
+
+	sgec_signal_connection *
+	scroll_callback(
+		sgec_input_cursor_scroll_callback,
 		void *userdata
 	);
 private:

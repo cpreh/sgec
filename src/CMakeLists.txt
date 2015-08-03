@@ -34,6 +34,9 @@ set(
 	include/sgec/input/cursor/object.h
 	include/sgec/input/cursor/object_fwd.h
 	include/sgec/input/cursor/position_unit.h
+	include/sgec/input/cursor/scroll_callback.h
+	include/sgec/input/cursor/scroll_code.h
+	include/sgec/input/cursor/scroll_value.h
 	include/sgec/input/keyboard/device.h
 	include/sgec/input/keyboard/device_fwd.h
 	include/sgec/input/keyboard/key_callback.h
@@ -103,6 +106,7 @@ set(
 	src/impl/input/cursor/object.cpp
 	src/impl/input/cursor/translate_axis_code.cpp
 	src/impl/input/cursor/translate_button_code.cpp
+	src/impl/input/cursor/translate_scroll_code.cpp
 	src/impl/input/keyboard/device.cpp
 	src/impl/input/keyboard/translate_key_code.cpp
 	src/impl/input/mouse/device.cpp
@@ -129,6 +133,7 @@ set(
 	src/include/sgec/impl/image2d/system.hpp
 	src/include/sgec/impl/input/cursor/object.hpp
 	src/include/sgec/impl/input/cursor/translate_button_code.hpp
+	src/include/sgec/impl/input/cursor/translate_scroll_code.hpp
 	src/include/sgec/impl/input/keyboard/device.hpp
 	src/include/sgec/impl/input/keyboard/translate_key_code.hpp
 	src/include/sgec/impl/input/mouse/device.hpp

@@ -1,13 +1,16 @@
 #include <sgec/impl/input/cursor/object.hpp>
 #include <sgec/impl/input/cursor/translate_button_code.hpp>
+#include <sgec/impl/input/cursor/translate_scroll_code.hpp>
 #include <sgec/impl/signal/connection.hpp>
 #include <sgec/input/cursor/button_callback.h>
 #include <sgec/input/cursor/button_state.h>
 #include <sgec/input/cursor/move_callback.h>
+#include <sgec/input/cursor/scroll_callback.h>
 #include <sge/input/cursor/button_event.hpp>
 #include <sge/input/cursor/move_event.hpp>
 #include <sge/input/cursor/object.hpp>
 #include <sge/input/cursor/position.hpp>
+#include <sge/input/cursor/scroll_event.hpp>
 #include <fcppt/maybe_void.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 
@@ -95,6 +98,35 @@ sgec_input_cursor_object::move_callback(
 								_userdata
 							);
 						}
+					);
+				}
+			)
+		);
+}
+
+sgec_signal_connection *
+sgec_input_cursor_object::scroll_callback(
+	sgec_input_cursor_scroll_callback const _callback,
+	void *const _userdata
+)
+{
+	return
+		new
+		sgec_signal_connection(
+			object_.scroll_callback(
+				[
+					_callback,
+					_userdata
+				](
+					sge::input::cursor::scroll_event const &_event
+				)
+				{
+					_callback(
+						sgec::impl::input::cursor::translate_scroll_code(
+							_event.code()
+						),
+						_event.value(),
+						_userdata
 					);
 				}
 			)

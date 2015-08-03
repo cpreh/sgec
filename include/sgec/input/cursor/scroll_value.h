@@ -1,0 +1,9 @@
+#ifndef SGEC_INPUT_CURSOR_SCROLL_VALUE_H_INCLUDED
+#define SGEC_INPUT_CURSOR_SCROLL_VALUE_H_INCLUDED
+
+
+typedef
+long
+sgec_input_cursor_scroll_value;
+
+#endif

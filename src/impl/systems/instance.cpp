@@ -36,6 +36,7 @@
 #include <sge/viewport/fill_on_resize.hpp>
 #include <sge/viewport/fractional_aspect.hpp>
 #include <sge/viewport/maintain_aspect.hpp>
+#include <sge/viewport/optional_resize_callback.hpp>
 #include <sge/window/dim.hpp>
 #include <sge/window/size_hints.hpp>
 #include <sge/window/title.hpp>
@@ -107,18 +108,20 @@ sgec_systems_instance::sgec_systems_instance(
 					sge::renderer::display_mode::vsync::on,
 					sge::renderer::display_mode::optional_object()
 				),
-				_dim.content()
-				==
-				0u
-				?
-					sge::viewport::fill_on_resize()
-				:
-					sge::viewport::maintain_aspect(
-						sge::viewport::fractional_aspect(
-							_dim.w(),
-							_dim.h()
+				sge::viewport::optional_resize_callback{
+					_dim.content()
+					==
+					0u
+					?
+						sge::viewport::fill_on_resize()
+					:
+						sge::viewport::maintain_aspect(
+							sge::viewport::fractional_aspect(
+								_dim.w(),
+								_dim.h()
+							)
 						)
-					)
+				}
 			)
 		)
 		(

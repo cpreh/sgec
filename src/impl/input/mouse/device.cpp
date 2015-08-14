@@ -5,7 +5,9 @@
 #include <sgec/input/mouse/axis_callback.h>
 #include <sgec/input/mouse/button_callback.h>
 #include <sgec/input/mouse/button_state.h>
+#include <sge/input/mouse/axis_callback.hpp>
 #include <sge/input/mouse/axis_event.hpp>
+#include <sge/input/mouse/button_callback.hpp>
 #include <sge/input/mouse/button_event.hpp>
 #include <sge/input/mouse/device.hpp>
 #include <fcppt/signal/auto_connection.hpp>
@@ -35,20 +37,22 @@ sgec_input_mouse_device::axis_callback(
 		new
 		sgec_signal_connection(
 			device_.axis_callback(
-				[
-					_callback,
-					_userdata
-				](
-					sge::input::mouse::axis_event const &_event
-				)
-				{
-					_callback(
-						sgec::impl::input::mouse::translate_axis_code(
-							_event.code()
-						),
-						_event.value(),
+				sge::input::mouse::axis_callback{
+					[
+						_callback,
 						_userdata
-					);
+					](
+						sge::input::mouse::axis_event const &_event
+					)
+					{
+						_callback(
+							sgec::impl::input::mouse::translate_axis_code(
+								_event.code()
+							),
+							_event.value(),
+							_userdata
+						);
+					}
 				}
 			)
 		);
@@ -64,25 +68,27 @@ sgec_input_mouse_device::button_callback(
 		new
 		sgec_signal_connection(
 			device_.button_callback(
-				[
-					_callback,
-					_userdata
-				](
-					sge::input::mouse::button_event const &_event
-				)
-				{
-					_callback(
-						sgec::impl::input::mouse::translate_button_code(
-							_event.button_code()
-						),
-						_event.pressed()
-						?
-							sgec_input_mouse_button_state_pressed
-						:
-							sgec_input_mouse_button_state_released
-						,
+				sge::input::mouse::button_callback{
+					[
+						_callback,
 						_userdata
-					);
+					](
+						sge::input::mouse::button_event const &_event
+					)
+					{
+						_callback(
+							sgec::impl::input::mouse::translate_button_code(
+								_event.button_code()
+							),
+							_event.pressed()
+							?
+								sgec_input_mouse_button_state_pressed
+							:
+								sgec_input_mouse_button_state_released
+							,
+							_userdata
+						);
+					}
 				}
 			)
 		);

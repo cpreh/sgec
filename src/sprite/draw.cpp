@@ -44,7 +44,7 @@
 #include <sge/sprite/state/default_options.hpp>
 #include <sge/sprite/state/object.hpp>
 #include <sge/sprite/state/parameters.hpp>
-#include <sge/texture/const_optional_part_ref.hpp>
+#include <sge/texture/const_part_ref.hpp>
 #include <sge/window/dim.hpp>
 #include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/cast/size_fun.hpp>
@@ -177,15 +177,9 @@ try
 							_sprites->height
 						),
 					sge::sprite::roles::texture0{} =
-						// TODO: Pointer to optional?
-						_sprites->texture
-						?
-							sge::texture::const_optional_part_ref(
-								_sprites->texture->get()
-							)
-						:
-							sge::texture::const_optional_part_ref()
-						,
+						sge::texture::const_part_ref(
+							_sprites->texture->get()
+						),
 					sge::sprite::roles::rotation{} =
 						_sprites->rotation,
 					sge::sprite::roles::color{} =

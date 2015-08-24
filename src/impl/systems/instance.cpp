@@ -44,6 +44,7 @@
 #include <fcppt/make_unique_ptr_fcppt.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/assert/unreachable.hpp>
+#include <fcppt/math/dim/contents.hpp>
 
 
 sgec_systems_instance::sgec_systems_instance(
@@ -82,7 +83,9 @@ sgec_systems_instance::sgec_systems_instance(
 							)
 						)
 					).size_hints(
-						_dim.content()
+						fcppt::math::dim::contents(
+							_dim
+						)
 						==
 						0u
 						?
@@ -109,7 +112,9 @@ sgec_systems_instance::sgec_systems_instance(
 					sge::renderer::display_mode::optional_object()
 				),
 				sge::viewport::optional_resize_callback{
-					_dim.content()
+					fcppt::math::dim::contents(
+						_dim
+					)
 					==
 					0u
 					?

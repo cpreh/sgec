@@ -48,6 +48,7 @@
 #include <sge/window/dim.hpp>
 #include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/cast/size_fun.hpp>
+#include <fcppt/math/dim/contents.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -215,7 +216,9 @@ try
 		sprite_buffers,
 		compare_sprites(),
 		sprite_state,
-		projection_dim.content()
+		fcppt::math::dim::contents(
+			projection_dim
+		)
 		!=
 		0u
 		?

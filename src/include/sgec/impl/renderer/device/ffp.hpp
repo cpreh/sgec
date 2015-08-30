@@ -6,9 +6,7 @@
 #include <sgec/renderer/target/onscreen_fwd.h>
 #include <sge/renderer/device/ffp_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <memory>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 
 
 struct sgec_renderer_device_ffp
@@ -41,7 +39,7 @@ private:
 	sge::renderer::device::ffp &device_;
 
 	typedef
-	std::unique_ptr<
+	fcppt::unique_ptr<
 		sgec_renderer_target_onscreen
 	>
 	scoped_target_onscreen_ptr;

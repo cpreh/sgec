@@ -13,7 +13,7 @@ sgec_renderer_target_onscreen_viewport_width(
 {
 	return
 		fcppt::cast::to_unsigned(
-			_target->viewport().get().w()
+			_target->viewport().get().size().w()
 		);
 }
 
@@ -25,6 +25,6 @@ sgec_renderer_target_onscreen_viewport_height(
 {
 	return
 		fcppt::cast::to_unsigned(
-			_target->viewport().get().h()
+			_target->viewport().get().size().h()
 		);
 }

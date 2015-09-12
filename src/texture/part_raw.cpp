@@ -5,7 +5,7 @@
 #include <sge/renderer/lock_rect.hpp>
 #include <sge/texture/part.hpp>
 #include <sge/texture/part_raw_ref.hpp>
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_to_base.hpp>
 
 
@@ -21,7 +21,7 @@ try
 			fcppt::unique_ptr_to_base<
 				sge::texture::part
 			>(
-				fcppt::make_unique_ptr_fcppt<
+				fcppt::make_unique_ptr<
 					sge::texture::part_raw_ref
 				>(
 					_texture->get()
@@ -53,7 +53,7 @@ try
 			fcppt::unique_ptr_to_base<
 				sge::texture::part
 			>(
-				fcppt::make_unique_ptr_fcppt<
+				fcppt::make_unique_ptr<
 					sge::texture::part_raw_ref
 				>(
 					_texture->get(),

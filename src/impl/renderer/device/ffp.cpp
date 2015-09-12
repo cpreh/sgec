@@ -5,7 +5,7 @@
 #include <sge/renderer/context/ffp.hpp>
 #include <sge/renderer/device/ffp.hpp>
 #include <sge/renderer/target/onscreen.hpp>
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 
 
 sgec_renderer_device_ffp::sgec_renderer_device_ffp(
@@ -16,7 +16,7 @@ sgec_renderer_device_ffp::sgec_renderer_device_ffp(
 		_device
 	),
 	onscreen_target_(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			sgec_renderer_target_onscreen
 		>(
 			device_.onscreen_target()

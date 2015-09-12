@@ -41,7 +41,7 @@
 #include <sge/window/size_hints.hpp>
 #include <sge/window/title.hpp>
 #include <fcppt/from_std_string.hpp>
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/assert/unreachable.hpp>
 #include <fcppt/math/dim/contents.hpp>
@@ -170,63 +170,63 @@ sgec_systems_instance::sgec_systems_instance(
 		)
 	),
 	renderer_(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			sgec_renderer_device_ffp
 		>(
 			impl_.renderer_device_ffp()
 		)
 	),
 	keyboard_(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			sgec_input_keyboard_device
 		>(
 			impl_.keyboard_collector()
 		)
 	),
 	mouse_(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			sgec_input_mouse_device
 		>(
 			impl_.mouse_collector()
 		)
 	),
 	cursor_(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			sgec_input_cursor_object
 		>(
 			impl_.cursor_demuxer()
 		)
 	),
 	window_system_(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			sgec_window_system
 		>(
 			impl_.window_system()
 		)
 	),
 	image2d_system_(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			sgec_image2d_system
 		>(
 			impl_.image_system()
 		)
 	),
 	font_system_(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			sgec_font_system
 		>(
 			impl_.font_system()
 		)
 	),
 	audio_loader_(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			sgec_audio_loader
 		>(
 			impl_.audio_loader()
 		)
 	),
 	audio_player_(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			sgec_audio_player
 		>(
 			impl_.audio_player()

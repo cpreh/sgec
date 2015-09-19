@@ -1,7 +1,7 @@
 #include <sgec/image/color/make_rgba.h>
+#include <sgec/input/key/code.h>
+#include <sgec/input/key/state.h>
 #include <sgec/input/keyboard/device.h>
-#include <sgec/input/keyboard/key_code.h>
-#include <sgec/input/keyboard/key_state.h>
 #include <sgec/renderer/context/ffp.h>
 #include <sgec/renderer/device/ffp.h>
 #include <sgec/signal/connection.h>
@@ -18,8 +18,8 @@
 static
 void
 key_callback(
-	enum sgec_input_keyboard_key_code const _code,
-	enum sgec_input_keyboard_key_state const _state,
+	enum sgec_input_key_code const _code,
+	enum sgec_input_key_state const _state,
 	void *_userdata
 )
 {
@@ -32,7 +32,7 @@ key_callback(
 	if(
 		_code
 		==
-		sgec_input_keyboard_key_code_escape
+		sgec_input_key_code_escape
 	)
 		sgec_window_system_quit(
 			(struct sgec_window_system *)_userdata,

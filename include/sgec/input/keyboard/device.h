@@ -6,7 +6,6 @@
 #include <sgec/detail/symbol.h>
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/input/keyboard/key_callback.h>
-#include <sgec/input/keyboard/key_repeat_callback.h>
 
 
 SGEC_DETAIL_HEADER
@@ -16,14 +15,6 @@ struct sgec_signal_connection *
 sgec_input_keyboard_device_connect_key_callback(
 	struct sgec_input_keyboard_device *,
 	sgec_input_keyboard_key_callback,
-	void *userdata
-);
-
-SGEC_DETAIL_SYMBOL
-struct sgec_signal_connection *
-sgec_input_keyboard_device_connect_key_repeat_callback(
-	struct sgec_input_keyboard_device *,
-	sgec_input_keyboard_key_repeat_callback,
 	void *userdata
 );
 

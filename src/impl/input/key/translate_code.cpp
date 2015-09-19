@@ -1,21 +1,21 @@
-#include <sgec/impl/input/keyboard/translate_key_code.hpp>
-#include <sgec/input/keyboard/key_code.h>
-#include <sge/input/keyboard/key_code.hpp>
+#include <sgec/impl/input/key/translate_code.hpp>
+#include <sgec/input/key/code.h>
+#include <sge/input/key/code.hpp>
 #include <fcppt/assert/unreachable.hpp>
 
 
-sgec_input_keyboard_key_code
-sgec::impl::input::keyboard::translate_key_code(
-	sge::input::keyboard::key_code const _code
+sgec_input_key_code
+sgec::impl::input::key::translate_code(
+	sge::input::key::code const _code
 )
 {
 	#define TRANSLATE_CASE_BASE(\
 		cpp_name,\
 		c_name\
 	)\
-	case sge::input::keyboard::key_code::cpp_name: \
+	case sge::input::key::code::cpp_name: \
 		return \
-			sgec_input_keyboard_key_code_ ## c_name
+			sgec_input_key_code_ ## c_name
 
 
 	#define TRANSLATE_CASE(\

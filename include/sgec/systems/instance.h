@@ -10,6 +10,7 @@
 #include <sgec/font/system_fwd.h>
 #include <sgec/image2d/system_fwd.h>
 #include <sgec/input/cursor/object_fwd.h>
+#include <sgec/input/focus/object_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/input/mouse/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
@@ -57,6 +58,12 @@ sgec_systems_instance_mouse(
 SGEC_DETAIL_SYMBOL
 struct sgec_input_cursor_object *
 sgec_systems_instance_cursor(
+	struct sgec_systems_instance *
+);
+
+SGEC_DETAIL_SYMBOL
+struct sgec_input_focus_object *
+sgec_systems_instance_focus(
 	struct sgec_systems_instance *
 );
 

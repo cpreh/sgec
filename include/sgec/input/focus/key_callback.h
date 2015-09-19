@@ -1,5 +1,5 @@
-#ifndef SGEC_INPUT_KEYBOARD_KEY_CALLBACK_H_INCLUDED
-#define SGEC_INPUT_KEYBOARD_KEY_CALLBACK_H_INCLUDED
+#ifndef SGEC_INPUT_FOCUS_KEY_CALLBACK_H_INCLUDED
+#define SGEC_INPUT_FOCUS_KEY_CALLBACK_H_INCLUDED
 
 #include <sgec/input/key/code.h>
 #include <sgec/input/key/state.h>
@@ -11,7 +11,7 @@ SGEC_DETAIL_HEADER
 
 typedef
 void
-(*sgec_input_keyboard_key_callback)(
+(*sgec_input_focus_key_callback)(
 	enum sgec_input_key_code,
 	enum sgec_input_key_state,
 	void *userdata

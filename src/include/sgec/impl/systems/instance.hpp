@@ -6,6 +6,7 @@
 #include <sgec/font/system_fwd.h>
 #include <sgec/image2d/system_fwd.h>
 #include <sgec/input/cursor/object_fwd.h>
+#include <sgec/input/focus/object_fwd.h>
 #include <sgec/input/keyboard/device_fwd.h>
 #include <sgec/input/mouse/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
@@ -14,6 +15,7 @@
 #include <sgec/window/system_fwd.h>
 #include <sgec/window/unit.h>
 #include <sge/systems/cursor_demuxer.hpp>
+#include <sge/systems/focus_collector.hpp>
 #include <sge/systems/instance_decl.hpp>
 #include <sge/systems/keyboard_collector.hpp>
 #include <sge/systems/mouse_collector.hpp>
@@ -66,6 +68,9 @@ public:
 	sgec_input_cursor_object *
 	cursor();
 
+	sgec_input_focus_object *
+	focus();
+
 	sgec_window_system *
 	window_system();
 
@@ -89,8 +94,9 @@ private:
 			>,
 			sge::systems::with_window,
 			sge::systems::with_input<
-				boost::mpl::vector3<
+				boost::mpl::vector4<
 					sge::systems::cursor_demuxer,
+					sge::systems::focus_collector,
 					sge::systems::keyboard_collector,
 					sge::systems::mouse_collector
 				>
@@ -136,6 +142,14 @@ private:
 	scoped_cursor_ptr;
 
 	scoped_cursor_ptr const cursor_;
+
+	typedef
+	fcppt::unique_ptr<
+		sgec_input_focus_object
+	>
+	scoped_focus_ptr;
+
+	scoped_focus_ptr const focus_;
 
 	typedef
 	fcppt::unique_ptr<

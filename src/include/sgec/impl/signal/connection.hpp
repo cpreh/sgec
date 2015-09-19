@@ -4,7 +4,7 @@
 #include <sgec/signal/connection_fwd.h>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/signal/auto_connection_fwd.hpp>
-#include <fcppt/signal/scoped_connection.hpp>
+#include <fcppt/signal/auto_connection.hpp>
 
 
 struct sgec_signal_connection
@@ -20,7 +20,7 @@ public:
 
 	~sgec_signal_connection();
 private:
-	fcppt::signal::scoped_connection const connection_;
+	fcppt::signal::auto_connection const connection_;
 };
 
 #endif

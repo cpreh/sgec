@@ -5,6 +5,7 @@
 #include <sgec/input/key/code.h>
 #include <sgec/input/key/state.h>
 #include <sgec/input/keyboard/device.h>
+#include <sgec/input/keyboard/key_id.h>
 #include <sgec/renderer/context/ffp.h>
 #include <sgec/renderer/device/ffp.h>
 #include <sgec/signal/connection.h>
@@ -23,10 +24,13 @@ void
 key_callback(
 	enum sgec_input_key_code const _code,
 	enum sgec_input_key_state const _state,
+	sgec_input_keyboard_key_id const _id,
 	void *_userdata
 )
 {
 	(void)_state;
+
+	(void)_id;
 
 	if(
 		_code

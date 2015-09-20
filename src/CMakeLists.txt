@@ -46,6 +46,7 @@ set(
 	include/sgec/input/keyboard/device.h
 	include/sgec/input/keyboard/device_fwd.h
 	include/sgec/input/keyboard/key_callback.h
+	include/sgec/input/keyboard/key_id.h
 	include/sgec/input/mouse/axis_callback.h
 	include/sgec/input/mouse/axis_code.h
 	include/sgec/input/mouse/axis_value.h

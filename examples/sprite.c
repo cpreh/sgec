@@ -137,19 +137,35 @@ main()
 		goto cleanup_texture;
 	}
 
-	struct sgec_sprite_object my_sprite = {
-		texture_part,
-		100,
-		100,
-		200,
-		200,
-		1.f,
-		sgec_image_color_make_rgba(
-			255u,
-			255u,
-			255u,
-			255u
-		)
+	struct sgec_sprite_object my_sprites[] = {
+		{
+			texture_part,
+			150,
+			150,
+			200,
+			200,
+			0.f,
+			sgec_image_color_make_rgba(
+				255u,
+				0u,
+				0u,
+				255u
+			)
+		},
+		{
+			texture_part,
+			100,
+			100,
+			200,
+			200,
+			1.f,
+			sgec_image_color_make_rgba(
+				255u,
+				255u,
+				255u,
+				255u
+			)
+		}
 	};
 
 	while(
@@ -188,8 +204,14 @@ main()
 			context,
 			0u,
 			0u,
-			&my_sprite,
-			1u
+			my_sprites,
+			sizeof(
+				my_sprites
+			)
+			/
+			sizeof(
+				struct sgec_sprite_object
+			)
 		);
 
 		sgec_renderer_device_ffp_end_rendering(

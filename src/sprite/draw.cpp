@@ -46,12 +46,13 @@
 #include <sge/sprite/state/parameters.hpp>
 #include <sge/texture/const_part_ref.hpp>
 #include <sge/window/dim.hpp>
-#include <fcppt/algorithm/repeat.hpp>
+#include <fcppt/algorithm/map.hpp>
 #include <fcppt/cast/size_fun.hpp>
 #include <fcppt/math/dim/contents.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
+#include <boost/range/iterator_range_core.hpp>
 #include <stddef.h>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -64,7 +65,7 @@ sgec_sprite_draw(
 	struct sgec_renderer_context_ffp *const _render_context,
 	sgec_window_unit const _width,
 	sgec_window_unit const _height,
-	struct sgec_sprite_object const *_sprites,
+	struct sgec_sprite_object const *const _sprites,
 	size_t const _count
 )
 try
@@ -151,47 +152,45 @@ try
 	>
 	sprite_vector;
 
-	// TODO: Use an algorithm for this
-	sprite_vector sprite_objects;
-
-	sprite_objects.reserve(
-		_count
-	);
-
-	fcppt::algorithm::repeat(
-		_count,
-		[
-			&sprite_objects,
-			&_sprites
-		]
-		{
-			sprite_objects.push_back(
-				sprite_object(
-					sge::sprite::roles::pos{} =
-						sprite_object::vector(
-							_sprites->pos_x,
-							_sprites->pos_y
-						),
-					sge::sprite::roles::size{} =
-						sprite_object::dim(
-							_sprites->width,
-							_sprites->height
-						),
-					sge::sprite::roles::texture0{} =
-						sge::texture::const_part_ref(
-							_sprites->texture->get()
-						),
-					sge::sprite::roles::rotation{} =
-						_sprites->rotation,
-					sge::sprite::roles::color{} =
-						sgec::impl::image::color::translate_rgba(
-							_sprites->color
-						)
-				)
-			);
-
-			++_sprites;
-		}
+	sprite_vector /*const*/ sprite_objects(
+		fcppt::algorithm::map<
+			sprite_vector
+		>(
+			boost::make_iterator_range(
+				_sprites,
+				_sprites
+				+
+				_count
+			),
+			[](
+				struct sgec_sprite_object const &_sprite
+			)
+			{
+				return
+					sprite_object(
+						sge::sprite::roles::pos{} =
+							sprite_object::vector(
+								_sprite.pos_x,
+								_sprite.pos_y
+							),
+						sge::sprite::roles::size{} =
+							sprite_object::dim(
+								_sprite.width,
+								_sprite.height
+							),
+						sge::sprite::roles::texture0{} =
+							sge::texture::const_part_ref(
+								_sprite.texture->get()
+							),
+						sge::sprite::roles::rotation{} =
+							_sprite.rotation,
+						sge::sprite::roles::color{} =
+							sgec::impl::image::color::translate_rgba(
+								_sprite.color
+							)
+					);
+			}
+		)
 	);
 
 	sge::window::dim const projection_dim(

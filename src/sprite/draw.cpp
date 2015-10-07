@@ -18,6 +18,7 @@
 #include <sge/sprite/buffers/single.hpp>
 #include <sge/sprite/buffers/with_declaration.hpp>
 #include <sge/sprite/compare/default.hpp>
+#include <sge/sprite/compare/nothing.hpp>
 #include <sge/sprite/config/choices.hpp>
 #include <sge/sprite/config/float_type.hpp>
 #include <sge/sprite/config/normal_size.hpp>
@@ -152,7 +153,7 @@ try
 	>
 	sprite_vector;
 
-	sprite_vector /*const*/ sprite_objects(
+	sprite_vector const sprite_objects(
 		fcppt::algorithm::map<
 			sprite_vector
 		>(
@@ -198,14 +199,10 @@ try
 		_height
 	);
 
-	using compare_sprites
-	=
-	sge::sprite::compare::default_;
-
 	sge::sprite::process::with_options<
 		sge::sprite::process::default_options<
 			sprite_choices,
-			compare_sprites
+			sge::sprite::compare::nothing
 		>
 	>(
 		_render_context->get(),
@@ -213,7 +210,7 @@ try
 			sprite_objects
 		),
 		sprite_buffers,
-		compare_sprites(),
+		sge::sprite::compare::default_{},
 		sprite_state,
 		fcppt::math::dim::contents(
 			projection_dim

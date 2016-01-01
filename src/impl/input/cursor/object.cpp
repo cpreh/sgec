@@ -14,7 +14,7 @@
 #include <sge/input/cursor/position.hpp>
 #include <sge/input/cursor/scroll_callback.hpp>
 #include <sge/input/cursor/scroll_event.hpp>
-#include <fcppt/maybe_void.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 
 
@@ -89,7 +89,7 @@ sgec_input_cursor_object::move_callback(
 					)
 					{
 						// TODO: Should we create a cursor_leave_event?
-						fcppt::maybe_void(
+						fcppt::optional::maybe_void(
 							_event.position(),
 							[
 								_callback,

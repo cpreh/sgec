@@ -1,5 +1,5 @@
-#include <sgec/input/cursor/button_code.h>
 #include <sgec/impl/input/cursor/translate_button_code.hpp>
+#include <sgec/input/cursor/button_code.h>
 #include <sge/input/cursor/button_code.hpp>
 #include <fcppt/assert/unreachable.hpp>
 

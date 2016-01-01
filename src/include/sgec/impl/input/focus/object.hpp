@@ -1,9 +1,9 @@
 #ifndef SGEC_IMPL_INPUT_FOCUS_OBJECT_HPP_INCLUDED
 #define SGEC_IMPL_INPUT_FOCUS_OBJECT_HPP_INCLUDED
 
-#include <sgec/input/focus/object_fwd.h>
 #include <sgec/input/focus/key_callback.h>
 #include <sgec/input/focus/key_repeat_callback.h>
+#include <sgec/input/focus/object_fwd.h>
 #include <sgec/signal/connection_fwd.h>
 #include <sge/input/focus/object_fwd.hpp>
 #include <fcppt/noncopyable.hpp>

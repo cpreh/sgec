@@ -1,5 +1,5 @@
-#include <sgec/input/mouse/button_code.h>
 #include <sgec/impl/input/mouse/translate_button_code.hpp>
+#include <sgec/input/mouse/button_code.h>
 #include <sge/input/mouse/button_code.hpp>
 #include <fcppt/assert/unreachable.hpp>
 

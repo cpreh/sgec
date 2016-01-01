@@ -1,5 +1,5 @@
-#include <sgec/input/cursor/scroll_code.h>
 #include <sgec/impl/input/cursor/translate_scroll_code.hpp>
+#include <sgec/input/cursor/scroll_code.h>
 #include <sge/input/cursor/scroll_code.hpp>
 #include <fcppt/assert/unreachable.hpp>
 

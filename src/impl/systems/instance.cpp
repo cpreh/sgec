@@ -39,7 +39,6 @@
 #include <sge/viewport/maintain_aspect.hpp>
 #include <sge/viewport/optional_resize_callback.hpp>
 #include <sge/window/dim.hpp>
-#include <sge/window/size_hints.hpp>
 #include <sge/window/title.hpp>
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/make_unique_ptr.hpp>
@@ -83,19 +82,6 @@ sgec_systems_instance::sgec_systems_instance(
 								_window_name
 							)
 						)
-					).size_hints(
-						fcppt::math::dim::contents(
-							_dim
-						)
-						==
-						0u
-						?
-							sge::window::size_hints()
-						:
-							sge::window::size_hints()
-							.minimum_size_hint(
-								_dim
-							)
 					)
 				)
 			)

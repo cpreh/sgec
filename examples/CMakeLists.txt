@@ -41,7 +41,9 @@ function(
 
 	target_link_libraries(
 		${FULL_NAME}
+		PRIVATE
 		${SGEC_TARGET}
+		fcppt_core_interface
 	)
 endfunction()
 

@@ -40,6 +40,11 @@ find_package(
 	awl REQUIRED
 )
 
+# FIXME
+find_package(
+	majutsu REQUIRED
+)
+
 # Find SGE
 set(
 	NEEDED_SGE_COMPONENTS

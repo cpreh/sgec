@@ -209,12 +209,6 @@ function(
 		${TARGET_NAME}
 	)
 
-	target_include_directories(
-		${TARGET_NAME}
-		INTERFACE
-		${fcppt_INCLUDE_DIRS}
-	)
-
 	target_link_libraries(
 		${TARGET_NAME}
 		PRIVATE

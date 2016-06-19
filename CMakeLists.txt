@@ -17,7 +17,9 @@ include(
 # Find Boost
 
 find_package(
-	Boost 1.47.0 REQUIRED
+	Boost
+	1.47.0
+	REQUIRED
 )
 
 include_directories(
@@ -37,12 +39,20 @@ find_package(
 # Find AWL
 
 find_package(
-	awl REQUIRED
+	awl
+	REQUIRED
 )
 
 # FIXME
 find_package(
-	majutsu REQUIRED
+	mizuiro
+	REQUIRED
+)
+
+# FIXME
+find_package(
+	majutsu
+	REQUIRED
 )
 
 # Find SGE

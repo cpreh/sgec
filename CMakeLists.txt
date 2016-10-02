@@ -49,12 +49,6 @@ find_package(
 	REQUIRED
 )
 
-# FIXME
-find_package(
-	majutsu
-	REQUIRED
-)
-
 # Find SGE
 set(
 	NEEDED_SGE_COMPONENTS

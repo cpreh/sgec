@@ -1,9 +1,15 @@
 cmake_minimum_required(
-	VERSION 2.8.12
+	VERSION
+	2.8.12
 )
 
 project(
 	sgec
+)
+
+find_package(
+	fcppt
+	REQUIRED
 )
 
 include(
@@ -13,8 +19,6 @@ include(
 include(
 	FcpptSymbol
 )
-
-# Find Boost
 
 find_package(
 	Boost
@@ -30,14 +34,6 @@ link_directories(
 	${Boost_LIBRARY_DIRS}
 )
 
-# Find Fcppt
-find_package(
-	fcppt
-	REQUIRED
-)
-
-# Find AWL
-
 find_package(
 	awl
 	REQUIRED
@@ -49,7 +45,6 @@ find_package(
 	REQUIRED
 )
 
-# Find SGE
 set(
 	NEEDED_SGE_COMPONENTS
 	audio
@@ -72,8 +67,6 @@ find_package(
 	COMPONENTS
 	"${NEEDED_SGE_COMPONENTS}"
 )
-
-# Find END
 
 fcppt_generate_symbol_header(
 	STATIC_LINK_FLAG

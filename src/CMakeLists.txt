@@ -1,3 +1,7 @@
+include(
+	GNUInstallDirs
+)
+
 set(
 	SGEC_FILES
 	include/sgec/audio/buffer.h
@@ -232,7 +236,7 @@ function(
 		TARGETS
 		${TARGET_NAME}
 		DESTINATION
-		"${INSTALL_LIBRARY_DIR}"
+		"${CMAKE_INSTALL_LIBDIR}"
 	)
 endfunction()
 
@@ -262,5 +266,5 @@ install(
 	DIRECTORY
 	${INCLUDE_DIRS}
 	DESTINATION
-	"${INSTALL_INCLUDE_DIR}"
+	"${CMAKE_INSTALL_INCLUDEDIR}"
 )

@@ -31,38 +31,48 @@ set(
 	include/sgec/image/color/rgba.h
 	include/sgec/image/color/rgba_channel.h
 	include/sgec/image2d/system_fwd.h
-	include/sgec/input/cursor/button_callback.h
 	include/sgec/input/cursor/button_code.h
+	include/sgec/input/cursor/button_event.h
+	include/sgec/input/cursor/button_event_fwd.h
 	include/sgec/input/cursor/button_state.h
-	include/sgec/input/cursor/move_callback.h
-	include/sgec/input/cursor/object.h
-	include/sgec/input/cursor/object_fwd.h
+	include/sgec/input/cursor/id.h
+	include/sgec/input/cursor/move_event.h
+	include/sgec/input/cursor/move_event_fwd.h
+	include/sgec/input/cursor/position.h
+	include/sgec/input/cursor/position_fwd.h
+	include/sgec/input/cursor/position_opt.h
+	include/sgec/input/cursor/position_opt_fwd.h
 	include/sgec/input/cursor/position_unit.h
-	include/sgec/input/cursor/scroll_callback.h
 	include/sgec/input/cursor/scroll_code.h
+	include/sgec/input/cursor/scroll_event.h
+	include/sgec/input/cursor/scroll_event_fwd.h
 	include/sgec/input/cursor/scroll_value.h
-	include/sgec/input/focus/key_callback.h
-	include/sgec/input/focus/key_repeat_callback.h
-	include/sgec/input/focus/object.h
-	include/sgec/input/focus/object_fwd.h
+	include/sgec/input/focus/char_event.h
+	include/sgec/input/focus/char_event_fwd.h
+	include/sgec/input/focus/id.h
+	include/sgec/input/focus/key_event.h
+	include/sgec/input/focus/key_event_fwd.h
+	include/sgec/input/focus/key_repeat_event.h
+	include/sgec/input/focus/key_repeat_event_fwd.h
 	include/sgec/input/key/code.h
 	include/sgec/input/key/state.h
-	include/sgec/input/keyboard/device.h
-	include/sgec/input/keyboard/device_fwd.h
-	include/sgec/input/keyboard/key_callback.h
+	include/sgec/input/keyboard/key_event.h
+	include/sgec/input/keyboard/key_event_fwd.h
 	include/sgec/input/keyboard/key_id.h
-	include/sgec/input/mouse/axis_callback.h
 	include/sgec/input/mouse/axis_code.h
+	include/sgec/input/mouse/axis_event.h
+	include/sgec/input/mouse/axis_event_fwd.h
 	include/sgec/input/mouse/axis_value.h
-	include/sgec/input/mouse/button_callback.h
 	include/sgec/input/mouse/button_code.h
+	include/sgec/input/mouse/button_event.h
+	include/sgec/input/mouse/button_event_fwd.h
 	include/sgec/input/mouse/button_state.h
-	include/sgec/input/mouse/device.h
-	include/sgec/input/mouse/device_fwd.h
 	include/sgec/renderer/context/ffp.h
 	include/sgec/renderer/context/ffp_fwd.h
 	include/sgec/renderer/device/ffp.h
 	include/sgec/renderer/device/ffp_fwd.h
+	include/sgec/renderer/render_event.h
+	include/sgec/renderer/render_event_fwd.h
 	include/sgec/renderer/target/onscreen.h
 	include/sgec/renderer/target/onscreen_fwd.h
 	include/sgec/renderer/target/size.h
@@ -71,8 +81,6 @@ set(
 	include/sgec/renderer/texture/planar_fwd.h
 	include/sgec/renderer/texture/size.h
 	include/sgec/result.h
-	include/sgec/signal/connection.h
-	include/sgec/signal/connection_fwd.h
 	include/sgec/sprite/draw.h
 	include/sgec/sprite/object.h
 	include/sgec/sprite/object_fwd.h
@@ -84,9 +92,12 @@ set(
 	include/sgec/texture/part.h
 	include/sgec/texture/part_fwd.h
 	include/sgec/texture/part_raw.h
+	include/sgec/window/event.h
+	include/sgec/window/event_fwd.h
+	include/sgec/window/event_result.h
+	include/sgec/window/event_type.h
 	include/sgec/window/system.h
 	include/sgec/window/system_fwd.h
-	include/sgec/window/system_poll_result.h
 	include/sgec/window/unit.h
 	src/CMakeLists.txt
 	src/audio/buffer.cpp
@@ -111,23 +122,36 @@ set(
 	src/impl/font/system.cpp
 	src/impl/image/color/translate_rgba.cpp
 	src/impl/image2d/system.cpp
-	src/impl/input/cursor/object.cpp
-	src/impl/input/cursor/translate_axis_code.cpp
+	src/impl/input/cursor/make_id.cpp
 	src/impl/input/cursor/translate_button_code.cpp
+	src/impl/input/cursor/translate_button_event.cpp
+	src/impl/input/cursor/translate_button_state.cpp
+	src/impl/input/cursor/translate_move_event.cpp
+	src/impl/input/cursor/translate_position.cpp
+	src/impl/input/cursor/translate_position_opt.cpp
 	src/impl/input/cursor/translate_scroll_code.cpp
-	src/impl/input/focus/object.cpp
+	src/impl/input/cursor/translate_scroll_event.cpp
+	src/impl/input/focus/make_id.cpp
+	src/impl/input/focus/translate_char_event.cpp
+	src/impl/input/focus/translate_key_event.cpp
+	src/impl/input/focus/translate_key_repeat_event.cpp
 	src/impl/input/key/translate_code.cpp
-	src/impl/input/keyboard/device.cpp
-	src/impl/input/mouse/device.cpp
+	src/impl/input/key/translate_state.cpp
+	src/impl/input/keyboard/translate_key_event.cpp
+	src/impl/input/mouse/translate_axis_code.cpp
+	src/impl/input/mouse/translate_axis_event.cpp
 	src/impl/input/mouse/translate_button_code.cpp
+	src/impl/input/mouse/translate_button_event.cpp
+	src/impl/input/mouse/translate_button_state.cpp
 	src/impl/renderer/context/ffp.cpp
 	src/impl/renderer/device/ffp.cpp
 	src/impl/renderer/target/onscreen.cpp
 	src/impl/renderer/texture/planar.cpp
-	src/impl/signal/connection.cpp
+	src/impl/renderer/translate_render_event.cpp
 	src/impl/systems/instance.cpp
 	src/impl/texture/part.cpp
 	src/impl/window/system.cpp
+	src/impl/window/translate_event.cpp
 	src/include/sgec/impl/audio/buffer.hpp
 	src/include/sgec/impl/audio/file.hpp
 	src/include/sgec/impl/audio/loader.hpp
@@ -140,33 +164,41 @@ set(
 	src/include/sgec/impl/font/system.hpp
 	src/include/sgec/impl/image/color/translate_rgba.hpp
 	src/include/sgec/impl/image2d/system.hpp
-	src/include/sgec/impl/input/cursor/object.hpp
+	src/include/sgec/impl/input/cursor/make_id.hpp
 	src/include/sgec/impl/input/cursor/translate_button_code.hpp
+	src/include/sgec/impl/input/cursor/translate_button_event.hpp
+	src/include/sgec/impl/input/cursor/translate_button_state.hpp
+	src/include/sgec/impl/input/cursor/translate_move_event.hpp
+	src/include/sgec/impl/input/cursor/translate_position.hpp
+	src/include/sgec/impl/input/cursor/translate_position_opt.hpp
 	src/include/sgec/impl/input/cursor/translate_scroll_code.hpp
-	src/include/sgec/impl/input/focus/object.hpp
+	src/include/sgec/impl/input/cursor/translate_scroll_event.hpp
+	src/include/sgec/impl/input/focus/make_id.hpp
+	src/include/sgec/impl/input/focus/translate_char_event.hpp
+	src/include/sgec/impl/input/focus/translate_key_event.hpp
+	src/include/sgec/impl/input/focus/translate_key_repeat_event.hpp
 	src/include/sgec/impl/input/key/translate_code.hpp
-	src/include/sgec/impl/input/keyboard/device.hpp
-	src/include/sgec/impl/input/mouse/device.hpp
+	src/include/sgec/impl/input/key/translate_state.hpp
+	src/include/sgec/impl/input/keyboard/translate_key_event.hpp
 	src/include/sgec/impl/input/mouse/translate_axis_code.hpp
+	src/include/sgec/impl/input/mouse/translate_axis_event.hpp
 	src/include/sgec/impl/input/mouse/translate_button_code.hpp
+	src/include/sgec/impl/input/mouse/translate_button_event.hpp
+	src/include/sgec/impl/input/mouse/translate_button_state.hpp
 	src/include/sgec/impl/renderer/context/ffp.hpp
 	src/include/sgec/impl/renderer/device/ffp.hpp
 	src/include/sgec/impl/renderer/target/onscreen.hpp
 	src/include/sgec/impl/renderer/texture/planar.hpp
-	src/include/sgec/impl/signal/connection.hpp
+	src/include/sgec/impl/renderer/translate_render_event.hpp
 	src/include/sgec/impl/systems/instance.hpp
 	src/include/sgec/impl/texture/part.hpp
 	src/include/sgec/impl/window/system.hpp
-	src/input/cursor/object.cpp
-	src/input/focus/object.cpp
-	src/input/keyboard/device.cpp
-	src/input/mouse/device.cpp
+	src/include/sgec/impl/window/translate_event.hpp
 	src/renderer/context/ffp.cpp
 	src/renderer/device/ffp.cpp
 	src/renderer/target/onscreen.cpp
 	src/renderer/texture/create_planar_from_path.cpp
 	src/renderer/texture/planar.cpp
-	src/signal/connection.cpp
 	src/sprite/draw.cpp
 	src/systems/instance.cpp
 	src/texture/part.cpp

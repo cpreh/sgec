@@ -9,10 +9,6 @@
 #include <sgec/audio/player_fwd.h>
 #include <sgec/font/system_fwd.h>
 #include <sgec/image2d/system_fwd.h>
-#include <sgec/input/cursor/object_fwd.h>
-#include <sgec/input/focus/object_fwd.h>
-#include <sgec/input/keyboard/device_fwd.h>
-#include <sgec/input/mouse/device_fwd.h>
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/systems/cursor_option.h>
 #include <sgec/systems/instance_fwd.h>
@@ -40,30 +36,6 @@ sgec_systems_instance_destroy(
 SGEC_DETAIL_SYMBOL
 struct sgec_renderer_device_ffp *
 sgec_systems_instance_renderer(
-	struct sgec_systems_instance *
-);
-
-SGEC_DETAIL_SYMBOL
-struct sgec_input_keyboard_device *
-sgec_systems_instance_keyboard(
-	struct sgec_systems_instance *
-);
-
-SGEC_DETAIL_SYMBOL
-struct sgec_input_mouse_device *
-sgec_systems_instance_mouse(
-	struct sgec_systems_instance *
-);
-
-SGEC_DETAIL_SYMBOL
-struct sgec_input_cursor_object *
-sgec_systems_instance_cursor(
-	struct sgec_systems_instance *
-);
-
-SGEC_DETAIL_SYMBOL
-struct sgec_input_focus_object *
-sgec_systems_instance_focus(
 	struct sgec_systems_instance *
 );
 

@@ -1,0 +1,7 @@
+#ifndef SGEC_INPUT_CURSOR_SCROLL_EVENT_FWD_H_INCLUDED
+#define SGEC_INPUT_CURSOR_SCROLL_EVENT_FWD_H_INCLUDED
+
+
+struct sgec_input_cursor_scroll_event;
+
+#endif

@@ -1,0 +1,7 @@
+#ifndef SGEC_RENDERER_RENDER_EVENT_FWD_H_INCLUDED
+#define SGEC_RENDERER_RENDER_EVENT_FWD_H_INCLUDED
+
+
+struct sgec_renderer_render_event;
+
+#endif

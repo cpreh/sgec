@@ -1,25 +1,29 @@
 #include <sgec/result.h>
 #include <sgec/impl/window/system.hpp>
+#include <sgec/window/event_fwd.h>
+#include <sgec/window/event_result.h>
 #include <sgec/window/system.h>
-#include <sgec/window/system_poll_result.h>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
 
 
 extern "C"
-sgec_window_system_poll_result
-sgec_window_system_poll(
-	struct sgec_window_system *const _system
+enum sgec_window_event_result
+sgec_window_system_next_event(
+	struct sgec_window_system *const _system,
+	struct sgec_window_event *const _result
 )
 try
 {
 	return
-		_system->poll()
+		_system->next_event(
+			*_result
+		)
 		?
-			sgec_window_system_poll_result_running
+			sgec_window_event_result_running
 		:
-			sgec_window_system_poll_result_finished
+			sgec_window_event_result_finished
 		;
 }
 catch(
@@ -27,7 +31,7 @@ catch(
 )
 {
 	return
-		sgec_window_system_poll_result_error;
+		sgec_window_event_result_error;
 }
 
 extern "C"

@@ -4,44 +4,19 @@
 #include <sgec/image/color/make_rgba.h>
 #include <sgec/input/key/code.h>
 #include <sgec/input/key/state.h>
-#include <sgec/input/keyboard/device.h>
-#include <sgec/input/keyboard/key_id.h>
 #include <sgec/renderer/context/ffp.h>
 #include <sgec/renderer/device/ffp.h>
-#include <sgec/signal/connection.h>
 #include <sgec/systems/cursor_option.h>
 #include <sgec/systems/instance.h>
+#include <sgec/window/event.h>
+#include <sgec/window/event_result.h>
+#include <sgec/window/event_type.h>
 #include <sgec/window/system.h>
-#include <sgec/window/system_poll_result.h>
 #include <fcppt/config/external_begin.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <fcppt/config/external_end.h>
 
-
-static
-void
-key_callback(
-	enum sgec_input_key_code const _code,
-	enum sgec_input_key_state const _state,
-	sgec_input_keyboard_key_id const _id,
-	void *_userdata
-)
-{
-	(void)_state;
-
-	(void)_id;
-
-	if(
-		_code
-		==
-		sgec_input_key_code_escape
-	)
-		sgec_window_system_quit(
-			(struct sgec_window_system *)_userdata,
-			EXIT_SUCCESS
-		);
-}
 
 int
 main()
@@ -55,7 +30,9 @@ main()
 		);
 
 	if(
-		instance == NULL
+		instance
+		==
+		NULL
 	)
 		return
 			EXIT_FAILURE;
@@ -70,32 +47,8 @@ main()
 			instance
 		);
 
-	struct sgec_input_keyboard_device *keyboard =
-		sgec_systems_instance_keyboard(
-			instance
-		);
-
-	struct sgec_signal_connection *keyboard_connection =
-		sgec_input_keyboard_device_connect_key_callback(
-			keyboard,
-			key_callback,
-			window_system
-		);
-
 	int exit_code =
 		EXIT_SUCCESS;
-
-	if(
-		keyboard_connection
-		==
-		NULL
-	)
-	{
-		exit_code =
-			EXIT_FAILURE;
-
-		goto cleanup_instance;
-	}
 
 	struct sgec_font_object *font =
 		sgec_font_system_create_font(
@@ -115,84 +68,107 @@ main()
 		exit_code =
 			EXIT_FAILURE;
 
-		goto cleanup_signal;
+		goto cleanup_instance;
 	}
+
+	struct sgec_window_event next_event;
 
 	while(
-		sgec_window_system_poll(
-			window_system
+		sgec_window_system_next_event(
+			window_system,
+			&next_event
 		)
 		==
-		sgec_window_system_poll_result_running
+		sgec_window_event_result_running
 	)
 	{
-		struct sgec_renderer_context_ffp *context =
-			sgec_renderer_device_ffp_begin_rendering(
-				device
-			);
-
 		if(
-			context
+			next_event.type
 			==
-			NULL
+			sgec_window_event_type_render
 		)
-			break;
+		{
+			struct sgec_renderer_context_ffp *context =
+				sgec_renderer_device_ffp_begin_rendering(
+					device
+				);
 
-		// May fail, ignore
-		sgec_renderer_context_ffp_clear(
-			context,
-			sgec_image_color_make_rgba(
-				0,
-				0,
-				0,
-				0
+			if(
+				context
+				!=
+				NULL
 			)
-		);
+			{
+				// May fail, ignore
+				sgec_renderer_context_ffp_clear(
+					context,
+					sgec_image_color_make_rgba(
+						0,
+						0,
+						0,
+						0
+					)
+				);
 
-		// May fail, ignore
-		sgec_font_draw_simple(
-			device,
-			context,
-			font,
-			L"TEST123",
-			100,
-			200,
-			sgec_image_color_make_rgba(
-				255,
-				255,
-				255,
-				255
+				// May fail, ignore
+				sgec_font_draw_simple(
+					device,
+					context,
+					font,
+					L"TEST123",
+					100,
+					200,
+					sgec_image_color_make_rgba(
+						255,
+						255,
+						255,
+						255
+					)
+				);
+
+				sgec_renderer_device_ffp_end_rendering(
+					device,
+					context
+				);
+
+				sgec_renderer_context_ffp_destroy(
+					context
+				);
+			}
+		}
+		else if(
+			next_event.type
+			==
+			sgec_window_event_type_keyboard_key
+		)
+		{
+			struct sgec_input_keyboard_key_event const key_event =
+				next_event.keyboard_key;
+
+			if(
+				key_event.key_state
+				==
+				sgec_input_key_state_pressed
+				&&
+				key_event.key_code
+				==
+				sgec_input_key_code_escape
 			)
-		);
-
-		sgec_renderer_device_ffp_end_rendering(
-			device,
-			context
-		);
-
-		sgec_renderer_context_ffp_destroy(
-			context
-		);
+				sgec_window_system_quit(
+					window_system,
+					EXIT_SUCCESS
+				);
+		}
 	}
+
+	exit_code =
+		sgec_window_system_exit_code(
+			window_system
+		);
 
 	sgec_font_object_destroy(
 		font
 	);
-
-cleanup_signal:
-	sgec_signal_connection_destroy(
-		keyboard_connection
-	);
-
-	if(
-		exit_code
-		==
-		EXIT_SUCCESS
-	)
-		exit_code =
-			sgec_window_system_exit_code(
-				window_system
-			);
 
 cleanup_instance:
 	sgec_systems_instance_destroy(

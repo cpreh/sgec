@@ -2,10 +2,6 @@
 #include <sgec/impl/audio/player.hpp>
 #include <sgec/impl/font/system.hpp>
 #include <sgec/impl/image2d/system.hpp>
-#include <sgec/impl/input/cursor/object.hpp>
-#include <sgec/impl/input/focus/object.hpp>
-#include <sgec/impl/input/keyboard/device.hpp>
-#include <sgec/impl/input/mouse/device.hpp>
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/impl/systems/instance.hpp>
 #include <sgec/impl/window/system.hpp>
@@ -163,34 +159,6 @@ sgec_systems_instance::sgec_systems_instance(
 			impl_.renderer_device_ffp()
 		)
 	),
-	keyboard_(
-		fcppt::make_unique_ptr<
-			sgec_input_keyboard_device
-		>(
-			impl_.keyboard_collector()
-		)
-	),
-	mouse_(
-		fcppt::make_unique_ptr<
-			sgec_input_mouse_device
-		>(
-			impl_.mouse_collector()
-		)
-	),
-	cursor_(
-		fcppt::make_unique_ptr<
-			sgec_input_cursor_object
-		>(
-			impl_.cursor_demuxer()
-		)
-	),
-	focus_(
-		fcppt::make_unique_ptr<
-			sgec_input_focus_object
-		>(
-			impl_.focus_collector()
-		)
-	),
 	window_system_(
 		fcppt::make_unique_ptr<
 			sgec_window_system
@@ -238,34 +206,6 @@ sgec_systems_instance::renderer()
 {
 	return
 		renderer_.get_pointer();
-}
-
-sgec_input_keyboard_device *
-sgec_systems_instance::keyboard()
-{
-	return
-		keyboard_.get_pointer();
-}
-
-sgec_input_mouse_device *
-sgec_systems_instance::mouse()
-{
-	return
-		mouse_.get_pointer();
-}
-
-sgec_input_cursor_object *
-sgec_systems_instance::cursor()
-{
-	return
-		cursor_.get_pointer();
-}
-
-sgec_input_focus_object *
-sgec_systems_instance::focus()
-{
-	return
-		focus_.get_pointer();
 }
 
 sgec_window_system *

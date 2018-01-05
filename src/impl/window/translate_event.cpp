@@ -29,7 +29,7 @@
 #include <fcppt/variant/dynamic_cast.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector20.hpp>
+#include <brigand/sequences/list.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -43,7 +43,7 @@ sgec::impl::window::translate_event(
 	return
 		fcppt::optional::map(
 			fcppt::variant::dynamic_cast_<
-				boost::mpl::vector10<
+				brigand::list<
 					sge::input::cursor::event::button const,
 					sge::input::cursor::event::move const,
 					sge::input::cursor::event::scroll const,

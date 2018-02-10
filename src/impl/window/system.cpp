@@ -9,9 +9,9 @@
 #include <awl/main/optional_exit_code.hpp>
 #include <fcppt/const.hpp>
 #include <fcppt/algorithm/append.hpp>
-#include <fcppt/assert/optional_error.hpp>
 #include <fcppt/container/pop_front.hpp>
 #include <fcppt/either/match.hpp>
+#include <fcppt/optional/from.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -142,7 +142,12 @@ int
 sgec_window_system::exit_code() const
 {
 	return
-		FCPPT_ASSERT_OPTIONAL_ERROR(
-			exit_code_
+		fcppt::optional::from(
+			exit_code_,
+			fcppt::const_(
+				awl::main::exit_code{
+					0
+				}
+			)
 		).get();
 }

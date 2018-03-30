@@ -21,6 +21,11 @@ include(
 )
 
 find_package(
+	Brigand
+	REQUIRED
+)
+
+find_package(
 	Boost
 	1.47.0
 	REQUIRED
@@ -89,14 +94,6 @@ option(
 	ENABLE_SHARED
 	"BUild a static library"
 	ON
-)
-
-include_directories(
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
-)
-
-include_directories(
-	${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
 )
 
 add_subdirectory(

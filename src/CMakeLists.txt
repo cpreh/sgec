@@ -245,6 +245,15 @@ function(
 		${TARGET_NAME}
 	)
 
+	target_include_directories(
+		${TARGET_NAME}
+		PUBLIC
+		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
+		${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
+		PRIVATE
+		${BRIGAND_INCLUDE_DIRS}
+	)
+
 	target_link_libraries(
 		${TARGET_NAME}
 		PRIVATE

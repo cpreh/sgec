@@ -23,7 +23,7 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/unique_ptr_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
+#include <brigand/sequences/list.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -68,7 +68,7 @@ public:
 private:
 	typedef
 	sge::systems::instance<
-		boost::mpl::vector7<
+		brigand::list<
 			sge::systems::with_renderer<
 				sge::systems::renderer_caps::ffp
 			>,

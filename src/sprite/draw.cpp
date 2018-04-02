@@ -49,11 +49,11 @@
 #include <sge/window/dim.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/cast/size_fun.hpp>
+#include <fcppt/iterator/make_range.hpp>
 #include <fcppt/math/dim/contents.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
-#include <boost/range/iterator_range_core.hpp>
+#include <brigand/sequences/list.hpp>
 #include <stddef.h>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -91,7 +91,7 @@ try
 		sge::sprite::config::normal_size<
 			sge::sprite::config::texture_size_option::never
 		>,
-		boost::mpl::vector3<
+		brigand::list<
 			sge::sprite::config::with_texture<
 				sge::sprite::config::texture_level_count<
 					1
@@ -157,7 +157,7 @@ try
 		fcppt::algorithm::map<
 			sprite_vector
 		>(
-			boost::make_iterator_range(
+			fcppt::iterator::make_range(
 				_sprites,
 				_sprites
 				+

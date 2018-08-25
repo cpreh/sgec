@@ -8,7 +8,7 @@
 #include <awl/main/exit_code.hpp>
 #include <awl/main/optional_exit_code.hpp>
 #include <fcppt/const.hpp>
-#include <fcppt/algorithm/append.hpp>
+#include <fcppt/container/join.hpp>
 #include <fcppt/container/pop_front.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/optional/from.hpp>
@@ -106,12 +106,15 @@ sgec_window_system::next_event(
 					awl::event::container &&_events
 				)
 				{
-					fcppt::algorithm::append(
-						this->event_queue_,
-						std::move(
-							_events
-						)
-					);
+					this->event_queue_ =
+						fcppt::container::join(
+							std::move(
+								this->event_queue_
+							),
+							std::move(
+								_events
+							)
+						);
 
 					return
 						false;

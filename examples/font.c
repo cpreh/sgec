@@ -11,6 +11,7 @@
 #include <sgec/window/event.h>
 #include <sgec/window/event_result.h>
 #include <sgec/window/event_type.h>
+#include <sgec/window/free_event.h>
 #include <sgec/window/system.h>
 #include <fcppt/config/external_begin.h>
 #include <stddef.h>
@@ -159,6 +160,10 @@ main()
 					EXIT_SUCCESS
 				);
 		}
+
+		sgec_window_free_event(
+			&next_event
+		);
 	}
 
 	exit_code =

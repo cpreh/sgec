@@ -1,9 +1,9 @@
 #include <sgec/impl/input/cursor/translate_button_event.hpp>
 #include <sgec/impl/input/cursor/translate_move_event.hpp>
 #include <sgec/impl/input/cursor/translate_scroll_event.hpp>
-#include <sgec/impl/input/focus/translate_char_event.hpp>
 #include <sgec/impl/input/focus/translate_key_event.hpp>
 #include <sgec/impl/input/focus/translate_key_repeat_event.hpp>
+#include <sgec/impl/input/focus/translate_text_event.hpp>
 #include <sgec/impl/input/keyboard/translate_key_event.hpp>
 #include <sgec/impl/input/mouse/translate_axis_event.hpp>
 #include <sgec/impl/input/mouse/translate_button_event.hpp>
@@ -12,9 +12,9 @@
 #include <sge/input/cursor/event/button.hpp>
 #include <sge/input/cursor/event/move.hpp>
 #include <sge/input/cursor/event/scroll.hpp>
-#include <sge/input/focus/event/char.hpp>
 #include <sge/input/focus/event/key.hpp>
 #include <sge/input/focus/event/key_repeat.hpp>
+#include <sge/input/focus/event/text.hpp>
 #include <sge/input/keyboard/event/key.hpp>
 #include <sge/input/mouse/event/axis.hpp>
 #include <sge/input/mouse/event/button.hpp>
@@ -47,7 +47,7 @@ sgec::impl::window::translate_event(
 					sge::input::cursor::event::button const,
 					sge::input::cursor::event::move const,
 					sge::input::cursor::event::scroll const,
-					sge::input::focus::event::char_ const,
+					sge::input::focus::event::text const,
 					sge::input::focus::event::key const,
 					sge::input::focus::event::key_repeat const,
 					sge::input::keyboard::event::key const,
@@ -125,18 +125,18 @@ sgec::impl::window::translate_event(
 						},
 						[](
 							fcppt::reference<
-								sge::input::focus::event::char_ const
-							> const _char_event
+								sge::input::focus::event::text const
+							> const _text_event
 						)
 						{
 							sgec_window_event result;
 
 							result.type =
-								sgec_window_event_type_focus_char;
+								sgec_window_event_type_focus_text;
 
-							result.focus_char =
-								sgec::impl::input::focus::translate_char_event(
-									_char_event.get()
+							result.focus_text =
+								sgec::impl::input::focus::translate_text_event(
+									_text_event.get()
 								);
 
 							return

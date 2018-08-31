@@ -47,13 +47,13 @@ set(
 	include/sgec/input/cursor/scroll_event.h
 	include/sgec/input/cursor/scroll_event_fwd.h
 	include/sgec/input/cursor/scroll_value.h
-	include/sgec/input/focus/char_event.h
-	include/sgec/input/focus/char_event_fwd.h
 	include/sgec/input/focus/id.h
 	include/sgec/input/focus/key_event.h
 	include/sgec/input/focus/key_event_fwd.h
 	include/sgec/input/focus/key_repeat_event.h
 	include/sgec/input/focus/key_repeat_event_fwd.h
+	include/sgec/input/focus/text_event.h
+	include/sgec/input/focus/text_event_fwd.h
 	include/sgec/input/key/code.h
 	include/sgec/input/key/state.h
 	include/sgec/input/keyboard/key_event.h
@@ -96,6 +96,7 @@ set(
 	include/sgec/window/event_fwd.h
 	include/sgec/window/event_result.h
 	include/sgec/window/event_type.h
+	include/sgec/window/free_event.h
 	include/sgec/window/system.h
 	include/sgec/window/system_fwd.h
 	include/sgec/window/unit.h
@@ -132,9 +133,9 @@ set(
 	src/impl/input/cursor/translate_scroll_code.cpp
 	src/impl/input/cursor/translate_scroll_event.cpp
 	src/impl/input/focus/make_id.cpp
-	src/impl/input/focus/translate_char_event.cpp
 	src/impl/input/focus/translate_key_event.cpp
 	src/impl/input/focus/translate_key_repeat_event.cpp
+	src/impl/input/focus/translate_text_event.cpp
 	src/impl/input/key/translate_code.cpp
 	src/impl/input/key/translate_state.cpp
 	src/impl/input/keyboard/translate_key_event.cpp
@@ -174,9 +175,9 @@ set(
 	src/include/sgec/impl/input/cursor/translate_scroll_code.hpp
 	src/include/sgec/impl/input/cursor/translate_scroll_event.hpp
 	src/include/sgec/impl/input/focus/make_id.hpp
-	src/include/sgec/impl/input/focus/translate_char_event.hpp
 	src/include/sgec/impl/input/focus/translate_key_event.hpp
 	src/include/sgec/impl/input/focus/translate_key_repeat_event.hpp
+	src/include/sgec/impl/input/focus/translate_text_event.hpp
 	src/include/sgec/impl/input/key/translate_code.hpp
 	src/include/sgec/impl/input/key/translate_state.hpp
 	src/include/sgec/impl/input/keyboard/translate_key_event.hpp
@@ -203,6 +204,7 @@ set(
 	src/systems/instance.cpp
 	src/texture/part.cpp
 	src/texture/part_raw.cpp
+	src/window/free_event.cpp
 	src/window/system.cpp
 )
 

@@ -6,7 +6,7 @@
 #include <sgec/input/cursor/button_event.h>
 #include <sgec/input/cursor/move_event.h>
 #include <sgec/input/cursor/scroll_event.h>
-#include <sgec/input/focus/char_event.h>
+#include <sgec/input/focus/text_event.h>
 #include <sgec/input/focus/key_event.h>
 #include <sgec/input/focus/key_repeat_event.h>
 #include <sgec/input/keyboard/key_event.h>
@@ -31,13 +31,13 @@ struct sgec_window_event
 
 		struct sgec_input_cursor_scroll_event cursor_scroll;
 
-		struct sgec_input_focus_char_event focus_char;
-
 		struct sgec_input_focus_key_event focus_key;
 
 		struct sgec_input_focus_key_repeat_event focus_key_repeat;
 
 		struct sgec_input_keyboard_key_event keyboard_key;
+
+		struct sgec_input_focus_text_event focus_text;
 
 		struct sgec_input_mouse_axis_event mouse_axis;
 

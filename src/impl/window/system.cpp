@@ -38,6 +38,7 @@ bool
 sgec_window_system::next_event(
 	sgec_window_event &_result
 )
+try
 {
 	for(
 		;;
@@ -128,17 +129,30 @@ sgec_window_system::next_event(
 	return
 		true;
 }
+catch(
+	...
+)
+{
+	return
+		false;
+}
 
 void
 sgec_window_system::quit(
 	int const _exit_code
 )
+try
 {
 	system_.quit(
 		awl::main::exit_code(
 			_exit_code
 		)
 	);
+}
+catch(
+	...
+)
+{
 }
 
 int

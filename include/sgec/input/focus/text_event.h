@@ -1,8 +1,8 @@
-#ifndef SGEC_INPUT_FOCUS_CHAR_EVENT_H_INCLUDED
-#define SGEC_INPUT_FOCUS_CHAR_EVENT_H_INCLUDED
+#ifndef SGEC_INPUT_FOCUS_TEXT_EVENT_H_INCLUDED
+#define SGEC_INPUT_FOCUS_TEXT_EVENT_H_INCLUDED
 
-#include <sgec/input/focus/char_event_fwd.h>
 #include <sgec/input/focus/id.h>
+#include <sgec/input/focus/text_event_fwd.h>
 #include <sgec/input/key/code.h>
 #include <sgec/input/key/state.h>
 #include <sgec/detail/footer.h>
@@ -14,11 +14,11 @@
 
 SGEC_DETAIL_HEADER
 
-struct sgec_input_focus_char_event
+struct sgec_input_focus_text_event
 {
 	sgec_input_focus_id id;
 
-	wchar_t code;
+	wchar_t const *text;
 };
 
 SGEC_DETAIL_FOOTER

@@ -1,9 +1,9 @@
-#include <sgec/input/cursor/button_event.h>
 #include <sgec/impl/input/cursor/make_id.hpp>
 #include <sgec/impl/input/cursor/translate_button_code.hpp>
 #include <sgec/impl/input/cursor/translate_button_event.hpp>
 #include <sgec/impl/input/cursor/translate_button_state.hpp>
 #include <sgec/impl/input/cursor/translate_position.hpp>
+#include <sgec/input/cursor/button_event.h>
 #include <sge/input/cursor/button_pressed.hpp>
 #include <sge/input/cursor/event/button.hpp>
 

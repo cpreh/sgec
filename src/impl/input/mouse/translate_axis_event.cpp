@@ -1,5 +1,5 @@
-#include <sgec/impl/input/mouse/translate_axis_event.hpp>
 #include <sgec/impl/input/mouse/translate_axis_code.hpp>
+#include <sgec/impl/input/mouse/translate_axis_event.hpp>
 #include <sgec/input/mouse/axis_event.h>
 #include <sge/input/mouse/event/axis.hpp>
 

@@ -3,8 +3,8 @@
 #include <sgec/window/event.h>
 #include <sge/window/system.hpp>
 #include <awl/event/base.hpp>
-#include <awl/event/container.hpp>
 #include <awl/event/base_unique_ptr.hpp>
+#include <awl/event/container.hpp>
 #include <awl/main/exit_code.hpp>
 #include <awl/main/optional_exit_code.hpp>
 #include <fcppt/const.hpp>

@@ -1,7 +1,7 @@
-#include <sgec/input/cursor/scroll_event.h>
 #include <sgec/impl/input/cursor/make_id.hpp>
 #include <sgec/impl/input/cursor/translate_scroll_code.hpp>
 #include <sgec/impl/input/cursor/translate_scroll_event.hpp>
+#include <sgec/input/cursor/scroll_event.h>
 #include <sge/input/cursor/event/scroll.hpp>
 
 

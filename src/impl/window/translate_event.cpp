@@ -9,6 +9,8 @@
 #include <sgec/impl/input/mouse/translate_button_event.hpp>
 #include <sgec/impl/renderer/translate_render_event.hpp>
 #include <sgec/impl/window/translate_event.hpp>
+#include <sgec/window/event.h>
+#include <sgec/window/event_type.h>
 #include <sge/input/cursor/event/button.hpp>
 #include <sge/input/cursor/event/move.hpp>
 #include <sge/input/cursor/event/scroll.hpp>
@@ -19,8 +21,6 @@
 #include <sge/input/mouse/event/axis.hpp>
 #include <sge/input/mouse/event/button.hpp>
 #include <sge/renderer/event/render.hpp>
-#include <sgec/window/event.h>
-#include <sgec/window/event_type.h>
 #include <awl/event/base.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/cast/dynamic_fun.hpp>

@@ -1,9 +1,9 @@
-#include <sgec/impl/input/keyboard/translate_key_event.hpp>
 #include <sgec/impl/input/key/translate_code.hpp>
 #include <sgec/impl/input/key/translate_state.hpp>
+#include <sgec/impl/input/keyboard/translate_key_event.hpp>
 #include <sgec/input/keyboard/key_event.h>
-#include <sge/input/keyboard/event/key.hpp>
 #include <sge/input/key/pressed.hpp>
+#include <sge/input/keyboard/event/key.hpp>
 
 
 sgec_input_keyboard_key_event

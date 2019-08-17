@@ -9,7 +9,7 @@
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -76,7 +76,7 @@ sgec_font_system::add(
 		new
 		sgec_font_added(
 			system_.add_font(
-				boost::filesystem::path(
+				std::filesystem::path(
 					_path
 				)
 			)

@@ -26,20 +26,6 @@ find_package(
 )
 
 find_package(
-	Boost
-	1.47.0
-	REQUIRED
-)
-
-include_directories(
-	${Boost_INCLUDE_DIRS}
-)
-
-link_directories(
-	${Boost_LIBRARY_DIRS}
-)
-
-find_package(
 	awl
 	REQUIRED
 )

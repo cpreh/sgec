@@ -11,7 +11,7 @@
 #include <sge/renderer/texture/planar.hpp>
 #include <sge/renderer/texture/mipmap/off.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,7 +27,7 @@ try
 	return
 		new sgec_renderer_texture_planar(
 			sge::renderer::texture::create_planar_from_path(
-				boost::filesystem::path(
+				std::filesystem::path(
 					_path
 				),
 				_renderer->get(),

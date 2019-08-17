@@ -7,7 +7,7 @@
 #include <fcppt/const.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/path.hpp>
+#include <filesystem>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -35,7 +35,7 @@ sgec_audio_loader::load(
 		fcppt::optional::maybe(
 			sge::audio::load(
 				loader_,
-				boost::filesystem::path(
+				std::filesystem::path(
 					_path
 				)
 			),

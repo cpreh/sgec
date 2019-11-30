@@ -21,7 +21,7 @@ include(
 )
 
 find_package(
-	Brigand
+	Metal
 	REQUIRED
 )
 

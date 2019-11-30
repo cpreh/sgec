@@ -252,6 +252,7 @@ function(
 		PUBLIC
 		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
 		${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
+		${METAL_INCLUDE_DIRS}
 	)
 
 	target_link_libraries(
@@ -273,7 +274,6 @@ function(
 		${sgeviewport_TARGET}
 		${sgewindow_TARGET}
 		${FCPPT_UTILS_FILESYSTEM_LIBRARIES}
-		Brigand
 	)
 
 	install(

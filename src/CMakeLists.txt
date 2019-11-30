@@ -252,12 +252,12 @@ function(
 		PUBLIC
 		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
 		${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
-		${METAL_INCLUDE_DIRS}
 	)
 
 	target_link_libraries(
 		${TARGET_NAME}
 		PRIVATE
+		Metal
 		${fcppt_core_TARGET}
 		${awl_TARGET}
 		${sgeaudio_TARGET}

@@ -53,7 +53,7 @@
 #include <fcppt/math/dim/contents.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <stddef.h>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

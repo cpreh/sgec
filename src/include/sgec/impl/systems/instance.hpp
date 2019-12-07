@@ -23,7 +23,7 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/unique_ptr_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal/list/list.hpp>
+#include <metal.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

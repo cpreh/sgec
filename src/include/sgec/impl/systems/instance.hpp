@@ -22,9 +22,6 @@
 #include <sge/window/dim_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/unique_ptr_decl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 struct sgec_systems_instance
@@ -68,17 +65,15 @@ public:
 private:
 	typedef
 	sge::systems::instance<
-		metal::list<
-			sge::systems::with_renderer<
-				sge::systems::renderer_caps::ffp
-			>,
-			sge::systems::with_window,
-			sge::systems::with_input,
-			sge::systems::with_image2d,
-			sge::systems::with_font,
-			sge::systems::with_audio_loader,
-			sge::systems::with_audio_player
-		>
+		sge::systems::with_renderer<
+			sge::systems::renderer_caps::ffp
+		>,
+		sge::systems::with_window,
+		sge::systems::with_input,
+		sge::systems::with_image2d,
+		sge::systems::with_font,
+		sge::systems::with_audio_loader,
+		sge::systems::with_audio_player
 	>
 	instance;
 

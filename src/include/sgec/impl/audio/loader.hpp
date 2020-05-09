@@ -3,7 +3,7 @@
 
 #include <sgec/audio/file_fwd.h>
 #include <sgec/audio/loader_fwd.h>
-#include <sge/audio/loader_fwd.hpp>
+#include <sge/audio/loader_ref.hpp>
 #include <fcppt/noncopyable.hpp>
 
 
@@ -15,7 +15,7 @@ struct sgec_audio_loader
 public:
 	explicit
 	sgec_audio_loader(
-		sge::audio::loader &
+		sge::audio::loader_ref
 	);
 
 	~sgec_audio_loader();
@@ -25,7 +25,7 @@ public:
 		char const *
 	);
 private:
-	sge::audio::loader &loader_;
+	sge::audio::loader_ref const loader_;
 };
 
 #endif

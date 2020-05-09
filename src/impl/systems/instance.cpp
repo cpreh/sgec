@@ -37,6 +37,7 @@
 #include <sge/window/dim.hpp>
 #include <sge/window/title.hpp>
 #include <fcppt/from_std_string.hpp>
+#include <fcppt/make_ref.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/assert/unreachable.hpp>
@@ -184,7 +185,9 @@ sgec_systems_instance::sgec_systems_instance(
 		fcppt::make_unique_ptr<
 			sgec_audio_loader
 		>(
-			impl_.audio_loader()
+			fcppt::make_ref(
+				impl_.audio_loader()
+			)
 		)
 	),
 	audio_player_(

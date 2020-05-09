@@ -3,7 +3,7 @@
 #include <sge/audio/file.hpp>
 #include <sge/audio/file_unique_ptr.hpp>
 #include <sge/audio/load.hpp>
-#include <sge/audio/loader_fwd.hpp>
+#include <sge/audio/loader_ref.hpp>
 #include <fcppt/const.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -13,7 +13,7 @@
 
 
 sgec_audio_loader::sgec_audio_loader(
-	sge::audio::loader &_loader
+	sge::audio::loader_ref const _loader
 )
 :
 	loader_(

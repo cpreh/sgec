@@ -4,8 +4,11 @@
 #include <sgec/renderer/context/ffp_fwd.h>
 #include <sge/renderer/context/ffp.hpp>
 #include <sge/renderer/device/ffp.hpp>
+#include <sge/renderer/target/base.hpp>
 #include <sge/renderer/target/onscreen.hpp>
+#include <fcppt/make_ref.hpp>
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/reference_to_base.hpp>
 
 
 sgec_renderer_device_ffp::sgec_renderer_device_ffp(
@@ -36,7 +39,13 @@ sgec_renderer_device_ffp::begin_rendering()
 		new
 		sgec_renderer_context_ffp(
 			device_.begin_rendering_ffp(
-				device_.onscreen_target()
+				fcppt::reference_to_base<
+					sge::renderer::target::base
+				>(
+					fcppt::make_ref(
+						device_.onscreen_target()
+					)
+				)
 			)
 		);
 }

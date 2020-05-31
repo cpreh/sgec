@@ -5,11 +5,14 @@
 #include <sgec/renderer/device/ffp_fwd.h>
 #include <sgec/renderer/texture/create_planar_from_path.h>
 #include <sge/renderer/resource_flags_field.hpp>
+#include <sge/renderer/device/core.hpp>
 #include <sge/renderer/device/ffp.hpp>
 #include <sge/renderer/texture/create_planar_from_path.hpp>
 #include <sge/renderer/texture/emulate_srgb.hpp>
 #include <sge/renderer/texture/planar.hpp>
 #include <sge/renderer/texture/mipmap/off.hpp>
+#include <fcppt/make_ref.hpp>
+#include <fcppt/reference_to_base.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
@@ -30,7 +33,13 @@ try
 				std::filesystem::path(
 					_path
 				),
-				_renderer->get(),
+				fcppt::reference_to_base<
+					sge::renderer::device::core
+				>(
+					fcppt::make_ref(
+						_renderer->get()
+					)
+				),
 				_image_system->get(),
 				sge::renderer::texture::mipmap::off(),
 				sge::renderer::resource_flags_field{},

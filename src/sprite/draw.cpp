@@ -11,6 +11,7 @@
 #include <sge/image/color/rgba8_format.hpp>
 #include <sge/renderer/screen_size.hpp>
 #include <sge/renderer/context/ffp.hpp>
+#include <sge/renderer/device/core.hpp>
 #include <sge/renderer/device/ffp.hpp>
 #include <sge/sprite/object.hpp>
 #include <sge/sprite/projection_dim.hpp>
@@ -47,6 +48,8 @@
 #include <sge/sprite/state/parameters.hpp>
 #include <sge/texture/const_part_ref.hpp>
 #include <sge/window/dim.hpp>
+#include <fcppt/make_ref.hpp>
+#include <fcppt/reference_to_base.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/cast/size_fun.hpp>
 #include <fcppt/iterator/make_range.hpp>
@@ -143,7 +146,13 @@ try
 	);
 
 	sprite_buffers_type sprite_buffers(
-		_render_device->get(),
+		fcppt::reference_to_base<
+			sge::renderer::device::core
+		>(
+			fcppt::make_ref(
+				_render_device->get()
+			)
+		),
 		sge::sprite::buffers::option::dynamic
 	);
 

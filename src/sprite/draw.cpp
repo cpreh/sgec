@@ -141,7 +141,9 @@ try
 	sprite_state_parameters;
 
 	sprite_state_object sprite_state(
-		_render_device->get(),
+		fcppt::make_ref(
+			_render_device->get()
+		),
 		sprite_state_parameters()
 	);
 

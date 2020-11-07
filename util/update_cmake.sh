@@ -7,4 +7,5 @@ update_cmake \
 	SGEC_FILES \
 	-e ".*\\..*" \
 	src \
+	impl \
 	include

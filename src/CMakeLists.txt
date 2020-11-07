@@ -4,6 +4,90 @@ include(
 
 set(
 	SGEC_FILES
+	impl/include/sgec/impl/audio/buffer.hpp
+	impl/include/sgec/impl/audio/file.hpp
+	impl/include/sgec/impl/audio/loader.hpp
+	impl/include/sgec/impl/audio/player.hpp
+	impl/include/sgec/impl/audio/sound/base.hpp
+	impl/include/sgec/impl/audio/sound/from_repeat.hpp
+	impl/include/sgec/impl/audio/sound/to_play_status.hpp
+	impl/include/sgec/impl/font/added.hpp
+	impl/include/sgec/impl/font/object.hpp
+	impl/include/sgec/impl/font/system.hpp
+	impl/include/sgec/impl/image/color/translate_rgba.hpp
+	impl/include/sgec/impl/image2d/system.hpp
+	impl/include/sgec/impl/input/cursor/make_id.hpp
+	impl/include/sgec/impl/input/cursor/translate_button_code.hpp
+	impl/include/sgec/impl/input/cursor/translate_button_event.hpp
+	impl/include/sgec/impl/input/cursor/translate_button_state.hpp
+	impl/include/sgec/impl/input/cursor/translate_move_event.hpp
+	impl/include/sgec/impl/input/cursor/translate_position.hpp
+	impl/include/sgec/impl/input/cursor/translate_position_opt.hpp
+	impl/include/sgec/impl/input/cursor/translate_scroll_code.hpp
+	impl/include/sgec/impl/input/cursor/translate_scroll_event.hpp
+	impl/include/sgec/impl/input/focus/make_id.hpp
+	impl/include/sgec/impl/input/focus/translate_key_event.hpp
+	impl/include/sgec/impl/input/focus/translate_key_repeat_event.hpp
+	impl/include/sgec/impl/input/focus/translate_text_event.hpp
+	impl/include/sgec/impl/input/key/translate_code.hpp
+	impl/include/sgec/impl/input/key/translate_state.hpp
+	impl/include/sgec/impl/input/keyboard/translate_key_event.hpp
+	impl/include/sgec/impl/input/mouse/translate_axis_code.hpp
+	impl/include/sgec/impl/input/mouse/translate_axis_event.hpp
+	impl/include/sgec/impl/input/mouse/translate_button_code.hpp
+	impl/include/sgec/impl/input/mouse/translate_button_event.hpp
+	impl/include/sgec/impl/input/mouse/translate_button_state.hpp
+	impl/include/sgec/impl/renderer/context/ffp.hpp
+	impl/include/sgec/impl/renderer/device/ffp.hpp
+	impl/include/sgec/impl/renderer/target/onscreen.hpp
+	impl/include/sgec/impl/renderer/texture/planar.hpp
+	impl/include/sgec/impl/renderer/translate_render_event.hpp
+	impl/include/sgec/impl/systems/instance.hpp
+	impl/include/sgec/impl/texture/part.hpp
+	impl/include/sgec/impl/window/system.hpp
+	impl/include/sgec/impl/window/translate_event.hpp
+	impl/src/audio/buffer.cpp
+	impl/src/audio/file.cpp
+	impl/src/audio/loader.cpp
+	impl/src/audio/player.cpp
+	impl/src/audio/sound/base.cpp
+	impl/src/audio/sound/from_repeat.cpp
+	impl/src/audio/sound/to_play_status.cpp
+	impl/src/font/added.cpp
+	impl/src/font/object.cpp
+	impl/src/font/system.cpp
+	impl/src/image/color/translate_rgba.cpp
+	impl/src/image2d/system.cpp
+	impl/src/input/cursor/make_id.cpp
+	impl/src/input/cursor/translate_button_code.cpp
+	impl/src/input/cursor/translate_button_event.cpp
+	impl/src/input/cursor/translate_button_state.cpp
+	impl/src/input/cursor/translate_move_event.cpp
+	impl/src/input/cursor/translate_position.cpp
+	impl/src/input/cursor/translate_position_opt.cpp
+	impl/src/input/cursor/translate_scroll_code.cpp
+	impl/src/input/cursor/translate_scroll_event.cpp
+	impl/src/input/focus/make_id.cpp
+	impl/src/input/focus/translate_key_event.cpp
+	impl/src/input/focus/translate_key_repeat_event.cpp
+	impl/src/input/focus/translate_text_event.cpp
+	impl/src/input/key/translate_code.cpp
+	impl/src/input/key/translate_state.cpp
+	impl/src/input/keyboard/translate_key_event.cpp
+	impl/src/input/mouse/translate_axis_code.cpp
+	impl/src/input/mouse/translate_axis_event.cpp
+	impl/src/input/mouse/translate_button_code.cpp
+	impl/src/input/mouse/translate_button_event.cpp
+	impl/src/input/mouse/translate_button_state.cpp
+	impl/src/renderer/context/ffp.cpp
+	impl/src/renderer/device/ffp.cpp
+	impl/src/renderer/target/onscreen.cpp
+	impl/src/renderer/texture/planar.cpp
+	impl/src/renderer/translate_render_event.cpp
+	impl/src/systems/instance.cpp
+	impl/src/texture/part.cpp
+	impl/src/window/system.cpp
+	impl/src/window/translate_event.cpp
 	include/sgec/audio/buffer.h
 	include/sgec/audio/buffer_fwd.h
 	include/sgec/audio/file.h
@@ -111,90 +195,6 @@ set(
 	src/font/object.cpp
 	src/font/system.cpp
 	src/image/color/make_rgba.cpp
-	src/impl/audio/buffer.cpp
-	src/impl/audio/file.cpp
-	src/impl/audio/loader.cpp
-	src/impl/audio/player.cpp
-	src/impl/audio/sound/base.cpp
-	src/impl/audio/sound/from_repeat.cpp
-	src/impl/audio/sound/to_play_status.cpp
-	src/impl/font/added.cpp
-	src/impl/font/object.cpp
-	src/impl/font/system.cpp
-	src/impl/image/color/translate_rgba.cpp
-	src/impl/image2d/system.cpp
-	src/impl/input/cursor/make_id.cpp
-	src/impl/input/cursor/translate_button_code.cpp
-	src/impl/input/cursor/translate_button_event.cpp
-	src/impl/input/cursor/translate_button_state.cpp
-	src/impl/input/cursor/translate_move_event.cpp
-	src/impl/input/cursor/translate_position.cpp
-	src/impl/input/cursor/translate_position_opt.cpp
-	src/impl/input/cursor/translate_scroll_code.cpp
-	src/impl/input/cursor/translate_scroll_event.cpp
-	src/impl/input/focus/make_id.cpp
-	src/impl/input/focus/translate_key_event.cpp
-	src/impl/input/focus/translate_key_repeat_event.cpp
-	src/impl/input/focus/translate_text_event.cpp
-	src/impl/input/key/translate_code.cpp
-	src/impl/input/key/translate_state.cpp
-	src/impl/input/keyboard/translate_key_event.cpp
-	src/impl/input/mouse/translate_axis_code.cpp
-	src/impl/input/mouse/translate_axis_event.cpp
-	src/impl/input/mouse/translate_button_code.cpp
-	src/impl/input/mouse/translate_button_event.cpp
-	src/impl/input/mouse/translate_button_state.cpp
-	src/impl/renderer/context/ffp.cpp
-	src/impl/renderer/device/ffp.cpp
-	src/impl/renderer/target/onscreen.cpp
-	src/impl/renderer/texture/planar.cpp
-	src/impl/renderer/translate_render_event.cpp
-	src/impl/systems/instance.cpp
-	src/impl/texture/part.cpp
-	src/impl/window/system.cpp
-	src/impl/window/translate_event.cpp
-	src/include/sgec/impl/audio/buffer.hpp
-	src/include/sgec/impl/audio/file.hpp
-	src/include/sgec/impl/audio/loader.hpp
-	src/include/sgec/impl/audio/player.hpp
-	src/include/sgec/impl/audio/sound/base.hpp
-	src/include/sgec/impl/audio/sound/from_repeat.hpp
-	src/include/sgec/impl/audio/sound/to_play_status.hpp
-	src/include/sgec/impl/font/added.hpp
-	src/include/sgec/impl/font/object.hpp
-	src/include/sgec/impl/font/system.hpp
-	src/include/sgec/impl/image/color/translate_rgba.hpp
-	src/include/sgec/impl/image2d/system.hpp
-	src/include/sgec/impl/input/cursor/make_id.hpp
-	src/include/sgec/impl/input/cursor/translate_button_code.hpp
-	src/include/sgec/impl/input/cursor/translate_button_event.hpp
-	src/include/sgec/impl/input/cursor/translate_button_state.hpp
-	src/include/sgec/impl/input/cursor/translate_move_event.hpp
-	src/include/sgec/impl/input/cursor/translate_position.hpp
-	src/include/sgec/impl/input/cursor/translate_position_opt.hpp
-	src/include/sgec/impl/input/cursor/translate_scroll_code.hpp
-	src/include/sgec/impl/input/cursor/translate_scroll_event.hpp
-	src/include/sgec/impl/input/focus/make_id.hpp
-	src/include/sgec/impl/input/focus/translate_key_event.hpp
-	src/include/sgec/impl/input/focus/translate_key_repeat_event.hpp
-	src/include/sgec/impl/input/focus/translate_text_event.hpp
-	src/include/sgec/impl/input/key/translate_code.hpp
-	src/include/sgec/impl/input/key/translate_state.hpp
-	src/include/sgec/impl/input/keyboard/translate_key_event.hpp
-	src/include/sgec/impl/input/mouse/translate_axis_code.hpp
-	src/include/sgec/impl/input/mouse/translate_axis_event.hpp
-	src/include/sgec/impl/input/mouse/translate_button_code.hpp
-	src/include/sgec/impl/input/mouse/translate_button_event.hpp
-	src/include/sgec/impl/input/mouse/translate_button_state.hpp
-	src/include/sgec/impl/renderer/context/ffp.hpp
-	src/include/sgec/impl/renderer/device/ffp.hpp
-	src/include/sgec/impl/renderer/target/onscreen.hpp
-	src/include/sgec/impl/renderer/texture/planar.hpp
-	src/include/sgec/impl/renderer/translate_render_event.hpp
-	src/include/sgec/impl/systems/instance.hpp
-	src/include/sgec/impl/texture/part.hpp
-	src/include/sgec/impl/window/system.hpp
-	src/include/sgec/impl/window/translate_event.hpp
 	src/renderer/context/ffp.cpp
 	src/renderer/device/ffp.cpp
 	src/renderer/target/onscreen.cpp
@@ -206,10 +206,6 @@ set(
 	src/texture/part_raw.cpp
 	src/window/free_event.cpp
 	src/window/system.cpp
-)
-
-include_directories(
-	${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 fcppt_utils_append_source_dir_and_make_groups(
@@ -252,6 +248,8 @@ function(
 		PUBLIC
 		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
 		${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
+		PRIVATE
+		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/impl/include
 	)
 
 	target_link_libraries(

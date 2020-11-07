@@ -64,7 +64,7 @@ sgec_systems_instance::sgec_systems_instance(
 
 sgec_systems_instance::sgec_systems_instance(
 	char const *const _window_name,
-	sge::window::dim const _dim,
+	sge::window::dim const &_dim,
 	sgec_systems_cursor_option const _cursor_option
 )
 :
@@ -100,7 +100,7 @@ sgec_systems_instance::sgec_systems_instance(
 						_dim
 					)
 					==
-					0u
+					0U
 					?
 						sge::viewport::fill_on_resize()
 					:
@@ -157,28 +157,36 @@ sgec_systems_instance::sgec_systems_instance(
 		fcppt::make_unique_ptr<
 			sgec_renderer_device_ffp
 		>(
-			impl_.renderer_device_ffp()
+			fcppt::make_ref(
+				impl_.renderer_device_ffp()
+			)
 		)
 	),
 	window_system_(
 		fcppt::make_unique_ptr<
 			sgec_window_system
 		>(
-			impl_.window_system()
+			fcppt::make_ref(
+				impl_.window_system()
+			)
 		)
 	),
 	image2d_system_(
 		fcppt::make_unique_ptr<
 			sgec_image2d_system
 		>(
-			impl_.image_system()
+			fcppt::make_ref(
+				impl_.image_system()
+			)
 		)
 	),
 	font_system_(
 		fcppt::make_unique_ptr<
 			sgec_font_system
 		>(
-			impl_.font_system()
+			fcppt::make_ref(
+				impl_.font_system()
+			)
 		)
 	),
 	audio_loader_(
@@ -194,15 +202,16 @@ sgec_systems_instance::sgec_systems_instance(
 		fcppt::make_unique_ptr<
 			sgec_audio_player
 		>(
-			impl_.audio_player()
+			fcppt::make_ref(
+				impl_.audio_player()
+			)
 		)
 	)
 {
 }
 
 sgec_systems_instance::~sgec_systems_instance()
-{
-}
+= default;
 
 sgec_renderer_device_ffp *
 sgec_systems_instance::renderer()

@@ -10,7 +10,7 @@ sgec_font_object_destroy(
 )
 try
 {
-	delete
+	delete // NOLINT(cppcoreguidelines-owning-memory)
 		_font;
 
 	return

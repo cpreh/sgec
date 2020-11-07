@@ -34,7 +34,7 @@ sgec_renderer_context_ffp_destroy(
 )
 try
 {
-	delete
+	delete // NOLINT(cppcoreguidelines-owning-memory)
 		_context;
 
 	return

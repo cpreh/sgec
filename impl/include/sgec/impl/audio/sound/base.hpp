@@ -5,12 +5,12 @@
 #include <sgec/audio/sound/play_status.h>
 #include <sgec/audio/sound/repeat.h>
 #include <sge/audio/sound/base_unique_ptr.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 
 
 struct sgec_audio_sound_base
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		sgec_audio_sound_base
 	);
 public:
@@ -26,6 +26,7 @@ public:
 		sgec_audio_sound_repeat
 	);
 
+	[[nodiscard]]
 	sgec_audio_sound_play_status
 	play_status() const;
 private:

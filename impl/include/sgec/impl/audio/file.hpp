@@ -4,12 +4,12 @@
 #include <sgec/audio/file_fwd.h>
 #include <sge/audio/file_fwd.hpp>
 #include <sge/audio/file_unique_ptr.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 
 
 struct sgec_audio_file
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		sgec_audio_file
 	);
 public:
@@ -20,6 +20,7 @@ public:
 
 	~sgec_audio_file();
 
+	[[nodiscard]]
 	sge::audio::file &
 	get();
 private:

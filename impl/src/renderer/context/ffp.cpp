@@ -23,8 +23,7 @@ sgec_renderer_context_ffp::sgec_renderer_context_ffp(
 }
 
 sgec_renderer_context_ffp::~sgec_renderer_context_ffp()
-{
-}
+= default;
 
 void
 sgec_renderer_context_ffp::clear(

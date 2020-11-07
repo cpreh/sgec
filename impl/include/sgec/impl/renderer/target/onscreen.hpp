@@ -4,26 +4,32 @@
 #include <sgec/renderer/target/onscreen_fwd.h>
 #include <sge/renderer/target/onscreen_fwd.hpp>
 #include <sge/renderer/target/viewport_fwd.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
+#include <fcppt/reference_impl.hpp>
 
 
 struct sgec_renderer_target_onscreen
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		sgec_renderer_target_onscreen
 	);
 public:
 	explicit
 	sgec_renderer_target_onscreen(
-		sge::renderer::target::onscreen &
+		fcppt::reference<
+			sge::renderer::target::onscreen
+		>
 	);
 
-	~sgec_renderer_target_onscreen();
+	~sgec_renderer_target_onscreen(); // NOLINT(performance-trivially-destructible)
 
-	sge::renderer::target::viewport const
+	[[nodiscard]]
+	sge::renderer::target::viewport
 	viewport() const;
 private:
-	sge::renderer::target::onscreen &target_;
+	fcppt::reference<
+		sge::renderer::target::onscreen
+	> const target_;
 };
 
 #endif

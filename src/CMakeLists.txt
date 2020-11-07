@@ -246,10 +246,16 @@ function(
 	target_include_directories(
 		${TARGET_NAME}
 		PUBLIC
-		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
 		${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
 		PRIVATE
 		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/impl/include
+	)
+
+	target_include_directories(
+		${TARGET_NAME}
+		SYSTEM
+		PUBLIC
+		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
 	)
 
 	target_link_libraries(

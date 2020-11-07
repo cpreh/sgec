@@ -3,10 +3,13 @@
 #include <sgec/impl/audio/player.hpp>
 #include <sge/audio/buffer.hpp>
 #include <sge/audio/player.hpp>
+#include <fcppt/reference_impl.hpp>
 
 
 sgec_audio_player::sgec_audio_player(
-	sge::audio::player &_player
+	fcppt::reference<
+		sge::audio::player
+	> const _player
 )
 :
 	player_(
@@ -16,8 +19,7 @@ sgec_audio_player::sgec_audio_player(
 }
 
 sgec_audio_player::~sgec_audio_player()
-{
-}
+= default;
 
 sgec_audio_buffer *
 sgec_audio_player::create_buffer(
@@ -27,7 +29,7 @@ sgec_audio_player::create_buffer(
 	return
 		new
 		sgec_audio_buffer(
-			player_.create_buffer(
+			player_.get().create_buffer(
 				_file->get()
 			)
 		);

@@ -12,6 +12,13 @@ find_package(
 	REQUIRED
 )
 
+# mizuiro uses too many default arguments
+set(
+	FCPPT_UTILS_CLANG_TIDY_ADDITIONAL_CHECKS
+	"-fuchsia-default-arguments-calls"
+	"-fuchsia-default-arguments-declarations"
+)
+
 include(
 	FcpptCMakeUtils
 )

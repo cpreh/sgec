@@ -14,7 +14,7 @@ namespace image
 namespace color
 {
 
-sge::image::color::rgba8 const
+sge::image::color::rgba8
 translate_rgba(
 	sgec_image_color_rgba
 );

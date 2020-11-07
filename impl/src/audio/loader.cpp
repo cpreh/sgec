@@ -23,8 +23,7 @@ sgec_audio_loader::sgec_audio_loader(
 }
 
 sgec_audio_loader::~sgec_audio_loader()
-{
-}
+= default;
 
 sgec_audio_file *
 sgec_audio_loader::load(
@@ -35,7 +34,7 @@ sgec_audio_loader::load(
 		fcppt::optional::maybe(
 			sge::audio::load(
 				loader_,
-				std::filesystem::path(
+				std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
 					_path
 				)
 			),
@@ -48,7 +47,7 @@ sgec_audio_loader::load(
 				sge::audio::file_unique_ptr &&_file
 			)
 			{
-				return
+				return // NOLINT(cppcoreguidelines-owning-memory)
 					new
 					sgec_audio_file(
 						std::move(

@@ -32,7 +32,7 @@ sgec_texture_part_destroy(
 )
 try
 {
-	delete
+	delete // NOLINT(cppcoreguidelines-owning-memory)
 		_texture;
 
 	return

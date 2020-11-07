@@ -2,12 +2,14 @@
 #include <sgec/impl/window/translate_event.hpp>
 #include <sgec/window/event.h>
 #include <sge/window/system.hpp>
+#include <sge/window/system_ref.hpp>
 #include <awl/event/base.hpp>
 #include <awl/event/base_unique_ptr.hpp>
 #include <awl/event/container.hpp>
 #include <awl/main/exit_code.hpp>
 #include <awl/main/optional_exit_code.hpp>
 #include <fcppt/const.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/join.hpp>
 #include <fcppt/container/pop_front.hpp>
 #include <fcppt/either/match.hpp>
@@ -19,7 +21,7 @@
 
 
 sgec_window_system::sgec_window_system(
-	sge::window::system &_system
+	sge::window::system_ref const _system
 )
 :
 	system_{
@@ -31,12 +33,13 @@ sgec_window_system::sgec_window_system(
 }
 
 sgec_window_system::~sgec_window_system()
-{
-}
+= default;
 
 bool
 sgec_window_system::next_event(
-	sgec_window_event &_result
+	fcppt::reference<
+		sgec_window_event
+	> const _result
 )
 try
 {
@@ -72,7 +75,7 @@ try
 								sgec_window_event const &_window_event
 							)
 							{
-								_result =
+								_result.get() =
 									_window_event;
 
 								return
@@ -82,11 +85,13 @@ try
 				}
 			)
 		)
+		{
 			break;
+		}
 
 		if(
 			fcppt::either::match(
-				system_.next(),
+				system_.get().next(),
 				[
 					this
 				](
@@ -122,8 +127,10 @@ try
 				}
 			)
 		)
+		{
 			return
 				false;
+		}
 	}
 
 	return
@@ -143,7 +150,7 @@ sgec_window_system::quit(
 )
 try
 {
-	system_.quit(
+	system_.get().quit(
 		awl::main::exit_code(
 			_exit_code
 		)

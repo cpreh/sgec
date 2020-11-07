@@ -57,7 +57,7 @@
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <metal.hpp>
-#include <stddef.h>
+#include <stddef.h> // NOLINT(hicpp-deprecated-headers,modernize-deprecated-headers)
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -74,7 +74,9 @@ sgec_sprite_draw(
 )
 try
 {
-	typedef
+	using
+	sprite_type_choices
+	=
 	sge::sprite::config::type_choices<
 		sge::sprite::config::unit_type<
 			sgec_sprite_unit
@@ -82,10 +84,11 @@ try
 		sge::sprite::config::float_type<
 			sgec_sprite_scalar
 		>
-	>
-	sprite_type_choices;
+	>;
 
-	typedef
+	using
+	sprite_choices
+	=
 	sge::sprite::config::choices<
 		sprite_type_choices,
 		sge::sprite::config::pos<
@@ -107,38 +110,42 @@ try
 				sge::image::color::rgba8_format
 			>
 		>
-	>
-	sprite_choices;
+	>;
 
-	typedef
+	using
+	sprite_buffers_type
+	=
 	sge::sprite::buffers::with_declaration<
 		sge::sprite::buffers::single<
 			sprite_choices
 		>
-	>
-	sprite_buffers_type;
+	>;
 
-	typedef
+	using
+	sprite_object
+	=
 	sge::sprite::object<
 		sprite_choices
-	>
-	sprite_object;
+	>;
 
-	typedef
-	sge::sprite::state::all_choices
-	sprite_state_choices;
+	using
+	sprite_state_choices
+	=
+	sge::sprite::state::all_choices;
 
-	typedef
+	using
+	sprite_state_object
+	=
 	sge::sprite::state::object<
 		sprite_state_choices
-	>
-	sprite_state_object;
+	>;
 
-	typedef
+	using
+	sprite_state_parameters
+	=
 	sge::sprite::state::parameters<
 		sprite_state_choices
-	>
-	sprite_state_parameters;
+	>;
 
 	sprite_state_object sprite_state(
 		fcppt::make_ref(
@@ -158,20 +165,21 @@ try
 		sge::sprite::buffers::option::dynamic
 	);
 
-	typedef
+	using
+	sprite_vector
+	=
 	std::vector<
 		sprite_object
-	>
-	sprite_vector;
+	>;
 
-	sprite_vector const sprite_objects(
+	auto const sprite_objects(
 		fcppt::algorithm::map<
 			sprite_vector
 		>(
 			fcppt::iterator::make_range(
 				_sprites,
 				_sprites
-				+
+				+ // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
 				_count
 			),
 			[](
@@ -227,7 +235,7 @@ try
 			projection_dim
 		)
 		!=
-		0u
+		0U
 		?
 			sge::sprite::state::default_options<
 				sprite_state_choices

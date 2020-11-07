@@ -72,12 +72,12 @@ sgec::impl::window::translate_event(
 							> const _button_event
 						)
 						{
-							sgec_window_event result;
+							sgec_window_event result{};
 
 							result.type =
 								sgec_window_event_type_cursor_button;
 
-							result.cursor_button =
+							result.cursor_button = // NOLINT(cppcoreguidelines-pro-type-union-access)
 								sgec::impl::input::cursor::translate_button_event(
 									_button_event.get()
 								);
@@ -91,12 +91,12 @@ sgec::impl::window::translate_event(
 							> const _move_event
 						)
 						{
-							sgec_window_event result;
+							sgec_window_event result{};
 
 							result.type =
 								sgec_window_event_type_cursor_move;
 
-							result.cursor_move =
+							result.cursor_move = // NOLINT(cppcoreguidelines-pro-type-union-access)
 								sgec::impl::input::cursor::translate_move_event(
 									_move_event.get()
 								);
@@ -110,12 +110,12 @@ sgec::impl::window::translate_event(
 							> const _scroll_event
 						)
 						{
-							sgec_window_event result;
+							sgec_window_event result{};
 
 							result.type =
 								sgec_window_event_type_cursor_scroll;
 
-							result.cursor_scroll =
+							result.cursor_scroll = // NOLINT(cppcoreguidelines-pro-type-union-access)
 								sgec::impl::input::cursor::translate_scroll_event(
 									_scroll_event.get()
 								);
@@ -129,12 +129,12 @@ sgec::impl::window::translate_event(
 							> const _text_event
 						)
 						{
-							sgec_window_event result;
+							sgec_window_event result{};
 
 							result.type =
 								sgec_window_event_type_focus_text;
 
-							result.focus_text =
+							result.focus_text = // NOLINT(cppcoreguidelines-pro-type-union-access)
 								sgec::impl::input::focus::translate_text_event(
 									_text_event.get()
 								);
@@ -148,12 +148,12 @@ sgec::impl::window::translate_event(
 							> const _key_event
 						)
 						{
-							sgec_window_event result;
+							sgec_window_event result{};
 
 							result.type =
 								sgec_window_event_type_focus_key;
 
-							result.focus_key =
+							result.focus_key = // NOLINT(cppcoreguidelines-pro-type-union-access)
 								sgec::impl::input::focus::translate_key_event(
 									_key_event.get()
 								);
@@ -167,12 +167,12 @@ sgec::impl::window::translate_event(
 							> const _key_repeat_event
 						)
 						{
-							sgec_window_event result;
+							sgec_window_event result{};
 
 							result.type =
 								sgec_window_event_type_focus_key_repeat;
 
-							result.focus_key_repeat =
+							result.focus_key_repeat = // NOLINT(cppcoreguidelines-pro-type-union-access)
 								sgec::impl::input::focus::translate_key_repeat_event(
 									_key_repeat_event.get()
 								);
@@ -186,12 +186,12 @@ sgec::impl::window::translate_event(
 							> const _key_event
 						)
 						{
-							sgec_window_event result;
+							sgec_window_event result{};
 
 							result.type =
 								sgec_window_event_type_keyboard_key;
 
-							result.keyboard_key =
+							result.keyboard_key = // NOLINT(cppcoreguidelines-pro-type-union-access)
 								sgec::impl::input::keyboard::translate_key_event(
 									_key_event.get()
 								);
@@ -205,12 +205,12 @@ sgec::impl::window::translate_event(
 							> const _axis_event
 						)
 						{
-							sgec_window_event result;
+							sgec_window_event result{};
 
 							result.type =
 								sgec_window_event_type_mouse_axis;
 
-							result.mouse_axis =
+							result.mouse_axis = // NOLINT(cppcoreguidelines-pro-type-union-access)
 								sgec::impl::input::mouse::translate_axis_event(
 									_axis_event.get()
 								);
@@ -224,12 +224,12 @@ sgec::impl::window::translate_event(
 							> const _button_event
 						)
 						{
-							sgec_window_event result;
+							sgec_window_event result{};
 
 							result.type =
 								sgec_window_event_type_mouse_button;
 
-							result.mouse_button =
+							result.mouse_button = // NOLINT(cppcoreguidelines-pro-type-union-access)
 								sgec::impl::input::mouse::translate_button_event(
 									_button_event.get()
 								);
@@ -243,12 +243,12 @@ sgec::impl::window::translate_event(
 							> const _render_event
 						)
 						{
-							sgec_window_event result;
+							sgec_window_event result{};
 
 							result.type =
 								sgec_window_event_type_render;
 
-							result.render =
+							result.render = // NOLINT(cppcoreguidelines-pro-type-union-access)
 								sgec::impl::renderer::translate_render_event(
 									_render_event.get()
 								);

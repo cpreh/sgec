@@ -10,7 +10,7 @@
 #include <fcppt/cast/size.hpp>
 
 
-sge::image::color::rgba8 const
+sge::image::color::rgba8
 sgec::impl::image::color::translate_rgba(
 	sgec_image_color_rgba const _color
 )
@@ -33,7 +33,7 @@ sgec::impl::image::color::translate_rgba(
 							fcppt::literal<
 								sgec_image_color_rgba
 							>(
-								0xFF
+								0xFFU // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 							)
 							<<
 							_shift
@@ -49,9 +49,9 @@ sgec::impl::image::color::translate_rgba(
 
 	return
 		sge::image::color::rgba8(
-			(sge::image::color::init::red() = translate(24u))
-			(sge::image::color::init::blue() = translate(16u))
-			(sge::image::color::init::green() = translate(8u))
-			(sge::image::color::init::alpha() = translate(0u))
+			(sge::image::color::init::red() = translate(24U)) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			(sge::image::color::init::blue() = translate(16U)) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			(sge::image::color::init::green() = translate(8U)) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+			(sge::image::color::init::alpha() = translate(0U)) // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		);
 }

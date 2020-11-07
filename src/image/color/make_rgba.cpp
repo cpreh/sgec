@@ -35,21 +35,21 @@ sgec_image_color_make_rgba(
 	return
 		translate(
 			_red,
-			24u
+			24U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 		|
 		translate(
 			_green,
-			16u
+			16U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 		|
 		translate(
 			_blue,
-			8u
+			8U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		)
 		|
 		translate(
 			_alpha,
-			0u
+			0U // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
 		);
 }

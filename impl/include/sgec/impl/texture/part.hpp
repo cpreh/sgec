@@ -5,12 +5,12 @@
 #include <sge/renderer/dim2_fwd.hpp>
 #include <sge/texture/part_fwd.hpp>
 #include <sge/texture/part_unique_ptr.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 
 
 struct sgec_texture_part
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		sgec_texture_part
 	);
 public:
@@ -21,9 +21,11 @@ public:
 
 	~sgec_texture_part();
 
-	sge::renderer::dim2 const
+	[[nodiscard]]
+	sge::renderer::dim2
 	size() const;
 
+	[[nodiscard]]
 	sge::texture::part const &
 	get() const;
 private:

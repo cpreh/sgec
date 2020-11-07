@@ -22,8 +22,7 @@ sgec_audio_buffer::sgec_audio_buffer(
 }
 
 sgec_audio_buffer::~sgec_audio_buffer()
-{
-}
+= default;
 
 sgec_audio_sound_base *
 sgec_audio_buffer::create_nonpositional()

@@ -21,7 +21,7 @@ sgec_systems_instance_create(
 )
 try
 {
-	return
+	return // NOLINT(cppcoreguidelines-owning-memory)
 		new sgec_systems_instance(
 			_window_name,
 			_width,
@@ -44,7 +44,7 @@ sgec_systems_instance_destroy(
 )
 try
 {
-	delete
+	delete // NOLINT(cppcoreguidelines-owning-memory)
 		_instance;
 
 	return

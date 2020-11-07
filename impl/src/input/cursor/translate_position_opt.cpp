@@ -27,7 +27,7 @@ sgec::impl::input::cursor::translate_position_opt(
 					};
 			},
 			[](
-				sge::input::cursor::position const _pos
+				sge::input::cursor::position const &_pos
 			)
 			{
 				return

@@ -10,7 +10,7 @@ sgec_audio_file_destroy(
 )
 try
 {
-	delete
+	delete // NOLINT(cppcoreguidelines-owning-memory)
 		_file;
 
 	return

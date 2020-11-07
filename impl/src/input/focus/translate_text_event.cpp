@@ -14,7 +14,7 @@ sgec::impl::input::focus::translate_text_event(
 {
 	wchar_t *const text{
 		new wchar_t[
-			_event.get().size() + 1u
+			_event.get().size() + 1U
 		]
 	};
 

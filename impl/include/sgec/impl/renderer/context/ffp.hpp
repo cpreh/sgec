@@ -5,12 +5,12 @@
 #include <sgec/renderer/context/ffp_fwd.h>
 #include <sge/renderer/context/ffp_fwd.hpp>
 #include <sge/renderer/context/ffp_unique_ptr.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 
 
 struct sgec_renderer_context_ffp
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		sgec_renderer_context_ffp
 	);
 public:
@@ -26,6 +26,7 @@ public:
 		sgec_image_color_rgba
 	);
 
+	[[nodiscard]]
 	sge::renderer::context::ffp &
 	get();
 private:

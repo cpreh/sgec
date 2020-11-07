@@ -14,6 +14,8 @@ sgec_window_free_event(
 		==
 		sgec_window_event_type_focus_text
 	)
-		delete[]
-			_event->focus_text.text;
+	{
+		delete[] // NOLINT(cppcoreguidelines-owning-memory)
+			_event->focus_text.text; // NOLINT(cppcoreguidelines-pro-type-union-access)
+	}
 }

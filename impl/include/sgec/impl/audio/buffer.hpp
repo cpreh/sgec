@@ -4,12 +4,12 @@
 #include <sgec/audio/buffer_fwd.h>
 #include <sgec/audio/sound/base_fwd.h>
 #include <sge/audio/buffer_unique_ptr.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 
 
 struct sgec_audio_buffer
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		sgec_audio_buffer
 	);
 public:
@@ -20,6 +20,7 @@ public:
 
 	~sgec_audio_buffer();
 
+	[[nodiscard]]
 	sgec_audio_sound_base *
 	create_nonpositional();
 private:

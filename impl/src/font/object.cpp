@@ -19,8 +19,7 @@ sgec_font_object::sgec_font_object(
 }
 
 sgec_font_object::~sgec_font_object()
-{
-}
+= default;
 
 sge::font::object &
 sgec_font_object::get()

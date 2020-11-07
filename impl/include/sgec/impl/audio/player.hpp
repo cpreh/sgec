@@ -5,28 +5,34 @@
 #include <sgec/audio/file_fwd.h>
 #include <sgec/audio/player_fwd.h>
 #include <sge/audio/player_fwd.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
+#include <fcppt/reference_impl.hpp>
 
 
 struct sgec_audio_player
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		sgec_audio_player
 	);
 public:
 	explicit
 	sgec_audio_player(
-		sge::audio::player &
+		fcppt::reference<
+			sge::audio::player
+		>
 	);
 
-	~sgec_audio_player();
+	~sgec_audio_player(); // NOLINT(performance-trivially-destructible)
 
+	[[nodiscard]]
 	sgec_audio_buffer *
 	create_buffer(
 		sgec_audio_file *
 	);
 private:
-	sge::audio::player &player_;
+	fcppt::reference<
+		sge::audio::player
+	> const player_;
 };
 
 #endif

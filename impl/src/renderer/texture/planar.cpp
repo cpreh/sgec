@@ -18,8 +18,7 @@ sgec_renderer_texture_planar::sgec_renderer_texture_planar(
 }
 
 sgec_renderer_texture_planar::~sgec_renderer_texture_planar()
-{
-}
+= default;
 
 sge::renderer::texture::planar &
 sgec_renderer_texture_planar::get()

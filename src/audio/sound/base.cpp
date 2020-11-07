@@ -53,7 +53,7 @@ sgec_audio_sound_base_destroy(
 )
 try
 {
-	delete
+	delete // NOLINT(cppcoreguidelines-owning-memory)
 		_sound;
 
 	return

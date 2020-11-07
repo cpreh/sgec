@@ -10,7 +10,7 @@ sgec_renderer_texture_planar_destroy(
 )
 try
 {
-	delete
+	delete // NOLINT(cppcoreguidelines-owning-memory)
 		_texture;
 
 	return

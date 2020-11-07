@@ -4,12 +4,12 @@
 #include <sgec/renderer/texture/planar_fwd.h>
 #include <sge/renderer/texture/planar_fwd.hpp>
 #include <sge/renderer/texture/planar_unique_ptr.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 
 
 struct sgec_renderer_texture_planar
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		sgec_renderer_texture_planar
 	);
 public:
@@ -20,6 +20,7 @@ public:
 
 	~sgec_renderer_texture_planar();
 
+	[[nodiscard]]
 	sge::renderer::texture::planar &
 	get();
 private:

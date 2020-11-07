@@ -23,8 +23,7 @@ sgec_audio_sound_base::sgec_audio_sound_base(
 }
 
 sgec_audio_sound_base::~sgec_audio_sound_base()
-{
-}
+= default;
 
 void
 sgec_audio_sound_base::play(

@@ -4,12 +4,12 @@
 #include <sgec/font/object_fwd.h>
 #include <sge/font/object_fwd.hpp>
 #include <sge/font/object_unique_ptr.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 
 
 struct sgec_font_object
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		sgec_font_object
 	);
 public:
@@ -20,6 +20,7 @@ public:
 
 	~sgec_font_object();
 
+	[[nodiscard]]
 	sge::font::object &
 	get();
 private:

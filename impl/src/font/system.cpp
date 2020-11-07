@@ -7,6 +7,7 @@
 #include <sge/font/parameters.hpp>
 #include <sge/font/system.hpp>
 #include <fcppt/from_std_string.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <filesystem>
@@ -15,7 +16,9 @@
 
 
 sgec_font_system::sgec_font_system(
-	sge::font::system &_system
+	fcppt::reference<
+		sge::font::system
+	> const _system
 )
 :
 	system_(
@@ -25,8 +28,7 @@ sgec_font_system::sgec_font_system(
 }
 
 sgec_font_system::~sgec_font_system()
-{
-}
+= default;
 
 sgec_font_object *
 sgec_font_system::create(
@@ -38,7 +40,10 @@ sgec_font_system::create(
 
 	if(
 		_family
+		!=
+		nullptr
 	)
+	{
 		parameters.family(
 			fcppt::from_std_string(
 				std::string(
@@ -46,22 +51,25 @@ sgec_font_system::create(
 				)
 			)
 		);
+	}
 
 	if(
 		_size
 		!=
 		-1
 	)
+	{
 		parameters.ttf_size(
 			fcppt::cast::to_unsigned(
 				_size
 			)
 		);
+	}
 
 	return
 		new
 		sgec_font_object(
-			system_.create_font(
+			system_.get().create_font(
 				parameters
 			)
 		);
@@ -75,8 +83,8 @@ sgec_font_system::add(
 	return
 		new
 		sgec_font_added(
-			system_.add_font(
-				std::filesystem::path(
+			system_.get().add_font(
+				std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
 					_path
 				)
 			)
@@ -87,5 +95,5 @@ sge::font::system &
 sgec_font_system::get()
 {
 	return
-		system_;
+		system_.get();
 }

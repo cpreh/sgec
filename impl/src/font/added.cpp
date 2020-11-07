@@ -19,5 +19,4 @@ sgec_font_added::sgec_font_added(
 }
 
 sgec_font_added::~sgec_font_added()
-{
-}
+= default;

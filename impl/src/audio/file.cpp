@@ -19,8 +19,7 @@ sgec_audio_file::sgec_audio_file(
 }
 
 sgec_audio_file::~sgec_audio_file()
-{
-}
+= default;
 
 sge::audio::file &
 sgec_audio_file::get()

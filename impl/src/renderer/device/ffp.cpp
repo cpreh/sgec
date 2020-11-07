@@ -4,6 +4,7 @@
 #include <sgec/renderer/context/ffp_fwd.h>
 #include <sge/renderer/context/ffp.hpp>
 #include <sge/renderer/device/ffp.hpp>
+#include <sge/renderer/device/ffp_ref.hpp>
 #include <sge/renderer/target/base.hpp>
 #include <sge/renderer/target/onscreen.hpp>
 #include <fcppt/make_ref.hpp>
@@ -12,7 +13,7 @@
 
 
 sgec_renderer_device_ffp::sgec_renderer_device_ffp(
-	sge::renderer::device::ffp &_device
+	sge::renderer::device::ffp_ref const _device
 )
 :
 	device_(
@@ -22,15 +23,16 @@ sgec_renderer_device_ffp::sgec_renderer_device_ffp(
 		fcppt::make_unique_ptr<
 			sgec_renderer_target_onscreen
 		>(
-			device_.onscreen_target()
+			fcppt::make_ref(
+				device_.get().onscreen_target()
+			)
 		)
 	)
 {
 }
 
 sgec_renderer_device_ffp::~sgec_renderer_device_ffp()
-{
-}
+= default;
 
 sgec_renderer_context_ffp *
 sgec_renderer_device_ffp::begin_rendering()
@@ -38,12 +40,12 @@ sgec_renderer_device_ffp::begin_rendering()
 	return
 		new
 		sgec_renderer_context_ffp(
-			device_.begin_rendering_ffp(
+			device_.get().begin_rendering_ffp(
 				fcppt::reference_to_base<
 					sge::renderer::target::base
 				>(
 					fcppt::make_ref(
-						device_.onscreen_target()
+						device_.get().onscreen_target()
 					)
 				)
 			)
@@ -55,7 +57,7 @@ sgec_renderer_device_ffp::end_rendering(
 	sgec_renderer_context_ffp *const _context
 )
 {
-	device_.end_rendering_ffp(
+	device_.get().end_rendering_ffp(
 		_context->get()
 	);
 }
@@ -71,5 +73,5 @@ sge::renderer::device::ffp &
 sgec_renderer_device_ffp::get()
 {
 	return
-		device_;
+		device_.get();
 }

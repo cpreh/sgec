@@ -20,10 +20,9 @@ sgec_texture_part::sgec_texture_part(
 }
 
 sgec_texture_part::~sgec_texture_part()
-{
-}
+= default;
 
-sge::renderer::dim2 const
+sge::renderer::dim2
 sgec_texture_part::size() const
 {
 	return

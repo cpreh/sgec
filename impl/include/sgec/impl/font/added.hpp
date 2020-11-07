@@ -3,12 +3,12 @@
 
 #include <sgec/font/added_fwd.h>
 #include <sge/font/added_unique_ptr.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonmovable.hpp>
 
 
 struct sgec_font_added
 {
-	FCPPT_NONCOPYABLE(
+	FCPPT_NONMOVABLE(
 		sgec_font_added
 	);
 public:

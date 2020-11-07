@@ -3,6 +3,7 @@
 #include <sgec/window/event_fwd.h>
 #include <sgec/window/event_result.h>
 #include <sgec/window/system.h>
+#include <fcppt/make_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
@@ -18,7 +19,9 @@ try
 {
 	return
 		_system->next_event(
-			*_result
+			fcppt::make_ref(
+				*_result
+			)
 		)
 		?
 			sgec_window_event_result_running

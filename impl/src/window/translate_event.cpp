@@ -24,13 +24,11 @@
 #include <awl/event/base.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/cast/dynamic_fun.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/variant/dynamic_cast.hpp>
 #include <fcppt/variant/match.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 fcppt::optional::object<
@@ -43,7 +41,7 @@ sgec::impl::window::translate_event(
 	return
 		fcppt::optional::map(
 			fcppt::variant::dynamic_cast_<
-				metal::list<
+				fcppt::mpl::list::object<
 					sge::input::cursor::event::button const,
 					sge::input::cursor::event::move const,
 					sge::input::cursor::event::scroll const,

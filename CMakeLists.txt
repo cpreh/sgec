@@ -28,11 +28,6 @@ include(
 )
 
 find_package(
-	Metal
-	REQUIRED
-)
-
-find_package(
 	awl
 	REQUIRED
 )

@@ -261,7 +261,6 @@ function(
 	target_link_libraries(
 		${TARGET_NAME}
 		PRIVATE
-		Metal
 		${fcppt_core_TARGET}
 		${awl_TARGET}
 		${sgeaudio_TARGET}

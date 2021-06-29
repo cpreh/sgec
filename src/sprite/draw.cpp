@@ -55,8 +55,8 @@
 #include <fcppt/iterator/make_range.hpp>
 #include <fcppt/math/dim/contents.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
+#include <fcppt/mpl/list/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <metal.hpp>
 #include <stddef.h> // NOLINT(hicpp-deprecated-headers,modernize-deprecated-headers)
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -97,7 +97,7 @@ try
 		sge::sprite::config::normal_size<
 			sge::sprite::config::texture_size_option::never
 		>,
-		metal::list<
+		fcppt::mpl::list::object<
 			sge::sprite::config::with_texture<
 				sge::sprite::config::texture_level_count<
 					1

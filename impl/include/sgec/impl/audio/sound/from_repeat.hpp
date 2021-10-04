@@ -5,13 +5,7 @@
 #include <sge/audio/sound/repeat.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace audio
-{
-namespace sound
+namespace sgec::impl::audio::sound
 {
 
 sge::audio::sound::repeat
@@ -19,9 +13,6 @@ from_repeat(
 	sgec_audio_sound_repeat
 );
 
-}
-}
-}
 }
 
 #endif

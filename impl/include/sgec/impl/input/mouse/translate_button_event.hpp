@@ -5,13 +5,7 @@
 #include <sge/input/mouse/event/button_fwd.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace input
-{
-namespace mouse
+namespace sgec::impl::input::mouse
 {
 
 sgec_input_mouse_button_event
@@ -19,9 +13,6 @@ translate_button_event(
 	sge::input::mouse::event::button const &
 );
 
-}
-}
-}
 }
 
 #endif

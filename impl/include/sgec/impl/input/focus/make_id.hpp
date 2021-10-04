@@ -5,13 +5,7 @@
 #include <sge/input/focus/object_fwd.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace input
-{
-namespace focus
+namespace sgec::impl::input::focus
 {
 
 sgec_input_focus_id
@@ -19,9 +13,6 @@ make_id(
 	sge::input::focus::object const &
 );
 
-}
-}
-}
 }
 
 #endif

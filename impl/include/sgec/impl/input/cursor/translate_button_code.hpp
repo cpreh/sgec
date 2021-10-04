@@ -5,13 +5,7 @@
 #include <sge/input/cursor/button_code_fwd.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace input
-{
-namespace cursor
+namespace sgec::impl::input::cursor
 {
 
 sgec_input_cursor_button_code
@@ -19,9 +13,6 @@ translate_button_code(
 	sge::input::cursor::button_code
 );
 
-}
-}
-}
 }
 
 #endif

@@ -5,11 +5,7 @@
 #include <sge/renderer/event/render_fwd.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace renderer
+namespace sgec::impl::renderer
 {
 
 sgec_renderer_render_event
@@ -17,8 +13,6 @@ translate_render_event(
 	sge::renderer::event::render const &
 );
 
-}
-}
 }
 
 #endif

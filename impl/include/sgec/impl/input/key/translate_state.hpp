@@ -5,13 +5,7 @@
 #include <sge/input/key/pressed.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace input
-{
-namespace key
+namespace sgec::impl::input::key
 {
 
 sgec_input_key_state
@@ -19,9 +13,6 @@ translate_state(
 	sge::input::key::pressed
 );
 
-}
-}
-}
 }
 
 #endif

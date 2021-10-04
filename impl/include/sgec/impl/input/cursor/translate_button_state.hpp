@@ -5,13 +5,7 @@
 #include <sge/input/cursor/button_pressed.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace input
-{
-namespace cursor
+namespace sgec::impl::input::cursor
 {
 
 sgec_input_cursor_button_state
@@ -19,9 +13,6 @@ translate_button_state(
 	sge::input::cursor::button_pressed
 );
 
-}
-}
-}
 }
 
 #endif

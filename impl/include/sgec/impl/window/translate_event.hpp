@@ -6,11 +6,7 @@
 #include <fcppt/optional/object_impl.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace window
+namespace sgec::impl::window
 {
 
 fcppt::optional::object<
@@ -20,8 +16,6 @@ translate_event(
 	awl::event::base const &
 );
 
-}
-}
 }
 
 #endif

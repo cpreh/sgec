@@ -5,13 +5,7 @@
 #include <sge/audio/sound/play_status_fwd.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace audio
-{
-namespace sound
+namespace sgec::impl::audio::sound
 {
 
 sgec_audio_sound_play_status
@@ -19,9 +13,6 @@ to_play_status(
 	sge::audio::sound::play_status
 );
 
-}
-}
-}
 }
 
 #endif

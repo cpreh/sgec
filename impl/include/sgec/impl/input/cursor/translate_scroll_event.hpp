@@ -5,13 +5,7 @@
 #include <sge/input/cursor/event/scroll_fwd.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace input
-{
-namespace cursor
+namespace sgec::impl::input::cursor
 {
 
 sgec_input_cursor_scroll_event
@@ -19,9 +13,6 @@ translate_scroll_event(
 	sge::input::cursor::event::scroll const &
 );
 
-}
-}
-}
 }
 
 #endif

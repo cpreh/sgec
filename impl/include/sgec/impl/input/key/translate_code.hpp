@@ -5,13 +5,7 @@
 #include <sge/input/key/code_fwd.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace input
-{
-namespace key
+namespace sgec::impl::input::key
 {
 
 sgec_input_key_code
@@ -19,9 +13,6 @@ translate_code(
 	sge::input::key::code
 );
 
-}
-}
-}
 }
 
 #endif

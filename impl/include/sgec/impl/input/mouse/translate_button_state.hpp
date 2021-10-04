@@ -5,13 +5,7 @@
 #include <sge/input/mouse/button_pressed.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace input
-{
-namespace mouse
+namespace sgec::impl::input::mouse
 {
 
 sgec_input_mouse_button_state
@@ -19,9 +13,6 @@ translate_button_state(
 	sge::input::mouse::button_pressed
 );
 
-}
-}
-}
 }
 
 #endif

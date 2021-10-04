@@ -5,13 +5,7 @@
 #include <sge/input/focus/event/key_fwd.hpp>
 
 
-namespace sgec
-{
-namespace impl
-{
-namespace input
-{
-namespace focus
+namespace sgec::impl::input::focus
 {
 
 sgec_input_focus_key_event
@@ -19,9 +13,6 @@ translate_key_event(
 	sge::input::focus::event::key const &
 );
 
-}
-}
-}
 }
 
 #endif

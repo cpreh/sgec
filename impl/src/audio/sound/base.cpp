@@ -9,39 +9,19 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-sgec_audio_sound_base::sgec_audio_sound_base(
-	sge::audio::sound::base_unique_ptr &&_sound
-)
-:
-	sound_(
-		std::move(
-			_sound
-		)
-	)
+sgec_audio_sound_base::sgec_audio_sound_base(sge::audio::sound::base_unique_ptr &&_sound)
+    : sound_(std::move(_sound))
 {
 }
 
-sgec_audio_sound_base::~sgec_audio_sound_base()
-= default;
+sgec_audio_sound_base::~sgec_audio_sound_base() = default;
 
-void
-sgec_audio_sound_base::play(
-	sgec_audio_sound_repeat const _repeat
-)
+void sgec_audio_sound_base::play(sgec_audio_sound_repeat const _repeat)
 {
-	sound_->play(
-		sgec::impl::audio::sound::from_repeat(
-			_repeat
-		)
-	);
+  sound_->play(sgec::impl::audio::sound::from_repeat(_repeat));
 }
 
-sgec_audio_sound_play_status
-sgec_audio_sound_base::play_status() const
+sgec_audio_sound_play_status sgec_audio_sound_base::play_status() const
 {
-	return
-		sgec::impl::audio::sound::to_play_status(
-			sound_->status()
-		);
+  return sgec::impl::audio::sound::to_play_status(sound_->status());
 }

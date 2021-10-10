@@ -17,40 +17,21 @@
 #include <filesystem>
 #include <fcppt/config/external_end.hpp>
 
-
-extern "C"
-struct sgec_renderer_texture_planar *
-sgec_renderer_texture_create_planar_from_path(
-	struct sgec_renderer_device_ffp *const _renderer,
-	struct sgec_image2d_system *const _image_system,
-	char const *const _path
-)
+extern "C" struct sgec_renderer_texture_planar *sgec_renderer_texture_create_planar_from_path(
+    struct sgec_renderer_device_ffp *const _renderer,
+    struct sgec_image2d_system *const _image_system,
+    char const *const _path)
 try
 {
-	return
-		new sgec_renderer_texture_planar(
-			sge::renderer::texture::create_planar_from_path(
-				std::filesystem::path(
-					_path
-				),
-				fcppt::reference_to_base<
-					sge::renderer::device::core
-				>(
-					fcppt::make_ref(
-						_renderer->get()
-					)
-				),
-				_image_system->get(),
-				sge::renderer::texture::mipmap::off(),
-				sge::renderer::resource_flags_field{},
-				sge::renderer::texture::emulate_srgb::no
-			)
-		);
+  return new sgec_renderer_texture_planar(sge::renderer::texture::create_planar_from_path(
+      std::filesystem::path(_path),
+      fcppt::reference_to_base<sge::renderer::device::core>(fcppt::make_ref(_renderer->get())),
+      _image_system->get(),
+      sge::renderer::texture::mipmap::off(),
+      sge::renderer::resource_flags_field{},
+      sge::renderer::texture::emulate_srgb::no));
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		nullptr;
+  return nullptr;
 }

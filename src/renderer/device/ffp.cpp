@@ -4,54 +4,33 @@
 #include <sgec/renderer/device/ffp.h>
 #include <sgec/renderer/target/onscreen_fwd.h>
 
-
-extern "C"
-struct sgec_renderer_context_ffp *
-sgec_renderer_device_ffp_begin_rendering(
-	struct sgec_renderer_device_ffp *const _device
-)
+extern "C" struct sgec_renderer_context_ffp *
+sgec_renderer_device_ffp_begin_rendering(struct sgec_renderer_device_ffp *const _device)
 try
 {
-	return
-		_device->begin_rendering();
+  return _device->begin_rendering();
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		nullptr;
+  return nullptr;
 }
 
-extern "C"
-sgec_result
-sgec_renderer_device_ffp_end_rendering(
-	struct sgec_renderer_device_ffp *const _device,
-	struct sgec_renderer_context_ffp *const _context
-)
+extern "C" sgec_result sgec_renderer_device_ffp_end_rendering(
+    struct sgec_renderer_device_ffp *const _device,
+    struct sgec_renderer_context_ffp *const _context)
 try
 {
-	_device->end_rendering(
-		_context
-	);
+  _device->end_rendering(_context);
 
-	return
-		sgec_result_ok;
+  return sgec_result_ok;
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		sgec_result_error;
+  return sgec_result_error;
 }
 
-extern "C"
-struct sgec_renderer_target_onscreen *
-sgec_renderer_device_ffp_onscreen_target(
-	struct sgec_renderer_device_ffp *const _device
-)
+extern "C" struct sgec_renderer_target_onscreen *
+sgec_renderer_device_ffp_onscreen_target(struct sgec_renderer_device_ffp *const _device)
 {
-	return
-		&_device->onscreen_target();
+  return &_device->onscreen_target();
 }

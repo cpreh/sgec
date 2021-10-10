@@ -9,42 +9,23 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_impl.hpp>
 
-
 struct sgec_font_system
 {
-	FCPPT_NONMOVABLE(
-		sgec_font_system
-	);
+  FCPPT_NONMOVABLE(sgec_font_system);
+
 public:
-	explicit
-	sgec_font_system(
-		fcppt::reference<
-			sge::font::system
-		>
-	);
+  explicit sgec_font_system(fcppt::reference<sge::font::system>);
 
-	~sgec_font_system(); // NOLINT(performance-trivially-destructible)
+  ~sgec_font_system(); // NOLINT(performance-trivially-destructible)
 
-	[[nodiscard]]
-	sgec_font_object *
-	create(
-		char const *family,
-		sgec_font_ttf_size
-	);
+  [[nodiscard]] sgec_font_object *create(char const *family, sgec_font_ttf_size);
 
-	[[nodiscard]]
-	sgec_font_added *
-	add(
-		char const *path
-	);
+  [[nodiscard]] sgec_font_added *add(char const *path);
 
-	[[nodiscard]]
-	sge::font::system &
-	get();
+  [[nodiscard]] sge::font::system &get();
+
 private:
-	fcppt::reference<
-		sge::font::system
-	> const system_;
+  fcppt::reference<sge::font::system> const system_;
 };
 
 #endif

@@ -4,14 +4,10 @@
 #include <sgec/input/key/code.h>
 #include <sge/input/key/code_fwd.hpp>
 
-
 namespace sgec::impl::input::key
 {
 
-sgec_input_key_code
-translate_code(
-	sge::input::key::code
-);
+sgec_input_key_code translate_code(sge::input::key::code);
 
 }
 

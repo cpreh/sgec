@@ -3,47 +3,29 @@
 #include <sgec/impl/renderer/context/ffp.hpp>
 #include <sgec/renderer/context/ffp.h>
 
-
-extern "C"
-sgec_result
-sgec_renderer_context_ffp_clear(
-	struct sgec_renderer_context_ffp *const _context,
-	sgec_image_color_rgba const _color
-)
+extern "C" sgec_result sgec_renderer_context_ffp_clear(
+    struct sgec_renderer_context_ffp *const _context, sgec_image_color_rgba const _color)
 try
 {
-	_context->clear(
-		_color
-	);
+  _context->clear(_color);
 
-	return
-		sgec_result_ok;
+  return sgec_result_ok;
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		sgec_result_error;
+  return sgec_result_error;
 }
 
-extern "C"
-sgec_result
-sgec_renderer_context_ffp_destroy(
-	struct sgec_renderer_context_ffp *const _context
-)
+extern "C" sgec_result
+sgec_renderer_context_ffp_destroy(struct sgec_renderer_context_ffp *const _context)
 try
 {
-	delete // NOLINT(cppcoreguidelines-owning-memory)
-		_context;
+  delete // NOLINT(cppcoreguidelines-owning-memory)
+      _context;
 
-	return
-		sgec_result_ok;
+  return sgec_result_ok;
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		sgec_result_error;
+  return sgec_result_error;
 }

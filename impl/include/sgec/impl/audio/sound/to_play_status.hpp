@@ -4,14 +4,10 @@
 #include <sgec/audio/sound/play_status.h>
 #include <sge/audio/sound/play_status_fwd.hpp>
 
-
 namespace sgec::impl::audio::sound
 {
 
-sgec_audio_sound_play_status
-to_play_status(
-	sge::audio::sound::play_status
-);
+sgec_audio_sound_play_status to_play_status(sge::audio::sound::play_status);
 
 }
 

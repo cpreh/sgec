@@ -12,49 +12,29 @@
 #include <deque>
 #include <fcppt/config/external_end.hpp>
 
-
 struct sgec_window_system
 {
-	FCPPT_NONMOVABLE(
-		sgec_window_system
-	);
+  FCPPT_NONMOVABLE(sgec_window_system);
+
 public:
-	explicit
-	sgec_window_system(
-		sge::window::system_ref
-	);
+  explicit sgec_window_system(sge::window::system_ref);
 
-	~sgec_window_system();
+  ~sgec_window_system();
 
-	[[nodiscard]]
-	bool
-	next_event(
-		fcppt::reference<
-			sgec_window_event
-		>
-	);
+  [[nodiscard]] bool next_event(fcppt::reference<sgec_window_event>);
 
-	void
-	quit(
-		int exit_code
-	);
+  void quit(int exit_code);
 
-	[[nodiscard]]
-	int
-	exit_code() const;
+  [[nodiscard]] int exit_code() const;
+
 private:
-	sge::window::system_ref const system_;
+  sge::window::system_ref const system_;
 
-	using
-	event_queue
-	=
-	std::deque<
-		awl::event::base_unique_ptr
-	>;
+  using event_queue = std::deque<awl::event::base_unique_ptr>;
 
-	event_queue event_queue_;
+  event_queue event_queue_;
 
-	awl::main::optional_exit_code exit_code_;
+  awl::main::optional_exit_code exit_code_;
 };
 
 #endif

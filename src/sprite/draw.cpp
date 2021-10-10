@@ -61,207 +61,85 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-extern "C"
-sgec_result
-sgec_sprite_draw(
-	struct sgec_renderer_device_ffp *const _render_device,
-	struct sgec_renderer_context_ffp *const _render_context,
-	sgec_window_unit const _width,
-	sgec_window_unit const _height,
-	struct sgec_sprite_object const *const _sprites,
-	size_t const _count
-)
+extern "C" sgec_result sgec_sprite_draw(
+    struct sgec_renderer_device_ffp *const _render_device,
+    struct sgec_renderer_context_ffp *const _render_context,
+    sgec_window_unit const _width,
+    sgec_window_unit const _height,
+    struct sgec_sprite_object const *const _sprites,
+    size_t const _count)
 try
 {
-	using
-	sprite_type_choices
-	=
-	sge::sprite::config::type_choices<
-		sge::sprite::config::unit_type<
-			sgec_sprite_unit
-		>,
-		sge::sprite::config::float_type<
-			sgec_sprite_scalar
-		>
-	>;
+  using sprite_type_choices = sge::sprite::config::type_choices<
+      sge::sprite::config::unit_type<sgec_sprite_unit>,
+      sge::sprite::config::float_type<sgec_sprite_scalar>>;
 
-	using
-	sprite_choices
-	=
-	sge::sprite::config::choices<
-		sprite_type_choices,
-		sge::sprite::config::pos<
-			sge::sprite::config::pos_option::pos
-		>,
-		sge::sprite::config::normal_size<
-			sge::sprite::config::texture_size_option::never
-		>,
-		fcppt::mpl::list::object<
-			sge::sprite::config::with_texture<
-				sge::sprite::config::texture_level_count<
-					1
-				>,
-				sge::sprite::config::texture_coordinates::automatic,
-				sge::sprite::config::texture_ownership::reference
-			>,
-			sge::sprite::config::with_rotation,
-			sge::sprite::config::with_color<
-				sge::image::color::rgba8_format
-			>
-		>
-	>;
+  using sprite_choices = sge::sprite::config::choices<
+      sprite_type_choices,
+      sge::sprite::config::pos<sge::sprite::config::pos_option::pos>,
+      sge::sprite::config::normal_size<sge::sprite::config::texture_size_option::never>,
+      fcppt::mpl::list::object<
+          sge::sprite::config::with_texture<
+              sge::sprite::config::texture_level_count<1>,
+              sge::sprite::config::texture_coordinates::automatic,
+              sge::sprite::config::texture_ownership::reference>,
+          sge::sprite::config::with_rotation,
+          sge::sprite::config::with_color<sge::image::color::rgba8_format>>>;
 
-	using
-	sprite_buffers_type
-	=
-	sge::sprite::buffers::with_declaration<
-		sge::sprite::buffers::single<
-			sprite_choices
-		>
-	>;
+  using sprite_buffers_type =
+      sge::sprite::buffers::with_declaration<sge::sprite::buffers::single<sprite_choices>>;
 
-	using
-	sprite_object
-	=
-	sge::sprite::object<
-		sprite_choices
-	>;
+  using sprite_object = sge::sprite::object<sprite_choices>;
 
-	using
-	sprite_state_choices
-	=
-	sge::sprite::state::all_choices;
+  using sprite_state_choices = sge::sprite::state::all_choices;
 
-	using
-	sprite_state_object
-	=
-	sge::sprite::state::object<
-		sprite_state_choices
-	>;
+  using sprite_state_object = sge::sprite::state::object<sprite_state_choices>;
 
-	using
-	sprite_state_parameters
-	=
-	sge::sprite::state::parameters<
-		sprite_state_choices
-	>;
+  using sprite_state_parameters = sge::sprite::state::parameters<sprite_state_choices>;
 
-	sprite_state_object sprite_state(
-		fcppt::make_ref(
-			_render_device->get()
-		),
-		sprite_state_parameters()
-	);
+  sprite_state_object sprite_state(
+      fcppt::make_ref(_render_device->get()), sprite_state_parameters());
 
-	sprite_buffers_type sprite_buffers(
-		fcppt::reference_to_base<
-			sge::renderer::device::core
-		>(
-			fcppt::make_ref(
-				_render_device->get()
-			)
-		),
-		sge::sprite::buffers::option::dynamic
-	);
+  sprite_buffers_type sprite_buffers(
+      fcppt::reference_to_base<sge::renderer::device::core>(fcppt::make_ref(_render_device->get())),
+      sge::sprite::buffers::option::dynamic);
 
-	using
-	sprite_vector
-	=
-	std::vector<
-		sprite_object
-	>;
+  using sprite_vector = std::vector<sprite_object>;
 
-	auto const sprite_objects(
-		fcppt::algorithm::map<
-			sprite_vector
-		>(
-			fcppt::iterator::make_range(
-				_sprites,
-				_sprites
-				+ // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
-				_count
-			),
-			[](
-				struct sgec_sprite_object const &_sprite
-			)
-			{
-				return
-					sprite_object(
-						sge::sprite::roles::pos{} =
-							sprite_object::vector(
-								_sprite.pos_x,
-								_sprite.pos_y
-							),
-						sge::sprite::roles::size{} =
-							sprite_object::dim(
-								_sprite.width,
-								_sprite.height
-							),
-						sge::sprite::roles::texture0{} =
-							sge::texture::const_part_ref(
-								_sprite.texture->get()
-							),
-						sge::sprite::roles::rotation{} =
-							_sprite.rotation,
-						sge::sprite::roles::color{} =
-							sgec::impl::image::color::translate_rgba(
-								_sprite.color
-							)
-					);
-			}
-		)
-	);
+  auto const sprite_objects(fcppt::algorithm::map<sprite_vector>(
+      fcppt::iterator::make_range(
+          _sprites,
+          _sprites + // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
+              _count),
+      [](struct sgec_sprite_object const &_sprite)
+      {
+        return sprite_object(
+            sge::sprite::roles::pos{} = sprite_object::vector(_sprite.pos_x, _sprite.pos_y),
+            sge::sprite::roles::size{} = sprite_object::dim(_sprite.width, _sprite.height),
+            sge::sprite::roles::texture0{} = sge::texture::const_part_ref(_sprite.texture->get()),
+            sge::sprite::roles::rotation{} = _sprite.rotation,
+            sge::sprite::roles::color{} = sgec::impl::image::color::translate_rgba(_sprite.color));
+      }));
 
-	sge::window::dim const projection_dim(
-		_width,
-		_height
-	);
+  sge::window::dim const projection_dim(_width, _height);
 
-	sge::sprite::process::with_options<
-		sge::sprite::process::default_options<
-			sprite_choices,
-			sge::sprite::compare::nothing
-		>
-	>(
-		_render_context->get(),
-		sge::sprite::geometry::make_random_access_range(
-			sprite_objects
-		),
-		sprite_buffers,
-		sge::sprite::compare::default_{},
-		sprite_state,
-		fcppt::math::dim::contents(
-			projection_dim
-		)
-		!=
-		0U
-		?
-			sge::sprite::state::default_options<
-				sprite_state_choices
-			>().fixed_projection(
-				sge::sprite::projection_dim(
-					fcppt::math::dim::structure_cast<
-						sge::renderer::screen_size,
-						fcppt::cast::size_fun
-					>(
-						projection_dim
-					)
-				)
-			)
-		:
-			sge::sprite::state::default_options<
-				sprite_state_choices
-			>()
-	);
+  sge::sprite::process::with_options<
+      sge::sprite::process::default_options<sprite_choices, sge::sprite::compare::nothing>>(
+      _render_context->get(),
+      sge::sprite::geometry::make_random_access_range(sprite_objects),
+      sprite_buffers,
+      sge::sprite::compare::default_{},
+      sprite_state,
+      fcppt::math::dim::contents(projection_dim) != 0U
+          ? sge::sprite::state::default_options<sprite_state_choices>().fixed_projection(
+                sge::sprite::projection_dim(fcppt::math::dim::structure_cast<
+                                            sge::renderer::screen_size,
+                                            fcppt::cast::size_fun>(projection_dim)))
+          : sge::sprite::state::default_options<sprite_state_choices>());
 
-	return
-		sgec_result_ok;
+  return sgec_result_ok;
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		sgec_result_error;
+  return sgec_result_error;
 }

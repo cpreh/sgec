@@ -4,14 +4,11 @@
 #include <sgec/input/cursor/position_opt.h>
 #include <sge/input/cursor/optional_position_fwd.hpp>
 
-
 namespace sgec::impl::input::cursor
 {
 
 sgec_input_cursor_position_opt
-translate_position_opt(
-	sge::input::cursor::optional_position const &
-);
+translate_position_opt(sge::input::cursor::optional_position const &);
 
 }
 

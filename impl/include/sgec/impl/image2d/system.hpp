@@ -6,25 +6,19 @@
 #include <sge/image2d/system_ref.hpp>
 #include <fcppt/nonmovable.hpp>
 
-
 struct sgec_image2d_system
 {
-	FCPPT_NONMOVABLE(
-		sgec_image2d_system
-	);
+  FCPPT_NONMOVABLE(sgec_image2d_system);
+
 public:
-	explicit
-	sgec_image2d_system(
-		sge::image2d::system_ref
-	);
+  explicit sgec_image2d_system(sge::image2d::system_ref);
 
-	~sgec_image2d_system(); // NOLINT(performance-trivially-destructible)
+  ~sgec_image2d_system(); // NOLINT(performance-trivially-destructible)
 
-	[[nodiscard]]
-	sge::image2d::system &
-	get();
+  [[nodiscard]] sge::image2d::system &get();
+
 private:
-	sge::image2d::system_ref const system_;
+  sge::image2d::system_ref const system_;
 };
 
 #endif

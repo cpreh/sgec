@@ -6,25 +6,19 @@
 #include <sge/renderer/texture/planar_unique_ptr.hpp>
 #include <fcppt/nonmovable.hpp>
 
-
 struct sgec_renderer_texture_planar
 {
-	FCPPT_NONMOVABLE(
-		sgec_renderer_texture_planar
-	);
+  FCPPT_NONMOVABLE(sgec_renderer_texture_planar);
+
 public:
-	explicit
-	sgec_renderer_texture_planar(
-		sge::renderer::texture::planar_unique_ptr &&
-	);
+  explicit sgec_renderer_texture_planar(sge::renderer::texture::planar_unique_ptr &&);
 
-	~sgec_renderer_texture_planar();
+  ~sgec_renderer_texture_planar();
 
-	[[nodiscard]]
-	sge::renderer::texture::planar &
-	get();
+  [[nodiscard]] sge::renderer::texture::planar &get();
+
 private:
-	sge::renderer::texture::planar_unique_ptr const texture_;
+  sge::renderer::texture::planar_unique_ptr const texture_;
 };
 
 #endif

@@ -7,29 +7,21 @@
 #include <sge/texture/part_unique_ptr.hpp>
 #include <fcppt/nonmovable.hpp>
 
-
 struct sgec_texture_part
 {
-	FCPPT_NONMOVABLE(
-		sgec_texture_part
-	);
+  FCPPT_NONMOVABLE(sgec_texture_part);
+
 public:
-	explicit
-	sgec_texture_part(
-		sge::texture::part_unique_ptr &&
-	);
+  explicit sgec_texture_part(sge::texture::part_unique_ptr &&);
 
-	~sgec_texture_part();
+  ~sgec_texture_part();
 
-	[[nodiscard]]
-	sge::renderer::dim2
-	size() const;
+  [[nodiscard]] sge::renderer::dim2 size() const;
 
-	[[nodiscard]]
-	sge::texture::part const &
-	get() const;
+  [[nodiscard]] sge::texture::part const &get() const;
+
 private:
-	sge::texture::part_unique_ptr const texture_;
+  sge::texture::part_unique_ptr const texture_;
 };
 
 #endif

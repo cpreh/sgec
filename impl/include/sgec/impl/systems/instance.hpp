@@ -23,122 +23,65 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/unique_ptr_decl.hpp>
 
-
 struct sgec_systems_instance
 {
-	FCPPT_NONMOVABLE(
-		sgec_systems_instance
-	);
+  FCPPT_NONMOVABLE(sgec_systems_instance);
+
 public:
-	sgec_systems_instance(
-		char const *,
-		sgec_window_unit,
-		sgec_window_unit,
-		sgec_systems_cursor_option
-	);
+  sgec_systems_instance(
+      char const *, sgec_window_unit, sgec_window_unit, sgec_systems_cursor_option);
 
-	sgec_systems_instance(
-		char const *,
-		sge::window::dim const &,
-		sgec_systems_cursor_option
-	);
+  sgec_systems_instance(char const *, sge::window::dim const &, sgec_systems_cursor_option);
 
-	~sgec_systems_instance();
+  ~sgec_systems_instance();
 
-	[[nodiscard]]
-	sgec_renderer_device_ffp *
-	renderer();
+  [[nodiscard]] sgec_renderer_device_ffp *renderer();
 
-	[[nodiscard]]
-	sgec_window_system *
-	window_system();
+  [[nodiscard]] sgec_window_system *window_system();
 
-	[[nodiscard]]
-	sgec_image2d_system *
-	image2d_system();
+  [[nodiscard]] sgec_image2d_system *image2d_system();
 
-	[[nodiscard]]
-	sgec_font_system *
-	font_system();
+  [[nodiscard]] sgec_font_system *font_system();
 
-	[[nodiscard]]
-	sgec_audio_loader *
-	audio_loader();
+  [[nodiscard]] sgec_audio_loader *audio_loader();
 
-	[[nodiscard]]
-	sgec_audio_player *
-	audio_player();
+  [[nodiscard]] sgec_audio_player *audio_player();
+
 private:
-	using
-	instance
-	=
-	sge::systems::instance<
-		sge::systems::with_renderer<
-			sge::systems::renderer_caps::ffp
-		>,
-		sge::systems::with_window,
-		sge::systems::with_input,
-		sge::systems::with_image2d,
-		sge::systems::with_font,
-		sge::systems::with_audio_loader,
-		sge::systems::with_audio_player
-	>;
+  using instance = sge::systems::instance<
+      sge::systems::with_renderer<sge::systems::renderer_caps::ffp>,
+      sge::systems::with_window,
+      sge::systems::with_input,
+      sge::systems::with_image2d,
+      sge::systems::with_font,
+      sge::systems::with_audio_loader,
+      sge::systems::with_audio_player>;
 
-	instance impl_;
+  instance impl_;
 
-	using
-	scoped_renderer_ptr
-	=
-	fcppt::unique_ptr<
-		sgec_renderer_device_ffp
-	>;
+  using scoped_renderer_ptr = fcppt::unique_ptr<sgec_renderer_device_ffp>;
 
-	scoped_renderer_ptr const renderer_;
+  scoped_renderer_ptr const renderer_;
 
-	using
-	scoped_window_system_ptr
-	=
-	fcppt::unique_ptr<
-		sgec_window_system
-	>;
+  using scoped_window_system_ptr = fcppt::unique_ptr<sgec_window_system>;
 
-	scoped_window_system_ptr const window_system_;
+  scoped_window_system_ptr const window_system_;
 
-	using
-	scoped_image2d_system_ptr
-	=
-	fcppt::unique_ptr<
-		sgec_image2d_system
-	>;
+  using scoped_image2d_system_ptr = fcppt::unique_ptr<sgec_image2d_system>;
 
-	scoped_image2d_system_ptr const image2d_system_;
+  scoped_image2d_system_ptr const image2d_system_;
 
-	using
-	scoped_font_system_ptr
-	=
-	fcppt::unique_ptr<
-		sgec_font_system
-	>;
+  using scoped_font_system_ptr = fcppt::unique_ptr<sgec_font_system>;
 
-	scoped_font_system_ptr const font_system_;
+  scoped_font_system_ptr const font_system_;
 
-	using
-	scoped_audio_loader_ptr
-	=
-	fcppt::unique_ptr<
-		sgec_audio_loader
-	>;
+  using scoped_audio_loader_ptr = fcppt::unique_ptr<sgec_audio_loader>;
 
-	scoped_audio_loader_ptr const audio_loader_;
+  scoped_audio_loader_ptr const audio_loader_;
 
-	using
-	scoped_audio_player_ptr
-	=
-	fcppt::unique_ptr<
-		sgec_audio_player
-	>;
+  using scoped_audio_player_ptr = fcppt::unique_ptr<sgec_audio_player>;
 
-	scoped_audio_player_ptr const audio_player_;
+  scoped_audio_player_ptr const audio_player_;
 };
 
 #endif

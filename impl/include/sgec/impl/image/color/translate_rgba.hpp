@@ -4,14 +4,10 @@
 #include <sgec/image/color/rgba.h>
 #include <sge/image/color/rgba8.hpp>
 
-
 namespace sgec::impl::image::color
 {
 
-sge::image::color::rgba8
-translate_rgba(
-	sgec_image_color_rgba
-);
+sge::image::color::rgba8 translate_rgba(sgec_image_color_rgba);
 
 }
 

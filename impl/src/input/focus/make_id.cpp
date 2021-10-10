@@ -3,14 +3,7 @@
 #include <sge/input/focus/object_fwd.hpp>
 #include <fcppt/cast/to_uint_ptr.hpp>
 
-
-sgec_input_focus_id
-sgec::impl::input::focus::make_id(
-	sge::input::focus::object const &_focus
-)
+sgec_input_focus_id sgec::impl::input::focus::make_id(sge::input::focus::object const &_focus)
 {
-	return
-		fcppt::cast::to_uint_ptr(
-			&_focus
-		);
+  return fcppt::cast::to_uint_ptr(&_focus);
 }

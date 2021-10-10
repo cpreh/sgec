@@ -14,86 +14,36 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-sgec_font_system::sgec_font_system(
-	fcppt::reference<
-		sge::font::system
-	> const _system
-)
-:
-	system_(
-		_system
-	)
+sgec_font_system::sgec_font_system(fcppt::reference<sge::font::system> const _system)
+    : system_(_system)
 {
 }
 
-sgec_font_system::~sgec_font_system()
-= default;
+sgec_font_system::~sgec_font_system() = default;
 
 sgec_font_object *
-sgec_font_system::create(
-	char const *const _family,
-	sgec_font_ttf_size const _size
-)
+sgec_font_system::create(char const *const _family, sgec_font_ttf_size const _size)
 {
-	sge::font::parameters parameters{};
+  sge::font::parameters parameters{};
 
-	if(
-		_family
-		!=
-		nullptr
-	)
-	{
-		parameters.family(
-			fcppt::from_std_string(
-				std::string(
-					_family
-				)
-			)
-		);
-	}
+  if (_family != nullptr)
+  {
+    parameters.family(fcppt::from_std_string(std::string(_family)));
+  }
 
-	if(
-		_size
-		!=
-		-1
-	)
-	{
-		parameters.ttf_size(
-			fcppt::cast::to_unsigned(
-				_size
-			)
-		);
-	}
+  if (_size != -1)
+  {
+    parameters.ttf_size(fcppt::cast::to_unsigned(_size));
+  }
 
-	return
-		new
-		sgec_font_object(
-			system_.get().create_font(
-				parameters
-			)
-		);
+  return new sgec_font_object(system_.get().create_font(parameters));
 }
 
-sgec_font_added *
-sgec_font_system::add(
-	char const *const _path
-)
+sgec_font_added *sgec_font_system::add(char const *const _path)
 {
-	return
-		new
-		sgec_font_added(
-			system_.get().add_font(
-				std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
-					_path
-				)
-			)
-		);
+  return new sgec_font_added(
+      system_.get().add_font(std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
+          _path)));
 }
 
-sge::font::system &
-sgec_font_system::get()
-{
-	return
-		system_.get();
-}
+sge::font::system &sgec_font_system::get() { return system_.get(); }

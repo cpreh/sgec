@@ -4,14 +4,10 @@
 #include <sgec/input/cursor/position.h>
 #include <sge/input/cursor/position_fwd.hpp>
 
-
 namespace sgec::impl::input::cursor
 {
 
-sgec_input_cursor_position
-translate_position(
-	sge::input::cursor::position const &
-);
+sgec_input_cursor_position translate_position(sge::input::cursor::position const &);
 
 }
 

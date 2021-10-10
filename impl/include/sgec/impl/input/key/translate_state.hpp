@@ -4,14 +4,10 @@
 #include <sgec/input/key/state.h>
 #include <sge/input/key/pressed.hpp>
 
-
 namespace sgec::impl::input::key
 {
 
-sgec_input_key_state
-translate_state(
-	sge::input::key::pressed
-);
+sgec_input_key_state translate_state(sge::input::key::pressed);
 
 }
 

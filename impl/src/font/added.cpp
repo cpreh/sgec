@@ -5,18 +5,8 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-sgec_font_added::sgec_font_added(
-	sge::font::added_unique_ptr &&_added
-)
-:
-	added_(
-		std::move(
-			_added
-		)
-	)
+sgec_font_added::sgec_font_added(sge::font::added_unique_ptr &&_added) : added_(std::move(_added))
 {
 }
 
-sgec_font_added::~sgec_font_added()
-= default;
+sgec_font_added::~sgec_font_added() = default;

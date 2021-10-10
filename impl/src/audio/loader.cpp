@@ -11,49 +11,21 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
+sgec_audio_loader::sgec_audio_loader(sge::audio::loader_ref const _loader) : loader_(_loader) {}
 
-sgec_audio_loader::sgec_audio_loader(
-	sge::audio::loader_ref const _loader
-)
-:
-	loader_(
-		_loader
-	)
+sgec_audio_loader::~sgec_audio_loader() = default;
+
+sgec_audio_file *sgec_audio_loader::load(char const *const _path)
 {
-}
-
-sgec_audio_loader::~sgec_audio_loader()
-= default;
-
-sgec_audio_file *
-sgec_audio_loader::load(
-	char const *const _path
-)
-{
-	return
-		fcppt::optional::maybe(
-			sge::audio::load(
-				loader_,
-				std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
-					_path
-				)
-			),
-			fcppt::const_<
-				sgec_audio_file *
-			>(
-				nullptr
-			),
-			[](
-				sge::audio::file_unique_ptr &&_file
-			)
-			{
-				return // NOLINT(cppcoreguidelines-owning-memory)
-					new
-					sgec_audio_file(
-						std::move(
-							_file
-						)
-					);
-			}
-		);
+  return fcppt::optional::maybe(
+      sge::audio::load(
+          loader_,
+          std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
+              _path)),
+      fcppt::const_<sgec_audio_file *>(nullptr),
+      [](sge::audio::file_unique_ptr &&_file)
+      {
+        return // NOLINT(cppcoreguidelines-owning-memory)
+            new sgec_audio_file(std::move(_file));
+      });
 }

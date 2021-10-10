@@ -4,14 +4,10 @@
 #include <sgec/audio/sound/repeat.h>
 #include <sge/audio/sound/repeat.hpp>
 
-
 namespace sgec::impl::audio::sound
 {
 
-sge::audio::sound::repeat
-from_repeat(
-	sgec_audio_sound_repeat
-);
+sge::audio::sound::repeat from_repeat(sgec_audio_sound_repeat);
 
 }
 

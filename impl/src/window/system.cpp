@@ -19,159 +19,74 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-sgec_window_system::sgec_window_system(
-	sge::window::system_ref const _system
-)
-:
-	system_{
-		_system
-	},
-	event_queue_{},
-	exit_code_{}
+sgec_window_system::sgec_window_system(sge::window::system_ref const _system)
+    : system_{_system}, event_queue_{}, exit_code_{}
 {
 }
 
-sgec_window_system::~sgec_window_system()
-= default;
+sgec_window_system::~sgec_window_system() = default;
 
-bool
-sgec_window_system::next_event(
-	fcppt::reference<
-		sgec_window_event
-	> const _result
-)
+bool sgec_window_system::next_event(fcppt::reference<sgec_window_event> const _result)
 try
 {
-	for(
-		;;
-	)
-	{
-		if(
-			fcppt::optional::maybe(
-				fcppt::container::pop_front(
-					event_queue_
-				),
-				fcppt::const_(
-					false
-				),
-				[
-					&_result
-				](
-					awl::event::base_unique_ptr &&_event
-				)
-				{
-					return
-						fcppt::optional::maybe(
-							sgec::impl::window::translate_event(
-								*_event
-							),
-							fcppt::const_(
-								false
-							),
-							[
-								&_result
-							](
-								sgec_window_event const &_window_event
-							)
-							{
-								_result.get() =
-									_window_event;
+  for (;;)
+  {
+    if (fcppt::optional::maybe(
+            fcppt::container::pop_front(event_queue_),
+            fcppt::const_(false),
+            [&_result](awl::event::base_unique_ptr &&_event)
+            {
+              return fcppt::optional::maybe(
+                  sgec::impl::window::translate_event(*_event),
+                  fcppt::const_(false),
+                  [&_result](sgec_window_event const &_window_event)
+                  {
+                    _result.get() = _window_event;
 
-								return
-									true;
-							}
-						);
-				}
-			)
-		)
-		{
-			break;
-		}
+                    return true;
+                  });
+            }))
+    {
+      break;
+    }
 
-		if(
-			fcppt::either::match(
-				system_.get().next(),
-				[
-					this
-				](
-					awl::main::exit_code const _exit_code
-				)
-				{
-					this->exit_code_ =
-						awl::main::optional_exit_code{
-							_exit_code
-						};
+    if (fcppt::either::match(
+            system_.get().next(),
+            [this](awl::main::exit_code const _exit_code)
+            {
+              this->exit_code_ = awl::main::optional_exit_code{_exit_code};
 
-					return
-						true;
-				},
-				[
-					this
-				](
-					awl::event::container &&_events
-				)
-				{
-					this->event_queue_ =
-						fcppt::container::join(
-							std::move(
-								this->event_queue_
-							),
-							std::move(
-								_events
-							)
-						);
+              return true;
+            },
+            [this](awl::event::container &&_events)
+            {
+              this->event_queue_ =
+                  fcppt::container::join(std::move(this->event_queue_), std::move(_events));
 
-					return
-						false;
-				}
-			)
-		)
-		{
-			return
-				false;
-		}
-	}
+              return false;
+            }))
+    {
+      return false;
+    }
+  }
 
-	return
-		true;
+  return true;
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		false;
+  return false;
 }
 
-void
-sgec_window_system::quit(
-	int const _exit_code
-)
+void sgec_window_system::quit(int const _exit_code)
 try
 {
-	system_.get().quit(
-		awl::main::exit_code(
-			_exit_code
-		)
-	);
+  system_.get().quit(awl::main::exit_code(_exit_code));
 }
-catch(
-	...
-)
+catch (...)
 {
 }
 
-int
-sgec_window_system::exit_code() const
+int sgec_window_system::exit_code() const
 {
-	return
-		fcppt::optional::from(
-			exit_code_,
-			fcppt::const_(
-				awl::main::exit_code{
-					0
-				}
-			)
-		).get();
+  return fcppt::optional::from(exit_code_, fcppt::const_(awl::main::exit_code{0})).get();
 }

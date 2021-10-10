@@ -3,42 +3,26 @@
 #include <sgec/audio/sound/base_fwd.h>
 #include <sgec/impl/audio/buffer.hpp>
 
-
-extern "C"
-struct sgec_audio_sound_base *
-sgec_audio_buffer_create_nonpositional(
-	struct sgec_audio_buffer *const _buffer
-)
+extern "C" struct sgec_audio_sound_base *
+sgec_audio_buffer_create_nonpositional(struct sgec_audio_buffer *const _buffer)
 try
 {
-	return
-		_buffer->create_nonpositional();
+  return _buffer->create_nonpositional();
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		nullptr;
+  return nullptr;
 }
 
-extern "C"
-enum sgec_result
-sgec_audio_buffer_destroy(
-	struct sgec_audio_buffer *const _audio
-)
+extern "C" enum sgec_result sgec_audio_buffer_destroy(struct sgec_audio_buffer *const _audio)
 try
 {
-	delete // NOLINT(cppcoreguidelines-owning-memory)
-		_audio;
+  delete // NOLINT(cppcoreguidelines-owning-memory)
+      _audio;
 
-	return
-		sgec_result_ok;
+  return sgec_result_ok;
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		sgec_result_error;
+  return sgec_result_error;
 }

@@ -4,14 +4,10 @@
 #include <sgec/input/cursor/move_event.h>
 #include <sge/input/cursor/event/move_fwd.hpp>
 
-
 namespace sgec::impl::input::cursor
 {
 
-sgec_input_cursor_move_event
-translate_move_event(
-	sge::input::cursor::event::move const &
-);
+sgec_input_cursor_move_event translate_move_event(sge::input::cursor::event::move const &);
 
 }
 

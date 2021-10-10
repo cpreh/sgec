@@ -5,25 +5,8 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
+sgec_audio_file::sgec_audio_file(sge::audio::file_unique_ptr &&_file) : file_(std::move(_file)) {}
 
-sgec_audio_file::sgec_audio_file(
-	sge::audio::file_unique_ptr &&_file
-)
-:
-	file_(
-		std::move(
-			_file
-		)
-	)
-{
-}
+sgec_audio_file::~sgec_audio_file() = default;
 
-sgec_audio_file::~sgec_audio_file()
-= default;
-
-sge::audio::file &
-sgec_audio_file::get()
-{
-	return
-		*file_;
-}
+sge::audio::file &sgec_audio_file::get() { return *file_; }

@@ -2,24 +2,13 @@
 #include <sgec/audio/loader.h>
 #include <sgec/impl/audio/loader.hpp>
 
-
-extern "C"
-struct sgec_audio_file *
-sgec_audio_loader_load(
-	struct sgec_audio_loader *const _loader,
-	char const *const _path
-)
+extern "C" struct sgec_audio_file *
+sgec_audio_loader_load(struct sgec_audio_loader *const _loader, char const *const _path)
 try
 {
-	return
-		_loader->load(
-			_path
-		);
+  return _loader->load(_path);
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		nullptr;
+  return nullptr;
 }

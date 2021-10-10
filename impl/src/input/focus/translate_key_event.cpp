@@ -6,24 +6,11 @@
 #include <sge/input/focus/event/key.hpp>
 #include <sge/input/key/pressed.hpp>
 
-
 sgec_input_focus_key_event
-sgec::impl::input::focus::translate_key_event(
-	sge::input::focus::event::key const &_event
-)
+sgec::impl::input::focus::translate_key_event(sge::input::focus::event::key const &_event)
 {
-	return
-		sgec_input_focus_key_event{
-			sgec::impl::input::focus::make_id(
-				*_event.focus()
-			),
-			sgec::impl::input::key::translate_code(
-				_event.get().code()
-			),
-			sgec::impl::input::key::translate_state(
-				sge::input::key::pressed{
-					_event.pressed()
-				}
-			)
-		};
+  return sgec_input_focus_key_event{
+      sgec::impl::input::focus::make_id(*_event.focus()),
+      sgec::impl::input::key::translate_code(_event.get().code()),
+      sgec::impl::input::key::translate_state(sge::input::key::pressed{_event.pressed()})};
 }

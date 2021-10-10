@@ -4,27 +4,14 @@
 #include <sge/renderer/target/viewport.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 
-
-extern "C"
-sgec_renderer_target_size
-sgec_renderer_target_onscreen_viewport_width(
-	struct sgec_renderer_target_onscreen const *const _target
-)
+extern "C" sgec_renderer_target_size sgec_renderer_target_onscreen_viewport_width(
+    struct sgec_renderer_target_onscreen const *const _target)
 {
-	return
-		fcppt::cast::to_unsigned(
-			_target->viewport().get().size().w()
-		);
+  return fcppt::cast::to_unsigned(_target->viewport().get().size().w());
 }
 
-extern "C"
-sgec_renderer_target_size
-sgec_renderer_target_onscreen_viewport_height(
-	struct sgec_renderer_target_onscreen const *const _target
-)
+extern "C" sgec_renderer_target_size sgec_renderer_target_onscreen_viewport_height(
+    struct sgec_renderer_target_onscreen const *const _target)
 {
-	return
-		fcppt::cast::to_unsigned(
-			_target->viewport().get().size().h()
-		);
+  return fcppt::cast::to_unsigned(_target->viewport().get().size().h());
 }

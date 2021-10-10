@@ -4,14 +4,10 @@
 #include <sgec/input/mouse/button_event.h>
 #include <sge/input/mouse/event/button_fwd.hpp>
 
-
 namespace sgec::impl::input::mouse
 {
 
-sgec_input_mouse_button_event
-translate_button_event(
-	sge::input::mouse::event::button const &
-);
+sgec_input_mouse_button_event translate_button_event(sge::input::mouse::event::button const &);
 
 }
 

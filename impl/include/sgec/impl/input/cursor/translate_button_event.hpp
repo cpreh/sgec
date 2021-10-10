@@ -4,14 +4,10 @@
 #include <sgec/input/cursor/button_event.h>
 #include <sge/input/cursor/event/button_fwd.hpp>
 
-
 namespace sgec::impl::input::cursor
 {
 
-sgec_input_cursor_button_event
-translate_button_event(
-	sge::input::cursor::event::button const &
-);
+sgec_input_cursor_button_event translate_button_event(sge::input::cursor::event::button const &);
 
 }
 

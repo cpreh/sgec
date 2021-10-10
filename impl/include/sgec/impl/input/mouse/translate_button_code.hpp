@@ -4,14 +4,10 @@
 #include <sgec/input/mouse/button_code.h>
 #include <sge/input/mouse/button_code_fwd.hpp>
 
-
 namespace sgec::impl::input::mouse
 {
 
-sgec_input_mouse_button_code
-translate_button_code(
-	sge::input::mouse::button_code
-);
+sgec_input_mouse_button_code translate_button_code(sge::input::mouse::button_code);
 
 }
 

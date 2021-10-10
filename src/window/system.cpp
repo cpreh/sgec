@@ -8,72 +8,37 @@
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
 
-
-extern "C"
-enum sgec_window_event_result
-sgec_window_system_next_event(
-	struct sgec_window_system *const _system,
-	struct sgec_window_event *const _result
-)
+extern "C" enum sgec_window_event_result sgec_window_system_next_event(
+    struct sgec_window_system *const _system, struct sgec_window_event *const _result)
 try
 {
-	return
-		_system->next_event(
-			fcppt::make_ref(
-				*_result
-			)
-		)
-		?
-			sgec_window_event_result_running
-		:
-			sgec_window_event_result_finished
-		;
+  return _system->next_event(fcppt::make_ref(*_result)) ? sgec_window_event_result_running
+                                                        : sgec_window_event_result_finished;
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		sgec_window_event_result_error;
+  return sgec_window_event_result_error;
 }
 
-extern "C"
-sgec_result
-sgec_window_system_quit(
-	struct sgec_window_system *const _system,
-	int const _exit_code
-)
+extern "C" sgec_result
+sgec_window_system_quit(struct sgec_window_system *const _system, int const _exit_code)
 try
 {
-	_system->quit(
-		_exit_code
-	);
+  _system->quit(_exit_code);
 
-	return
-		sgec_result_ok;
+  return sgec_result_ok;
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		sgec_result_error;
+  return sgec_result_error;
 }
 
-extern "C"
-int
-sgec_window_system_exit_code(
-	struct sgec_window_system *const _system
-)
+extern "C" int sgec_window_system_exit_code(struct sgec_window_system *const _system)
 try
 {
-	return
-		_system->exit_code();
+  return _system->exit_code();
 }
-catch(
-	...
-)
+catch (...)
 {
-	return
-		EXIT_FAILURE;
+  return EXIT_FAILURE;
 }

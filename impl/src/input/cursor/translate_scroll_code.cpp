@@ -3,30 +3,18 @@
 #include <sge/input/cursor/scroll_code.hpp>
 #include <fcppt/assert/unreachable.hpp>
 
-
 sgec_input_cursor_scroll_code
-sgec::impl::input::cursor::translate_scroll_code(
-	sge::input::cursor::scroll_code const _code
-)
+sgec::impl::input::cursor::translate_scroll_code(sge::input::cursor::scroll_code const _code)
 {
-	#define TRANSLATE_CASE(\
-		name\
-	)\
-	case sge::input::cursor::scroll_code::name: \
-		return \
-			sgec_input_cursor_scroll_code_ ## name
+#define TRANSLATE_CASE(name) \
+  case sge::input::cursor::scroll_code::name: \
+    return sgec_input_cursor_scroll_code_##name
 
-	switch(
-		_code
-	)
-	{
-		TRANSLATE_CASE(
-			vertical
-		);
-		TRANSLATE_CASE(
-			horizontal
-		);
-	}
+  switch (_code)
+  {
+    TRANSLATE_CASE(vertical);
+    TRANSLATE_CASE(horizontal);
+  }
 
-	FCPPT_ASSERT_UNREACHABLE;
+  FCPPT_ASSERT_UNREACHABLE;
 }

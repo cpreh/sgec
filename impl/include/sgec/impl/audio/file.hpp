@@ -6,25 +6,19 @@
 #include <sge/audio/file_unique_ptr.hpp>
 #include <fcppt/nonmovable.hpp>
 
-
 struct sgec_audio_file
 {
-	FCPPT_NONMOVABLE(
-		sgec_audio_file
-	);
+  FCPPT_NONMOVABLE(sgec_audio_file);
+
 public:
-	explicit
-	sgec_audio_file(
-		sge::audio::file_unique_ptr &&
-	);
+  explicit sgec_audio_file(sge::audio::file_unique_ptr &&);
 
-	~sgec_audio_file();
+  ~sgec_audio_file();
 
-	[[nodiscard]]
-	sge::audio::file &
-	get();
+  [[nodiscard]] sge::audio::file &get();
+
 private:
-	sge::audio::file_unique_ptr const file_;
+  sge::audio::file_unique_ptr const file_;
 };
 
 #endif

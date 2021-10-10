@@ -4,14 +4,10 @@
 #include <sgec/input/cursor/scroll_event.h>
 #include <sge/input/cursor/event/scroll_fwd.hpp>
 
-
 namespace sgec::impl::input::cursor
 {
 
-sgec_input_cursor_scroll_event
-translate_scroll_event(
-	sge::input::cursor::event::scroll const &
-);
+sgec_input_cursor_scroll_event translate_scroll_event(sge::input::cursor::event::scroll const &);
 
 }
 

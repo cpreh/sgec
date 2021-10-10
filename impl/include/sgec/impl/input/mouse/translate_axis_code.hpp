@@ -4,14 +4,10 @@
 #include <sgec/input/mouse/axis_code.h>
 #include <sge/input/mouse/axis_code_fwd.hpp>
 
-
 namespace sgec::impl::input::mouse
 {
 
-sgec_input_mouse_axis_code
-translate_axis_code(
-	sge::input::mouse::axis_code
-);
+sgec_input_mouse_axis_code translate_axis_code(sge::input::mouse::axis_code);
 
 }
 

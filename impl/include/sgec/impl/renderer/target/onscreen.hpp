@@ -7,29 +7,19 @@
 #include <fcppt/nonmovable.hpp>
 #include <fcppt/reference_impl.hpp>
 
-
 struct sgec_renderer_target_onscreen
 {
-	FCPPT_NONMOVABLE(
-		sgec_renderer_target_onscreen
-	);
+  FCPPT_NONMOVABLE(sgec_renderer_target_onscreen);
+
 public:
-	explicit
-	sgec_renderer_target_onscreen(
-		fcppt::reference<
-			sge::renderer::target::onscreen
-		>
-	);
+  explicit sgec_renderer_target_onscreen(fcppt::reference<sge::renderer::target::onscreen>);
 
-	~sgec_renderer_target_onscreen(); // NOLINT(performance-trivially-destructible)
+  ~sgec_renderer_target_onscreen(); // NOLINT(performance-trivially-destructible)
 
-	[[nodiscard]]
-	sge::renderer::target::viewport
-	viewport() const;
+  [[nodiscard]] sge::renderer::target::viewport viewport() const;
+
 private:
-	fcppt::reference<
-		sge::renderer::target::onscreen
-	> const target_;
+  fcppt::reference<sge::renderer::target::onscreen> const target_;
 };
 
 #endif

@@ -4,14 +4,10 @@
 #include <sgec/input/keyboard/key_event.h>
 #include <sge/input/keyboard/event/key_fwd.hpp>
 
-
 namespace sgec::impl::input::keyboard
 {
 
-sgec_input_keyboard_key_event
-translate_key_event(
-	sge::input::keyboard::event::key const &
-);
+sgec_input_keyboard_key_event translate_key_event(sge::input::keyboard::event::key const &);
 
 }
 

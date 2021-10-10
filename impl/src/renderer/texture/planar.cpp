@@ -4,25 +4,12 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
 sgec_renderer_texture_planar::sgec_renderer_texture_planar(
-	sge::renderer::texture::planar_unique_ptr &&_texture
-)
-:
-	texture_(
-		std::move(
-			_texture
-		)
-	)
+    sge::renderer::texture::planar_unique_ptr &&_texture)
+    : texture_(std::move(_texture))
 {
 }
 
-sgec_renderer_texture_planar::~sgec_renderer_texture_planar()
-= default;
+sgec_renderer_texture_planar::~sgec_renderer_texture_planar() = default;
 
-sge::renderer::texture::planar &
-sgec_renderer_texture_planar::get()
-{
-	return
-		*texture_;
-}
+sge::renderer::texture::planar &sgec_renderer_texture_planar::get() { return *texture_; }

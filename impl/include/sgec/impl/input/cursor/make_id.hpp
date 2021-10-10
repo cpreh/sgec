@@ -4,14 +4,10 @@
 #include <sgec/input/cursor/id.h>
 #include <sge/input/cursor/object_fwd.hpp>
 
-
 namespace sgec::impl::input::cursor
 {
 
-sgec_input_cursor_id
-make_id(
-	sge::input::cursor::object const &
-);
+sgec_input_cursor_id make_id(sge::input::cursor::object const &);
 
 }
 

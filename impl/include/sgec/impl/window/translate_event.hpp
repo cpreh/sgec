@@ -5,16 +5,10 @@
 #include <awl/event/base_fwd.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
-
 namespace sgec::impl::window
 {
 
-fcppt::optional::object<
-	sgec_window_event
->
-translate_event(
-	awl::event::base const &
-);
+fcppt::optional::object<sgec_window_event> translate_event(awl::event::base const &);
 
 }
 

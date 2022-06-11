@@ -1,6 +1,6 @@
 cmake_minimum_required(
 	VERSION
-	2.8.12
+	3.0
 )
 
 project(
@@ -17,6 +17,15 @@ set(
 	FCPPT_UTILS_CLANG_TIDY_ADDITIONAL_CHECKS
 	"-fuchsia-default-arguments-calls"
 	"-fuchsia-default-arguments-declarations"
+)
+
+set(
+	FCPPT_UTILS_CLANG_TIDY_WHITELIST
+	"fcppt"
+	"awl"
+	"mizuiro"
+	"sge"
+	"sgec"
 )
 
 include(

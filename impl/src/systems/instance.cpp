@@ -58,21 +58,21 @@ sgec_systems_instance::sgec_systems_instance(
     sgec_systems_cursor_option const _cursor_option)
     : impl_(sge::systems::make_list(
           sge::systems::window(sge::systems::window_source(sge::systems::original_window(
-              sge::window::title(fcppt::from_std_string(_window_name))))))(
-          sge::systems::renderer(
-              sge::renderer::pixel_format::object(
-                  sge::renderer::pixel_format::color::depth32,
-                  sge::renderer::pixel_format::depth_stencil::off,
-                  sge::renderer::pixel_format::optional_multi_samples(),
-                  sge::renderer::pixel_format::srgb::no),
-              sge::renderer::display_mode::parameters(
-                  sge::renderer::display_mode::vsync::on,
-                  sge::renderer::display_mode::optional_object()),
-              sge::viewport::optional_resize_callback{
-                  fcppt::math::dim::contents(_dim) == 0U
-                      ? sge::viewport::fill_on_resize()
-                      : sge::viewport::maintain_aspect(
-                            sge::viewport::fractional_aspect(_dim.w(), _dim.h()))}))(
+              sge::window::title(fcppt::from_std_string(_window_name))))))(sge::systems::renderer{
+          sge::renderer::pixel_format::object{
+              sge::renderer::pixel_format::color::depth32,
+              sge::renderer::pixel_format::depth_stencil::off,
+              sge::renderer::pixel_format::optional_multi_samples(),
+              sge::renderer::pixel_format::srgb::no},
+          sge::renderer::display_mode::parameters{
+              sge::renderer::display_mode::vsync::on,
+              sge::renderer::display_mode::optional_object()},
+          sge::viewport::optional_resize_callback{
+              fcppt::math::dim::contents(_dim) == 0U
+                  ? sge::viewport::fill_on_resize()
+                  : sge::viewport::maintain_aspect(sge::viewport::fractional_aspect{
+                        sge::viewport::fractional_aspect::num_type{_dim.w()},
+                        sge::viewport::fractional_aspect::denom_type{_dim.h()}})}})(
           sge::systems::input(
               [_cursor_option]
               {

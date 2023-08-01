@@ -56,10 +56,16 @@
 #include <fcppt/math/dim/contents.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/mpl/list/object.hpp>
+#include <fcppt/preprocessor/ignore_unsafe_buffer_usage.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <stddef.h> // NOLINT(hicpp-deprecated-headers,modernize-deprecated-headers)
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_IGNORE_UNSAFE_BUFFER_USAGE
 
 extern "C" sgec_result sgec_sprite_draw(
     struct sgec_renderer_device_ffp *const _render_device,
@@ -143,3 +149,5 @@ catch (...)
 {
   return sgec_result_error;
 }
+
+FCPPT_PP_POP_WARNING

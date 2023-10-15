@@ -2,8 +2,8 @@
 #include <sgec/impl/font/added.hpp>
 #include <sgec/impl/font/object.hpp>
 #include <sgec/impl/font/system.hpp>
-#include <sge/font/added.hpp>
-#include <sge/font/object.hpp>
+#include <sge/font/added.hpp> // NOLINT(misc-include-cleaner)
+#include <sge/font/object.hpp> // NOLINT(misc-include-cleaner)
 #include <sge/font/parameters.hpp>
 #include <sge/font/system.hpp>
 #include <fcppt/from_std_string.hpp>
@@ -36,14 +36,14 @@ sgec_font_system::create(char const *const _family, sgec_font_ttf_size const _si
     parameters.ttf_size(fcppt::cast::to_unsigned(_size));
   }
 
+  // NOLINTNEXTLINE(cppcoreguidelines-owning-memory)
   return new sgec_font_object(system_.get().create_font(parameters));
 }
 
 sgec_font_added *sgec_font_system::add(char const *const _path)
 {
-  return new sgec_font_added(
-      system_.get().add_font(std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
-          _path)));
+  // NOLINTNEXTLINE(cppcoreguidelines-owning-memory)
+  return new sgec_font_added(system_.get().add_font(std::filesystem::path(_path)));
 }
 
 sge::font::system &sgec_font_system::get() { return system_.get(); }

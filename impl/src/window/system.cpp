@@ -1,9 +1,9 @@
 #include <sgec/impl/window/system.hpp>
 #include <sgec/impl/window/translate_event.hpp>
 #include <sgec/window/event.h>
-#include <sge/window/system.hpp>
+#include <sge/window/system.hpp> // NOLINT(misc-include-cleaner)
 #include <sge/window/system_ref.hpp>
-#include <awl/event/base.hpp>
+#include <awl/event/base.hpp> // NOLINT(misc-include-cleaner)
 #include <awl/event/base_unique_ptr.hpp>
 #include <awl/event/container.hpp>
 #include <awl/main/exit_code.hpp>
@@ -34,6 +34,7 @@ try
     if (fcppt::optional::maybe(
             fcppt::container::pop_front(event_queue_),
             fcppt::const_(false),
+            // NOLINTNEXTLINE(cppcoreguidelines-rvalue-reference-param-not-moved)
             [&_result](awl::event::base_unique_ptr &&_event)
             {
               return fcppt::optional::maybe(

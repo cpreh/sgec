@@ -12,6 +12,7 @@ extern "C" struct sgec_texture_part *
 sgec_texture_part_raw(struct sgec_renderer_texture_planar *const _texture)
 try
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-owning-memory)
   return new sgec_texture_part(fcppt::unique_ptr_to_base<sge::texture::part>(
       fcppt::make_unique_ptr<sge::texture::part_raw_ref>(_texture->get())));
 }
@@ -28,6 +29,7 @@ extern "C" struct sgec_texture_part *sgec_texture_part_raw_rect(
     sgec_renderer_texture_size const _h)
 try
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-owning-memory)
   return new sgec_texture_part(fcppt::unique_ptr_to_base<sge::texture::part>(
       fcppt::make_unique_ptr<sge::texture::part_raw_ref>(
           _texture->get(),

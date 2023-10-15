@@ -1,6 +1,6 @@
 #include <sgec/impl/audio/file.hpp>
 #include <sgec/impl/audio/loader.hpp>
-#include <sge/audio/file.hpp>
+#include <sge/audio/file.hpp> // NOLINT(misc-include-cleaner)
 #include <sge/audio/file_unique_ptr.hpp>
 #include <sge/audio/load.hpp>
 #include <sge/audio/loader_ref.hpp>
@@ -18,14 +18,11 @@ sgec_audio_loader::~sgec_audio_loader() = default;
 sgec_audio_file *sgec_audio_loader::load(char const *const _path)
 {
   return fcppt::optional::maybe(
-      sge::audio::load(
-          loader_,
-          std::filesystem::path( // NOLINT(fuchsia-default-arguments-calls)
-              _path)),
+      sge::audio::load(loader_, std::filesystem::path(_path)),
       fcppt::const_<sgec_audio_file *>(nullptr),
       [](sge::audio::file_unique_ptr &&_file)
       {
-        return // NOLINT(cppcoreguidelines-owning-memory)
-            new sgec_audio_file(std::move(_file));
+        // NOLINTNEXTLINE(cppcoreguidelines-owning-memory)
+        return new sgec_audio_file(std::move(_file));
       });
 }

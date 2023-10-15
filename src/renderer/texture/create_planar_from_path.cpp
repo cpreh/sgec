@@ -6,10 +6,10 @@
 #include <sgec/renderer/texture/create_planar_from_path.h>
 #include <sge/renderer/resource_flags_field.hpp>
 #include <sge/renderer/device/core.hpp>
-#include <sge/renderer/device/ffp.hpp>
+#include <sge/renderer/device/ffp.hpp> // NOLINT(misc-include-cleaner)
 #include <sge/renderer/texture/create_planar_from_path.hpp>
 #include <sge/renderer/texture/emulate_srgb.hpp>
-#include <sge/renderer/texture/planar.hpp>
+#include <sge/renderer/texture/planar.hpp> // NOLINT(misc-include-cleaner)
 #include <sge/renderer/texture/mipmap/off.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference_to_base.hpp>
@@ -23,6 +23,7 @@ extern "C" struct sgec_renderer_texture_planar *sgec_renderer_texture_create_pla
     char const *const _path)
 try
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-owning-memory)
   return new sgec_renderer_texture_planar(sge::renderer::texture::create_planar_from_path(
       std::filesystem::path(_path),
       fcppt::reference_to_base<sge::renderer::device::core>(fcppt::make_ref(_renderer->get())),

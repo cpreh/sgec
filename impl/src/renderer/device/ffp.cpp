@@ -2,11 +2,11 @@
 #include <sgec/impl/renderer/device/ffp.hpp>
 #include <sgec/impl/renderer/target/onscreen.hpp>
 #include <sgec/renderer/context/ffp_fwd.h>
-#include <sge/renderer/context/ffp.hpp>
+#include <sge/renderer/context/ffp.hpp> // NOLINT(misc-include-cleaner)
 #include <sge/renderer/device/ffp.hpp>
 #include <sge/renderer/device/ffp_ref.hpp>
 #include <sge/renderer/target/base.hpp>
-#include <sge/renderer/target/onscreen.hpp>
+#include <sge/renderer/target/onscreen.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/make_ref.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/reference_to_base.hpp>
@@ -22,6 +22,7 @@ sgec_renderer_device_ffp::~sgec_renderer_device_ffp() = default;
 
 sgec_renderer_context_ffp *sgec_renderer_device_ffp::begin_rendering()
 {
+  // NOLINTNEXTLINE(cppcoreguidelines-owning-memory)
   return new sgec_renderer_context_ffp(
       device_.get().begin_rendering_ffp(fcppt::reference_to_base<sge::renderer::target::base>(
           fcppt::make_ref(device_.get().onscreen_target()))));

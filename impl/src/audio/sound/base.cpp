@@ -3,7 +3,7 @@
 #include <sgec/impl/audio/sound/base.hpp>
 #include <sgec/impl/audio/sound/from_repeat.hpp>
 #include <sgec/impl/audio/sound/to_play_status.hpp>
-#include <sge/audio/sound/base.hpp>
+#include <sge/audio/sound/base.hpp> // NOLINT(misc-include-cleaner)
 #include <sge/audio/sound/base_unique_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

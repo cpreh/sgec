@@ -1,5 +1,6 @@
 #include <sgec/impl/renderer/texture/planar.hpp>
 #include <sge/renderer/texture/planar.hpp>
+#include <sge/renderer/texture/planar_unique_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

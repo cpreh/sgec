@@ -23,11 +23,10 @@
 #include <sge/systems/font.hpp>
 #include <sge/systems/image2d.hpp>
 #include <sge/systems/input.hpp>
-#include <sge/systems/instance.hpp>
+#include <sge/systems/instance.hpp> // NOLINT(misc-include-cleaner)
 #include <sge/systems/make_list.hpp>
 #include <sge/systems/original_window.hpp>
 #include <sge/systems/renderer.hpp>
-#include <sge/systems/renderer_caps.hpp>
 #include <sge/systems/window.hpp>
 #include <sge/systems/window_source.hpp>
 #include <sge/viewport/fill_on_resize.hpp>
@@ -39,7 +38,7 @@
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/unique_ptr_impl.hpp> // NOLINT(misc-include-cleaner)
 #include <fcppt/assert/unreachable.hpp>
 #include <fcppt/math/dim/contents.hpp>
 

@@ -10,9 +10,9 @@
 #include <sgec/window/unit.h>
 #include <sge/image/color/rgba8_format.hpp>
 #include <sge/renderer/screen_size.hpp>
-#include <sge/renderer/context/ffp.hpp>
+#include <sge/renderer/context/ffp.hpp> // NOLINT(misc-include-cleaner)
 #include <sge/renderer/device/core.hpp>
-#include <sge/renderer/device/ffp.hpp>
+#include <sge/renderer/device/ffp.hpp> // NOLINT(misc-include-cleaner)
 #include <sge/sprite/object.hpp>
 #include <sge/sprite/projection_dim.hpp>
 #include <sge/sprite/buffers/option.hpp>

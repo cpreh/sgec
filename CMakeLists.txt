@@ -1,6 +1,6 @@
 cmake_minimum_required(
 	VERSION
-	3.7.0
+	3.27.0
 )
 
 project(
@@ -13,7 +13,8 @@ find_package(
 )
 
 # mizuiro uses too many default arguments
-set(
+list(
+	APPEND
 	FCPPT_UTILS_CLANG_TIDY_ADDITIONAL_CHECKS
 	"-cppcoreguidelines-avoid-const-or-ref-data-members"
 	"-fuchsia-default-arguments-calls"
@@ -33,6 +34,17 @@ set(
 include(
 	FcpptCMakeUtils
 )
+
+if(
+	(CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP)
+	AND FCPPT_UTILS_BUILD_HEADERS
+)
+	list(
+		APPEND
+		FCPPT_UTILS_COMPILE_OPTIONS
+		"-Wno-unused-macros"
+	)
+endif()
 
 include(
 	FcpptSymbol

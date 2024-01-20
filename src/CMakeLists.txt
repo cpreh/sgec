@@ -184,7 +184,6 @@ set(
 	include/sgec/window/system.h
 	include/sgec/window/system_fwd.h
 	include/sgec/window/unit.h
-	src/CMakeLists.txt
 	src/audio/buffer.cpp
 	src/audio/file.cpp
 	src/audio/loader.cpp
@@ -211,6 +210,9 @@ set(
 fcppt_utils_append_source_dir_and_make_groups(
 	"${SGEC_FILES}"
 	SGEC_FILES_ABS
+	HEADER_ONLY_EXCEPTIONS
+		include/sgec/detail/footer.h
+		include/sgec/detail/header.h
 )
 
 function(
@@ -276,7 +278,6 @@ function(
 		${sgetexture_TARGET}
 		${sgeviewport_TARGET}
 		${sgewindow_TARGET}
-		${FCPPT_UTILS_FILESYSTEM_LIBRARIES}
 	)
 
 	install(

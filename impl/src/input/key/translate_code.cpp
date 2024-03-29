@@ -1,7 +1,10 @@
 #include <sgec/impl/input/key/translate_code.hpp>
 #include <sgec/input/key/code.h>
 #include <sge/input/key/code.hpp>
-#include <fcppt/assert/unreachable.hpp>
+#include <fcppt/enum/make_invalid.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 sgec_input_key_code sgec::impl::input::key::translate_code(sge::input::key::code const _code)
 {
@@ -13,6 +16,8 @@ sgec_input_key_code sgec::impl::input::key::translate_code(sge::input::key::code
 
 #define TRANSLATE_CASE_NUM(name) TRANSLATE_CASE_BASE(_##name, name)
 
+  FCPPT_PP_PUSH_WARNING
+  FCPPT_PP_DISABLE_GCC_WARNING(-Wswitch-default)
   switch (_code)
   {
     TRANSLATE_CASE(escape);
@@ -140,8 +145,9 @@ sgec_input_key_code sgec::impl::input::key::translate_code(sge::input::key::code
     TRANSLATE_CASE(yen);
     TRANSLATE_CASE(unknown);
   }
+  FCPPT_PP_POP_WARNING
 
-  FCPPT_ASSERT_UNREACHABLE;
+  throw fcppt::enum_::make_invalid(_code);
 
 #undef TRANSLATE_CASE
 }

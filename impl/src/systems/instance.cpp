@@ -39,8 +39,11 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp> // NOLINT(misc-include-cleaner)
-#include <fcppt/assert/unreachable.hpp>
+#include <fcppt/enum/make_invalid.hpp>
 #include <fcppt/math/dim/contents.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 sgec_systems_instance::sgec_systems_instance(
     char const *const _window_name,
@@ -75,6 +78,8 @@ sgec_systems_instance::sgec_systems_instance(
           sge::systems::input(
               [_cursor_option]
               {
+                FCPPT_PP_PUSH_WARNING
+                FCPPT_PP_DISABLE_GCC_WARNING(-Wswitch-default)
                 switch (_cursor_option)
                 {
                 case sgec_systems_cursor_option_normal:
@@ -82,8 +87,9 @@ sgec_systems_instance::sgec_systems_instance(
                 case sgec_systems_cursor_option_exclusive:
                   return sge::systems::cursor_option_field{sge::systems::cursor_option::exclusive};
                 }
+                FCPPT_PP_POP_WARNING
 
-                FCPPT_ASSERT_UNREACHABLE;
+                throw fcppt::enum_::make_invalid(_cursor_option);
               }()))(sge::systems::image2d(sge::media::optional_extension_set()))(
           sge::systems::audio_loader(sge::media::optional_extension_set()))(sge::systems::font())(
           sge::systems::audio_player_default())),

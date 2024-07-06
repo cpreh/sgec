@@ -2,9 +2,8 @@
 
 set -e -u
 
-update_cmake \
-	src/CMakeLists.txt \
-	SGEC_FILES \
+update_cmake.sh \
+	files.txt \
 	src \
 	impl \
 	include

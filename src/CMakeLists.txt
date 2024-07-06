@@ -1,318 +1,60 @@
-include(
-	GNUInstallDirs
-)
+include(GNUInstallDirs)
 
-set(
-	SGEC_FILES
-	impl/include/sgec/impl/audio/buffer.hpp
-	impl/include/sgec/impl/audio/file.hpp
-	impl/include/sgec/impl/audio/loader.hpp
-	impl/include/sgec/impl/audio/player.hpp
-	impl/include/sgec/impl/audio/sound/base.hpp
-	impl/include/sgec/impl/audio/sound/from_repeat.hpp
-	impl/include/sgec/impl/audio/sound/to_play_status.hpp
-	impl/include/sgec/impl/font/added.hpp
-	impl/include/sgec/impl/font/object.hpp
-	impl/include/sgec/impl/font/system.hpp
-	impl/include/sgec/impl/image/color/translate_rgba.hpp
-	impl/include/sgec/impl/image2d/system.hpp
-	impl/include/sgec/impl/input/cursor/make_id.hpp
-	impl/include/sgec/impl/input/cursor/translate_button_code.hpp
-	impl/include/sgec/impl/input/cursor/translate_button_event.hpp
-	impl/include/sgec/impl/input/cursor/translate_button_state.hpp
-	impl/include/sgec/impl/input/cursor/translate_move_event.hpp
-	impl/include/sgec/impl/input/cursor/translate_position.hpp
-	impl/include/sgec/impl/input/cursor/translate_position_opt.hpp
-	impl/include/sgec/impl/input/cursor/translate_scroll_code.hpp
-	impl/include/sgec/impl/input/cursor/translate_scroll_event.hpp
-	impl/include/sgec/impl/input/focus/make_id.hpp
-	impl/include/sgec/impl/input/focus/translate_key_event.hpp
-	impl/include/sgec/impl/input/focus/translate_key_repeat_event.hpp
-	impl/include/sgec/impl/input/focus/translate_text_event.hpp
-	impl/include/sgec/impl/input/key/translate_code.hpp
-	impl/include/sgec/impl/input/key/translate_state.hpp
-	impl/include/sgec/impl/input/keyboard/translate_key_event.hpp
-	impl/include/sgec/impl/input/mouse/translate_axis_code.hpp
-	impl/include/sgec/impl/input/mouse/translate_axis_event.hpp
-	impl/include/sgec/impl/input/mouse/translate_button_code.hpp
-	impl/include/sgec/impl/input/mouse/translate_button_event.hpp
-	impl/include/sgec/impl/input/mouse/translate_button_state.hpp
-	impl/include/sgec/impl/renderer/context/ffp.hpp
-	impl/include/sgec/impl/renderer/device/ffp.hpp
-	impl/include/sgec/impl/renderer/target/onscreen.hpp
-	impl/include/sgec/impl/renderer/texture/planar.hpp
-	impl/include/sgec/impl/renderer/translate_render_event.hpp
-	impl/include/sgec/impl/systems/instance.hpp
-	impl/include/sgec/impl/texture/part.hpp
-	impl/include/sgec/impl/window/system.hpp
-	impl/include/sgec/impl/window/translate_event.hpp
-	impl/src/audio/buffer.cpp
-	impl/src/audio/file.cpp
-	impl/src/audio/loader.cpp
-	impl/src/audio/player.cpp
-	impl/src/audio/sound/base.cpp
-	impl/src/audio/sound/from_repeat.cpp
-	impl/src/audio/sound/to_play_status.cpp
-	impl/src/font/added.cpp
-	impl/src/font/object.cpp
-	impl/src/font/system.cpp
-	impl/src/image/color/translate_rgba.cpp
-	impl/src/image2d/system.cpp
-	impl/src/input/cursor/make_id.cpp
-	impl/src/input/cursor/translate_button_code.cpp
-	impl/src/input/cursor/translate_button_event.cpp
-	impl/src/input/cursor/translate_button_state.cpp
-	impl/src/input/cursor/translate_move_event.cpp
-	impl/src/input/cursor/translate_position.cpp
-	impl/src/input/cursor/translate_position_opt.cpp
-	impl/src/input/cursor/translate_scroll_code.cpp
-	impl/src/input/cursor/translate_scroll_event.cpp
-	impl/src/input/focus/make_id.cpp
-	impl/src/input/focus/translate_key_event.cpp
-	impl/src/input/focus/translate_key_repeat_event.cpp
-	impl/src/input/focus/translate_text_event.cpp
-	impl/src/input/key/translate_code.cpp
-	impl/src/input/key/translate_state.cpp
-	impl/src/input/keyboard/translate_key_event.cpp
-	impl/src/input/mouse/translate_axis_code.cpp
-	impl/src/input/mouse/translate_axis_event.cpp
-	impl/src/input/mouse/translate_button_code.cpp
-	impl/src/input/mouse/translate_button_event.cpp
-	impl/src/input/mouse/translate_button_state.cpp
-	impl/src/renderer/context/ffp.cpp
-	impl/src/renderer/device/ffp.cpp
-	impl/src/renderer/target/onscreen.cpp
-	impl/src/renderer/texture/planar.cpp
-	impl/src/renderer/translate_render_event.cpp
-	impl/src/systems/instance.cpp
-	impl/src/texture/part.cpp
-	impl/src/window/system.cpp
-	impl/src/window/translate_event.cpp
-	include/sgec/audio/buffer.h
-	include/sgec/audio/buffer_fwd.h
-	include/sgec/audio/file.h
-	include/sgec/audio/file_fwd.h
-	include/sgec/audio/loader.h
-	include/sgec/audio/loader_fwd.h
-	include/sgec/audio/player.h
-	include/sgec/audio/player_fwd.h
-	include/sgec/audio/sound/base.h
-	include/sgec/audio/sound/base_fwd.h
-	include/sgec/audio/sound/play_status.h
-	include/sgec/audio/sound/repeat.h
-	include/sgec/detail/footer.h
-	include/sgec/detail/header.h
-	include/sgec/font/added.h
-	include/sgec/font/added_fwd.h
-	include/sgec/font/draw/simple.h
-	include/sgec/font/object.h
-	include/sgec/font/object_fwd.h
-	include/sgec/font/system.h
-	include/sgec/font/system_fwd.h
-	include/sgec/font/ttf_size.h
-	include/sgec/font/unit.h
-	include/sgec/image/color/make_rgba.h
-	include/sgec/image/color/rgba.h
-	include/sgec/image/color/rgba_channel.h
-	include/sgec/image2d/system_fwd.h
-	include/sgec/input/cursor/button_code.h
-	include/sgec/input/cursor/button_event.h
-	include/sgec/input/cursor/button_event_fwd.h
-	include/sgec/input/cursor/button_state.h
-	include/sgec/input/cursor/id.h
-	include/sgec/input/cursor/move_event.h
-	include/sgec/input/cursor/move_event_fwd.h
-	include/sgec/input/cursor/position.h
-	include/sgec/input/cursor/position_fwd.h
-	include/sgec/input/cursor/position_opt.h
-	include/sgec/input/cursor/position_opt_fwd.h
-	include/sgec/input/cursor/position_unit.h
-	include/sgec/input/cursor/scroll_code.h
-	include/sgec/input/cursor/scroll_event.h
-	include/sgec/input/cursor/scroll_event_fwd.h
-	include/sgec/input/cursor/scroll_value.h
-	include/sgec/input/focus/id.h
-	include/sgec/input/focus/key_event.h
-	include/sgec/input/focus/key_event_fwd.h
-	include/sgec/input/focus/key_repeat_event.h
-	include/sgec/input/focus/key_repeat_event_fwd.h
-	include/sgec/input/focus/text_event.h
-	include/sgec/input/focus/text_event_fwd.h
-	include/sgec/input/key/code.h
-	include/sgec/input/key/state.h
-	include/sgec/input/keyboard/key_event.h
-	include/sgec/input/keyboard/key_event_fwd.h
-	include/sgec/input/keyboard/key_id.h
-	include/sgec/input/mouse/axis_code.h
-	include/sgec/input/mouse/axis_event.h
-	include/sgec/input/mouse/axis_event_fwd.h
-	include/sgec/input/mouse/axis_value.h
-	include/sgec/input/mouse/button_code.h
-	include/sgec/input/mouse/button_event.h
-	include/sgec/input/mouse/button_event_fwd.h
-	include/sgec/input/mouse/button_state.h
-	include/sgec/renderer/context/ffp.h
-	include/sgec/renderer/context/ffp_fwd.h
-	include/sgec/renderer/device/ffp.h
-	include/sgec/renderer/device/ffp_fwd.h
-	include/sgec/renderer/render_event.h
-	include/sgec/renderer/render_event_fwd.h
-	include/sgec/renderer/target/onscreen.h
-	include/sgec/renderer/target/onscreen_fwd.h
-	include/sgec/renderer/target/size.h
-	include/sgec/renderer/texture/create_planar_from_path.h
-	include/sgec/renderer/texture/planar.h
-	include/sgec/renderer/texture/planar_fwd.h
-	include/sgec/renderer/texture/size.h
-	include/sgec/result.h
-	include/sgec/sprite/draw.h
-	include/sgec/sprite/object.h
-	include/sgec/sprite/object_fwd.h
-	include/sgec/sprite/scalar.h
-	include/sgec/sprite/unit.h
-	include/sgec/systems/cursor_option.h
-	include/sgec/systems/instance.h
-	include/sgec/systems/instance_fwd.h
-	include/sgec/texture/part.h
-	include/sgec/texture/part_fwd.h
-	include/sgec/texture/part_raw.h
-	include/sgec/window/event.h
-	include/sgec/window/event_fwd.h
-	include/sgec/window/event_result.h
-	include/sgec/window/event_type.h
-	include/sgec/window/free_event.h
-	include/sgec/window/system.h
-	include/sgec/window/system_fwd.h
-	include/sgec/window/unit.h
-	src/audio/buffer.cpp
-	src/audio/file.cpp
-	src/audio/loader.cpp
-	src/audio/player.cpp
-	src/audio/sound/base.cpp
-	src/font/added.cpp
-	src/font/draw/simple.cpp
-	src/font/object.cpp
-	src/font/system.cpp
-	src/image/color/make_rgba.cpp
-	src/renderer/context/ffp.cpp
-	src/renderer/device/ffp.cpp
-	src/renderer/target/onscreen.cpp
-	src/renderer/texture/create_planar_from_path.cpp
-	src/renderer/texture/planar.cpp
-	src/sprite/draw.cpp
-	src/systems/instance.cpp
-	src/texture/part.cpp
-	src/texture/part_raw.cpp
-	src/window/free_event.cpp
-	src/window/system.cpp
-)
+fcppt_utils_load_source_files(files.txt SGEC_FILES)
 
 fcppt_utils_append_source_dir_and_make_groups(
-	"${SGEC_FILES}"
-	SGEC_FILES_ABS
-	HEADER_ONLY_EXCEPTIONS
-		include/sgec/detail/footer.h
-		include/sgec/detail/header.h
-)
+  "${SGEC_FILES}" SGEC_FILES_ABS HEADER_ONLY_EXCEPTIONS
+  include/sgec/detail/footer.h include/sgec/detail/header.h)
 
-function(
-	add_sgec_library
-	VARIANT
-)
-	if(
-		"${VARIANT}"
-		STREQUAL
-		"STATIC"
-	)
-		set(
-			TARGET_NAME
-			sgec_static
-		)
-	else()
-		set(
-			TARGET_NAME
-			sgec
-		)
-	endif()
+function(add_sgec_library VARIANT)
+  if("${VARIANT}" STREQUAL "STATIC")
+    set(TARGET_NAME sgec_static)
+  else()
+    set(TARGET_NAME sgec)
+  endif()
 
-	add_library(
-		${TARGET_NAME}
-		${VARIANT}
-		${SGEC_FILES_ABS}
-	)
+  add_library(${TARGET_NAME} ${VARIANT} ${SGEC_FILES_ABS})
 
-	fcppt_utils_set_target_compiler_flags(
-		${TARGET_NAME}
-	)
+  fcppt_utils_set_target_compiler_flags(${TARGET_NAME})
 
-	target_include_directories(
-		${TARGET_NAME}
-		PUBLIC
-		${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
-		PRIVATE
-		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/impl/include
-	)
+  target_include_directories(
+    ${TARGET_NAME}
+    PUBLIC ${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
+    PRIVATE ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/impl/include)
 
-	target_include_directories(
-		${TARGET_NAME}
-		SYSTEM
-		PUBLIC
-		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
-	)
+  target_include_directories(${TARGET_NAME} SYSTEM
+                             PUBLIC ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include)
 
-	target_link_libraries(
-		${TARGET_NAME}
-		PRIVATE
-		${fcppt_core_TARGET}
-		${awl_TARGET}
-		${sgeaudio_TARGET}
-		${sgecore_TARGET}
-		${sgefont_TARGET}
-		${sgefontdraw_TARGET}
-		${sgeimage_TARGET}
-		${sgeimagecolor_TARGET}
-		${sgeinput_TARGET}
-		${sgerenderer_TARGET}
-		${sgesprite_TARGET}
-		${sgesystems_TARGET}
-		${sgetexture_TARGET}
-		${sgeviewport_TARGET}
-		${sgewindow_TARGET}
-	)
+  target_link_libraries(
+    ${TARGET_NAME}
+    PRIVATE ${fcppt_core_TARGET}
+            ${awl_TARGET}
+            ${sgeaudio_TARGET}
+            ${sgecore_TARGET}
+            ${sgefont_TARGET}
+            ${sgefontdraw_TARGET}
+            ${sgeimage_TARGET}
+            ${sgeimagecolor_TARGET}
+            ${sgeinput_TARGET}
+            ${sgerenderer_TARGET}
+            ${sgesprite_TARGET}
+            ${sgesystems_TARGET}
+            ${sgetexture_TARGET}
+            ${sgeviewport_TARGET}
+            ${sgewindow_TARGET})
 
-	install(
-		TARGETS
-		${TARGET_NAME}
-		DESTINATION
-		"${CMAKE_INSTALL_LIBDIR}"
-	)
+  install(TARGETS ${TARGET_NAME} DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 endfunction()
 
-if(
-	ENABLE_SHARED
-)
-	add_sgec_library(
-		SHARED
-	)
+if(ENABLE_SHARED)
+  add_sgec_library(SHARED)
 endif()
 
-if(
-	ENABLE_STATIC
-)
-	add_sgec_library(
-		STATIC
-	)
+if(ENABLE_STATIC)
+  add_sgec_library(STATIC)
 endif()
 
-set(
-	INCLUDE_DIRS
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
-	${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
-)
+set(INCLUDE_DIRS ${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
+                 ${FCPPT_UTILS_PROJECT_BINARY_DIR}/include)
 
-install(
-	DIRECTORY
-	${INCLUDE_DIRS}
-	DESTINATION
-	"${CMAKE_INSTALL_INCLUDEDIR}"
-)
+install(DIRECTORY ${INCLUDE_DIRS} DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")

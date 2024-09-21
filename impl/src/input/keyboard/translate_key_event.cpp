@@ -9,7 +9,8 @@ sgec_input_keyboard_key_event
 sgec::impl::input::keyboard::translate_key_event(sge::input::keyboard::event::key const &_event)
 {
   return sgec_input_keyboard_key_event{
-      sgec::impl::input::key::translate_code(_event.get().code()),
-      sgec::impl::input::key::translate_state(sge::input::key::pressed{_event.pressed()}),
-      _event.get().id().get()};
+      .key_code = sgec::impl::input::key::translate_code(_event.get().code()),
+      .key_state =
+          sgec::impl::input::key::translate_state(sge::input::key::pressed{_event.pressed()}),
+      .key_id = _event.get().id().get()};
 }

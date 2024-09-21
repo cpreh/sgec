@@ -14,13 +14,13 @@ sgec_input_cursor_position_opt sgec::impl::input::cursor::translate_position_opt
       []
       {
         return sgec_input_cursor_position_opt{
-            sgec::impl::input::cursor::translate_position(
+            .pos = sgec::impl::input::cursor::translate_position(
                 fcppt::math::vector::null<sge::input::cursor::position>()),
-            false};
+            .valid = false};
       },
       [](sge::input::cursor::position const &_pos)
       {
         return sgec_input_cursor_position_opt{
-            sgec::impl::input::cursor::translate_position(_pos), true};
+            .pos = sgec::impl::input::cursor::translate_position(_pos), .valid = true};
       });
 }

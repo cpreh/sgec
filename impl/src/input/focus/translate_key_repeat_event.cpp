@@ -8,6 +8,6 @@ sgec_input_focus_key_repeat_event sgec::impl::input::focus::translate_key_repeat
     sge::input::focus::event::key_repeat const &_event)
 {
   return sgec_input_focus_key_repeat_event{
-      sgec::impl::input::focus::make_id(*_event.focus()),
-      sgec::impl::input::key::translate_code(_event.key().code())};
+      .id = sgec::impl::input::focus::make_id(*_event.focus()),
+      .key_code = sgec::impl::input::key::translate_code(_event.key().code())};
 }

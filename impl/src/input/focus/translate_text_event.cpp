@@ -13,5 +13,6 @@ sgec::impl::input::focus::translate_text_event(sge::input::focus::event::text co
 
   std::wcscpy(text, _event.get().c_str());
 
-  return sgec_input_focus_text_event{sgec::impl::input::focus::make_id(*_event.focus()), text};
+  return sgec_input_focus_text_event{
+      .id = sgec::impl::input::focus::make_id(*_event.focus()), .text = text};
 }

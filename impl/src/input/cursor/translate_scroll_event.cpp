@@ -8,7 +8,7 @@ sgec_input_cursor_scroll_event
 sgec::impl::input::cursor::translate_scroll_event(sge::input::cursor::event::scroll const &_event)
 {
   return sgec_input_cursor_scroll_event{
-      sgec::impl::input::cursor::make_id(*_event.cursor()),
-      sgec::impl::input::cursor::translate_scroll_code(_event.code()),
-      _event.value()};
+      .id = sgec::impl::input::cursor::make_id(*_event.cursor()),
+      .code = sgec::impl::input::cursor::translate_scroll_code(_event.code()),
+      .value = _event.value()};
 }

@@ -10,7 +10,7 @@ sgec_input_focus_key_event
 sgec::impl::input::focus::translate_key_event(sge::input::focus::event::key const &_event)
 {
   return sgec_input_focus_key_event{
-      sgec::impl::input::focus::make_id(*_event.focus()),
-      sgec::impl::input::key::translate_code(_event.get().code()),
-      sgec::impl::input::key::translate_state(sge::input::key::pressed{_event.pressed()})};
+      .id = sgec::impl::input::focus::make_id(*_event.focus()),
+      .key_code = sgec::impl::input::key::translate_code(_event.get().code()),
+      .key_state = sgec::impl::input::key::translate_state(sge::input::key::pressed{_event.pressed()})};
 }

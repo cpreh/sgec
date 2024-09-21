@@ -8,6 +8,6 @@ sgec_input_cursor_move_event
 sgec::impl::input::cursor::translate_move_event(sge::input::cursor::event::move const &_event)
 {
   return sgec_input_cursor_move_event{
-      sgec::impl::input::cursor::make_id(*_event.cursor()),
-      sgec::impl::input::cursor::translate_position_opt(_event.position())};
+      .id = sgec::impl::input::cursor::make_id(*_event.cursor()),
+      .pos = sgec::impl::input::cursor::translate_position_opt(_event.position())};
 }

@@ -17,6 +17,11 @@ function(add_sgec_library VARIANT)
 
   fcppt_utils_set_target_compiler_flags(${TARGET_NAME})
 
+  set_target_properties(${TARGET_NAME}
+    PROPERTIES
+    C_STANDARD 23
+    C_STANDARD_REQUIRED 23)
+
   target_include_directories(
     ${TARGET_NAME}
     PUBLIC ${FCPPT_UTILS_PROJECT_BINARY_DIR}/include

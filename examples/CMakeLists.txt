@@ -11,8 +11,13 @@ function(add_sgec_example EXAMPLE_NAME)
 
   add_executable(${FULL_NAME} ${EXAMPLE_NAME}.c)
 
+  set_target_properties(${FULL_NAME}
+    PROPERTIES
+    C_STANDARD 23
+    C_STANDARD_REQUIRED 23)
+
   # TODO: Add more warnings
-  target_compile_options(${FULL_NAME} PRIVATE "-std=c99" "-Wall" "-Wextra")
+  target_compile_options(${FULL_NAME} PRIVATE "-Wall" "-Wextra")
 
   target_link_libraries(${FULL_NAME} PRIVATE ${SGEC_TARGET}
                                              fcppt_core_interface)

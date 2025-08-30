@@ -15,12 +15,12 @@ function(add_sgec_library VARIANT)
 
   add_library(${TARGET_NAME} ${VARIANT} ${SGEC_FILES_ABS})
 
-  fcppt_utils_set_target_compiler_flags(${TARGET_NAME})
+  if(FCPPT_UTILS_COMPILER_IS_CLANGPP)
+    set(ADDITIONAL_FLAGS "-Wno-pre-c23-compat")
+  endif()
 
-  set_target_properties(${TARGET_NAME}
-    PROPERTIES
-    C_STANDARD 23
-    C_STANDARD_REQUIRED 23)
+  fcppt_utils_set_target_compiler_flags(
+    ${TARGET_NAME} ADDITIONAL_FLAGS ${ADDITIONAL_FLAGS})
 
   target_include_directories(
     ${TARGET_NAME}

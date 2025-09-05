@@ -29,6 +29,9 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/variant/dynamic_cast.hpp>
 #include <fcppt/variant/match.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 fcppt::optional::object<sgec_window_event>
 sgec::impl::window::translate_event(awl::event::base const &_event)
@@ -60,7 +63,7 @@ sgec::impl::window::translate_event(awl::event::base const &_event)
               result.cursor_button = // NOLINT(cppcoreguidelines-pro-type-union-access)
                   sgec::impl::input::cursor::translate_button_event(_button_event.get());
 
-              return result;
+              return std::move(result);
             },
             [](fcppt::reference<sge::input::cursor::event::move const> const _move_event)
             {
@@ -71,7 +74,7 @@ sgec::impl::window::translate_event(awl::event::base const &_event)
               result.cursor_move = // NOLINT(cppcoreguidelines-pro-type-union-access)
                   sgec::impl::input::cursor::translate_move_event(_move_event.get());
 
-              return result;
+              return std::move(result);
             },
             [](fcppt::reference<sge::input::cursor::event::scroll const> const _scroll_event)
             {
@@ -82,7 +85,7 @@ sgec::impl::window::translate_event(awl::event::base const &_event)
               result.cursor_scroll = // NOLINT(cppcoreguidelines-pro-type-union-access)
                   sgec::impl::input::cursor::translate_scroll_event(_scroll_event.get());
 
-              return result;
+              return std::move(result);
             },
             [](fcppt::reference<sge::input::focus::event::text const> const _text_event)
             {
@@ -93,7 +96,7 @@ sgec::impl::window::translate_event(awl::event::base const &_event)
               result.focus_text = // NOLINT(cppcoreguidelines-pro-type-union-access)
                   sgec::impl::input::focus::translate_text_event(_text_event.get());
 
-              return result;
+              return std::move(result);
             },
             [](fcppt::reference<sge::input::focus::event::key const> const _key_event)
             {
@@ -104,7 +107,7 @@ sgec::impl::window::translate_event(awl::event::base const &_event)
               result.focus_key = // NOLINT(cppcoreguidelines-pro-type-union-access)
                   sgec::impl::input::focus::translate_key_event(_key_event.get());
 
-              return result;
+              return std::move(result);
             },
             [](fcppt::reference<sge::input::focus::event::key_repeat const> const _key_repeat_event)
             {
@@ -115,7 +118,7 @@ sgec::impl::window::translate_event(awl::event::base const &_event)
               result.focus_key_repeat = // NOLINT(cppcoreguidelines-pro-type-union-access)
                   sgec::impl::input::focus::translate_key_repeat_event(_key_repeat_event.get());
 
-              return result;
+              return std::move(result);
             },
             [](fcppt::reference<sge::input::keyboard::event::key const> const _key_event)
             {
@@ -126,7 +129,7 @@ sgec::impl::window::translate_event(awl::event::base const &_event)
               result.keyboard_key = // NOLINT(cppcoreguidelines-pro-type-union-access)
                   sgec::impl::input::keyboard::translate_key_event(_key_event.get());
 
-              return result;
+              return std::move(result);
             },
             [](fcppt::reference<sge::input::mouse::event::axis const> const _axis_event)
             {
@@ -137,7 +140,7 @@ sgec::impl::window::translate_event(awl::event::base const &_event)
               result.mouse_axis = // NOLINT(cppcoreguidelines-pro-type-union-access)
                   sgec::impl::input::mouse::translate_axis_event(_axis_event.get());
 
-              return result;
+              return std::move(result);
             },
             [](fcppt::reference<sge::input::mouse::event::button const> const _button_event)
             {
@@ -148,7 +151,7 @@ sgec::impl::window::translate_event(awl::event::base const &_event)
               result.mouse_button = // NOLINT(cppcoreguidelines-pro-type-union-access)
                   sgec::impl::input::mouse::translate_button_event(_button_event.get());
 
-              return result;
+              return std::move(result);
             },
             [](fcppt::reference<sge::renderer::event::render const> const _render_event)
             {
@@ -159,7 +162,7 @@ sgec::impl::window::translate_event(awl::event::base const &_event)
               result.render = // NOLINT(cppcoreguidelines-pro-type-union-access)
                   sgec::impl::renderer::translate_render_event(_render_event.get());
 
-              return result;
+              return std::move(result);
             });
       });
 }

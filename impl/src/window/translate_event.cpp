@@ -27,11 +27,17 @@
 #include <fcppt/mpl/list/object.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gnu_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/dynamic_cast.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GNU_GCC_WARNING(-Wpessimizing-move)
 
 fcppt::optional::object<sgec_window_event>
 sgec::impl::window::translate_event(awl::event::base const &_event)
@@ -166,3 +172,5 @@ sgec::impl::window::translate_event(awl::event::base const &_event)
             });
       });
 }
+
+FCPPT_PP_POP_WARNING

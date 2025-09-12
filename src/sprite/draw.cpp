@@ -52,7 +52,6 @@
 #include <fcppt/reference_to_base.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/cast/size_fun.hpp>
-#include <fcppt/iterator/make_range.hpp>
 #include <fcppt/math/dim/contents.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/mpl/list/object.hpp>
@@ -61,6 +60,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <stddef.h> // NOLINT(hicpp-deprecated-headers,modernize-deprecated-headers)
+#include <ranges>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -112,11 +112,11 @@ try
 
   using sprite_vector = std::vector<sprite_object>;
 
-  auto const sprite_objects(fcppt::algorithm::map<sprite_vector>(
-      fcppt::iterator::make_range(
+  auto const sprite_objects{fcppt::algorithm::map<sprite_vector>(
+      std::ranges::subrange{
           _sprites,
           _sprites + // NOLINT(cppcoreguidelines-pro-bounds-pointer-arithmetic)
-              _count),
+              _count},
       [](struct sgec_sprite_object const &_sprite)
       {
         return sprite_object(
@@ -125,7 +125,7 @@ try
             sge::sprite::roles::texture0{} = sge::texture::const_part_ref(_sprite.texture->get()),
             sge::sprite::roles::rotation{} = _sprite.rotation,
             sge::sprite::roles::color{} = sgec::impl::image::color::translate_rgba(_sprite.color));
-      }));
+      })};
 
   sge::window::dim const projection_dim(_width, _height);
 

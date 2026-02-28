@@ -11,7 +11,8 @@ list(
   "-cppcoreguidelines-avoid-const-or-ref-data-members"
   "-fuchsia-default-arguments-calls"
   "-fuchsia-default-arguments-declarations"
-  "-misc-misplaced-const")
+  "-misc-misplaced-const"
+  "-portability-template-virtual-member-function")
 
 set(FCPPT_UTILS_CLANG_TIDY_WHITELIST "fcppt" "awl" "mizuiro" "sge" "sgec")
 

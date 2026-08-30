@@ -3,6 +3,7 @@
 #include <sgec/renderer/texture/planar.h>
 
 extern "C" enum sgec_result
+// NOLINTNEXTLINE(misc-const-correctness)
 sgec_renderer_texture_planar_destroy(struct sgec_renderer_texture_planar *const _texture)
 try
 {

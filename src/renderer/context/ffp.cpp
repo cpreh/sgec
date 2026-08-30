@@ -17,6 +17,7 @@ catch (...)
 }
 
 extern "C" sgec_result
+// NOLINTNEXTLINE(misc-const-correctness)
 sgec_renderer_context_ffp_destroy(struct sgec_renderer_context_ffp *const _context)
 try
 {

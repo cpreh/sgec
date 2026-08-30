@@ -14,6 +14,7 @@ catch (...)
   return nullptr;
 }
 
+// NOLINTNEXTLINE(misc-const-correctness)
 extern "C" enum sgec_result sgec_audio_buffer_destroy(struct sgec_audio_buffer *const _audio)
 try
 {

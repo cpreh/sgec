@@ -33,7 +33,7 @@ catch (...)
   return sgec_result_error;
 }
 
-extern "C" int sgec_window_system_exit_code(struct sgec_window_system *const _system)
+extern "C" int sgec_window_system_exit_code(struct sgec_window_system const *const _system)
 try
 {
   return _system->exit_code();

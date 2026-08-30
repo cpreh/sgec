@@ -25,6 +25,7 @@ catch (...)
   return nullptr;
 }
 
+// NOLINTNEXTLINE(misc-const-correctness)
 extern "C" sgec_result sgec_systems_instance_destroy(struct sgec_systems_instance *const _instance)
 try
 {

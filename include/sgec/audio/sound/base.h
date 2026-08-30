@@ -22,7 +22,7 @@ sgec_audio_sound_base_play(
 SGEC_DETAIL_SYMBOL
 enum sgec_audio_sound_play_status
 sgec_audio_sound_base_status(
-	struct sgec_audio_sound_base *
+	struct sgec_audio_sound_base const *
 );
 
 SGEC_DETAIL_SYMBOL

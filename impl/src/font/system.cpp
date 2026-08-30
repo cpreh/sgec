@@ -11,7 +11,6 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <filesystem>
-#include <string>
 #include <fcppt/config/external_end.hpp>
 
 sgec_font_system::sgec_font_system(fcppt::reference<sge::font::system> const _system)
@@ -28,7 +27,7 @@ sgec_font_system::create(char const *const _family, sgec_font_ttf_size const _si
 
   if (_family != nullptr)
   {
-    parameters.family(fcppt::from_std_string(std::string(_family)));
+    parameters.family(fcppt::from_std_string(_family));
   }
 
   if (_size != -1)

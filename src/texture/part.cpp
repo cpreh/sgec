@@ -16,6 +16,7 @@ sgec_texture_part_height(struct sgec_texture_part const *const _texture)
   return _texture->size().h();
 }
 
+// NOLINTNEXTLINE(misc-const-correctness)
 extern "C" enum sgec_result sgec_texture_part_destroy(struct sgec_texture_part *const _texture)
 try
 {

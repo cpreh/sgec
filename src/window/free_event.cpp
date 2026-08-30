@@ -2,6 +2,7 @@
 #include <sgec/window/event_type.h>
 #include <sgec/window/free_event.h>
 
+// NOLINTNEXTLINE(misc-const-correctness)
 extern "C" void sgec_window_free_event(struct sgec_window_event *const _event)
 {
   if (_event->type == sgec_window_event_type_focus_text)

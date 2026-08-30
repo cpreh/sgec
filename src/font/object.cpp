@@ -2,6 +2,7 @@
 #include <sgec/font/object.h>
 #include <sgec/impl/font/object.hpp>
 
+// NOLINTNEXTLINE(misc-const-correctness)
 extern "C" enum sgec_result sgec_font_object_destroy(struct sgec_font_object *const _font)
 try
 {

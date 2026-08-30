@@ -18,7 +18,7 @@ catch (...)
 }
 
 extern "C" enum sgec_audio_sound_play_status
-sgec_audio_sound_base_status(struct sgec_audio_sound_base *const _sound)
+sgec_audio_sound_base_status(struct sgec_audio_sound_base const *const _sound)
 try
 {
   return _sound->play_status();
@@ -29,6 +29,7 @@ catch (...)
 }
 
 extern "C" enum sgec_result
+// NOLINTNEXTLINE(misc-const-correctness)
 sgec_audio_sound_base_destroy(struct sgec_audio_sound_base *const _sound)
 try
 {

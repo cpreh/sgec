@@ -29,7 +29,7 @@ sgec_window_system_quit(
 SGEC_DETAIL_SYMBOL
 int
 sgec_window_system_exit_code(
-	struct sgec_window_system *
+	struct sgec_window_system const *
 );
 
 SGEC_DETAIL_FOOTER

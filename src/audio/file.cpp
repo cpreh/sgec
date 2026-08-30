@@ -2,6 +2,7 @@
 #include <sgec/audio/file.h>
 #include <sgec/impl/audio/file.hpp>
 
+// NOLINTNEXTLINE(misc-const-correctness)
 extern "C" enum sgec_result sgec_audio_file_destroy(struct sgec_audio_file *const _file)
 try
 {
